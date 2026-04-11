@@ -1,0 +1,44 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — Surface Component Tokens
+// Scoped to ds-surface (card, badge, tag, chip).
+// References Tier 1 semantic tokens.
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // Card
+  --card-bg:                var(--color-bg-surface);
+  --card-border:            var(--color-border-subtle);
+  --card-radius:            var(--radius-lg);
+  --card-padding:           var(--space-lg);
+  --card-shadow:            var(--shadow-card);
+  --card-shadow-elevated:   var(--shadow-dropdown);
+
+  // Badge
+  --badge-bg:               var(--color-bg-accent);
+  --badge-text:             var(--color-text-on-accent);
+  --badge-radius:           var(--radius-full);
+  --badge-padding:          var(--space-xxs) var(--space-sm);
+  --badge-font-size:        var(--type-label-s);
+  --badge-font-weight:      var(--type-weight-semibold);
+
+  // Tag
+  --tag-bg:                 var(--color-bg-sunken);
+  --tag-text:               var(--color-text-secondary);
+  --tag-border:             var(--color-border-subtle);
+  --tag-radius:             var(--radius-md);
+  --tag-padding:            var(--space-xxs) var(--space-sm);
+  --tag-font-size:          var(--type-label-s);
+
+  // Chip
+  --chip-bg:                var(--color-bg-accent-subtle);
+  --chip-text:              var(--color-text-accent);
+  --chip-border:            transparent;
+  --chip-radius:            var(--radius-full);
+  --chip-padding:           var(--space-xs) var(--space-sm);
+  --chip-font-size:         var(--type-label-m);
+  --chip-remove-hover-bg:   var(--color-status-error-subtle);
+  --chip-transition:        var(--transition-fast);
+  --chip-gap:               var(--space-xs);
+  --chip-remove-radius:     var(--radius-full);
+  --card-transition:        var(--transition-normal);
+}

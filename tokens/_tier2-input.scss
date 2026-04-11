@@ -1,0 +1,41 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — Input Component Tokens
+// Scoped to ds-input. References Tier 1 semantic tokens.
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // Field
+  --input-bg:              var(--color-bg-surface);
+  --input-text:            var(--color-text-primary);
+  --input-placeholder:     var(--color-text-tertiary);
+  --input-border:          var(--color-border-default);
+  --input-border-hover:    var(--color-border-strong);
+  --input-border-focus:    var(--color-border-focus);
+  --input-border-error:    var(--color-status-error);
+  --input-radius:          var(--radius-md);
+
+  // Label
+  --input-label-text:      var(--color-text-primary);
+  --input-label-size:      var(--type-label-m);
+  --input-label-weight:    var(--type-weight-medium);
+
+  // Helper / Error text
+  --input-helper-text:     var(--color-text-secondary);
+  --input-helper-size:     var(--type-label-s);
+  --input-error-text:      var(--color-status-error);
+
+  // Sizing
+  --input-padding:         var(--space-sm) var(--space-md);
+  --input-font-size:       var(--type-body-m);
+  --input-gap:             var(--space-xs);
+
+  // Disabled
+  --input-disabled-bg:     var(--color-bg-sunken);
+  --input-disabled-opacity: 0.6;
+
+  // States & Layout Overrides
+  --input-transition:           var(--transition-fast);
+  --input-icon-gap:             var(--space-xxs);
+  --input-select-bg-pos-x:      var(--space-sm);
+  --input-select-padding-right: var(--space-xl);
+}

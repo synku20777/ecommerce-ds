@@ -1,0 +1,22 @@
+// ═══════════════════════════════════════════════════════════
+// Token Entry Point
+// Compiles to dist/tokens.css — the single global stylesheet
+// that defines all CSS custom properties for the design system.
+//
+// Include this file once in your host page <head>.
+// ═══════════════════════════════════════════════════════════
+
+@use 'tier0-colors';
+@use 'tier0-typography';
+@use 'tier0-space';
+@use 'tier0-shadows';
+@use 'tier0-breakpoints';
+@use 'tier1-semantic';
+@use 'tier1-dark';
+@use 'tier2-badge';
+@use 'tier2-button';
+@use 'tier2-input';
+@use 'tier2-toggle';
+@use 'tier2-surface';
+@use 'tier2-breadcrumb';
+@use 'tier2-tabs';

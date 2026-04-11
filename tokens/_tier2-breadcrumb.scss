@@ -1,0 +1,41 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — ds-breadcrumb component tokens
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // Text
+  --ds-breadcrumb-text-color:           var(--color-text-secondary);
+  --ds-breadcrumb-text-color-current:   var(--color-text-primary);
+  --ds-breadcrumb-text-color-hover:     var(--color-text-accent);
+  --ds-breadcrumb-font-size:            var(--type-body-s);
+  --ds-breadcrumb-font-weight:          var(--type-weight-regular);
+  --ds-breadcrumb-font-weight-current:  var(--type-weight-semibold);
+
+  // Separator
+  --ds-breadcrumb-separator-color:      var(--color-text-tertiary);
+  --ds-breadcrumb-separator-gap:        var(--space-xs);
+
+  // Icon
+  --ds-breadcrumb-icon-size:            1rem;
+  --ds-breadcrumb-icon-gap:             var(--space-xxs);
+
+  // Pill variant
+  --ds-breadcrumb-pill-bg:              transparent;
+  --ds-breadcrumb-pill-border:          var(--color-border-default);
+  --ds-breadcrumb-pill-radius:          var(--radius-full);
+  --ds-breadcrumb-pill-padding:         var(--space-xxs) var(--space-sm);
+  --ds-breadcrumb-pill-bg-hover:        var(--color-bg-sunken);
+
+  // Contained variant
+  --ds-breadcrumb-contained-bg:         var(--color-bg-surface);
+  --ds-breadcrumb-contained-border:     var(--color-border-subtle);
+  --ds-breadcrumb-contained-radius:     var(--radius-lg);
+  --ds-breadcrumb-contained-padding:    var(--space-xs) var(--space-sm);
+
+  // Dropdown indicator
+  --ds-breadcrumb-dropdown-size:        0.75rem;
+  
+  // States
+  --ds-breadcrumb-transition:           var(--transition-fast);
+  --ds-breadcrumb-focus-radius:         var(--radius-sm);
+}

@@ -1,0 +1,39 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — Toggle Component Tokens
+// Scoped to ds-toggle (checkbox, radio, switch).
+// References Tier 1 semantic tokens.
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // Checkbox / Radio
+  --toggle-size:              1.125rem;
+  --toggle-border:            var(--color-border-default);
+  --toggle-border-hover:      var(--color-border-strong);
+  --toggle-bg:                var(--color-bg-surface);
+  --toggle-checked-bg:        var(--color-bg-accent);
+  --toggle-checked-border:    var(--color-bg-accent);
+  --toggle-checkmark-color:   var(--color-text-on-accent);
+  --toggle-radius-checkbox:   var(--radius-sm);
+  --toggle-radius-radio:      var(--radius-full);
+
+  // Switch
+  --switch-width:             2.5rem;
+  --switch-height:            1.375rem;
+  --switch-bg:                var(--color-border-default);
+  --switch-checked-bg:        var(--color-bg-accent);
+  --switch-thumb-bg:          var(--color-bg-surface);
+  --switch-thumb-size:        1rem;
+
+  // Label
+  --toggle-label-text:        var(--color-text-primary);
+  --toggle-label-size:        var(--type-body-s);
+  --toggle-gap:               var(--space-sm);
+
+  // Disabled
+  --toggle-disabled-opacity:  0.5;
+
+  // States & Switch overrides
+  --toggle-transition:        var(--transition-fast);
+  --switch-track-radius:      var(--radius-full);
+  --switch-thumb-radius:      var(--radius-full);
+}

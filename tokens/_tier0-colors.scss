@@ -1,0 +1,51 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 0 — Raw Color Primitives
+// Brand-agnostic scales. NEVER use directly in component styles.
+// ═══════════════════════════════════════════════════════════
+
+// Neutral scale (0 = white → 1000 = near-black)
+$raw-neutral-0:    #ffffff;
+$raw-neutral-50:   #f8fafc;
+$raw-neutral-100:  #f1f5f9;
+$raw-neutral-200:  #e2e8f0;
+$raw-neutral-300:  #cbd5e1;
+$raw-neutral-400:  #94a3b8;
+$raw-neutral-500:  #64748b;
+$raw-neutral-600:  #475569;
+$raw-neutral-700:  #334155;
+$raw-neutral-800:  #1e293b;
+$raw-neutral-900:  #0f172a;
+$raw-neutral-1000: #020617;
+
+// Brand scale
+$raw-brand-50:  #eff6ff;
+$raw-brand-100: #dbeafe;
+$raw-brand-200: #bfdbfe;
+$raw-brand-300: #93c5fd;
+$raw-brand-400: #60a5fa;
+$raw-brand-500: #3b82f6;
+$raw-brand-600: #2563eb;
+$raw-brand-700: #1d4ed8;
+$raw-brand-800: #1e40af;
+$raw-brand-900: #1e3a8a;
+
+// Status — Success (green)
+$raw-green-50:  #f0fdf4;
+$raw-green-100: #dcfce7;
+$raw-green-500: #22c55e;
+$raw-green-600: #16a34a;
+$raw-green-700: #15803d;
+
+// Status — Error (red)
+$raw-red-50:  #fef2f2;
+$raw-red-100: #fee2e2;
+$raw-red-500: #ef4444;
+$raw-red-600: #dc2626;
+$raw-red-700: #b91c1c;
+
+// Status — Warning (yellow/amber)
+$raw-yellow-50:  #fffbeb;
+$raw-yellow-100: #fef3c7;
+$raw-yellow-500: #eab308;
+$raw-yellow-600: #ca8a04;
+$raw-yellow-700: #a16207;

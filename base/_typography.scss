@@ -1,0 +1,77 @@
+// ═══════════════════════════════════════════════════════════
+// Base Typography
+// Responsive type scale using clamp() for fluid sizing.
+// Mixins for components to @include instead of hardcoding.
+// ═══════════════════════════════════════════════════════════
+
+@use '../tokens/tier0-typography' as *;
+
+// Fluid type mixin — scales between min and max based on viewport
+// Usage: @include fluid-type($raw-type-size-800, $raw-type-size-1000);
+@mixin fluid-type($min, $max, $min-vw: 320px, $max-vw: 1280px) {
+  font-size: clamp(#{$min}, #{$min} + (#{strip-unit($max - $min)}) * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}), #{$max});
+}
+
+// Strip unit helper
+@function strip-unit($value) {
+  @return calc($value / ($value * 0 + 1));
+}
+
+// Pre-built heading mixins
+@mixin heading-xxl {
+  font-size: clamp(#{$raw-type-size-800}, 5vw, #{$raw-type-size-1000});
+  font-weight: #{$raw-type-weight-bold};
+  line-height: #{$raw-type-leading-tight};
+  letter-spacing: -0.02em;
+}
+
+@mixin heading-xl {
+  font-size: clamp(#{$raw-type-size-700}, 4vw, #{$raw-type-size-900});
+  font-weight: #{$raw-type-weight-bold};
+  line-height: #{$raw-type-leading-tight};
+  letter-spacing: -0.01em;
+}
+
+@mixin heading-l {
+  font-size: clamp(#{$raw-type-size-600}, 3.5vw, #{$raw-type-size-800});
+  font-weight: #{$raw-type-weight-semibold};
+  line-height: #{$raw-type-leading-tight};
+}
+
+@mixin heading-m {
+  font-size: clamp(#{$raw-type-size-500}, 3vw, #{$raw-type-size-700});
+  font-weight: #{$raw-type-weight-semibold};
+  line-height: #{$raw-type-leading-snug};
+}
+
+@mixin body-l {
+  font-size: #{$raw-type-size-500};
+  font-weight: #{$raw-type-weight-regular};
+  line-height: #{$raw-type-leading-normal};
+}
+
+@mixin body-m {
+  font-size: #{$raw-type-size-400};
+  font-weight: #{$raw-type-weight-regular};
+  line-height: #{$raw-type-leading-normal};
+}
+
+@mixin body-s {
+  font-size: #{$raw-type-size-300};
+  font-weight: #{$raw-type-weight-regular};
+  line-height: #{$raw-type-leading-normal};
+}
+
+@mixin label-m {
+  font-size: #{$raw-type-size-300};
+  font-weight: #{$raw-type-weight-medium};
+  line-height: #{$raw-type-leading-normal};
+}
+
+@mixin label-s {
+  font-size: #{$raw-type-size-100};
+  font-weight: #{$raw-type-weight-medium};
+  line-height: #{$raw-type-leading-normal};
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

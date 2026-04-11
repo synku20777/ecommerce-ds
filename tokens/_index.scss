@@ -1,0 +1,24 @@
+// ═══════════════════════════════════════════════════════════
+// Token Barrel File
+// Forwards all token partials for consumption by components.
+// ═══════════════════════════════════════════════════════════
+
+// Tier 0 — Raw Primitives
+@forward 'tier0-colors';
+@forward 'tier0-typography';
+@forward 'tier0-space';
+@forward 'tier0-shadows';
+@forward 'tier0-breakpoints';
+
+// Tier 1 — Semantic (outputs CSS custom properties)
+@forward 'tier1-semantic';
+@forward 'tier1-dark';
+
+// Tier 2 — Component-scoped (outputs CSS custom properties)
+@forward 'tier2-badge';
+@forward 'tier2-button';
+@forward 'tier2-input';
+@forward 'tier2-toggle';
+@forward 'tier2-surface';
+@forward 'tier2-breadcrumb';
+@forward 'tier2-tabs';

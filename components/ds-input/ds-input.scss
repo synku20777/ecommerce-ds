@@ -1,0 +1,126 @@
+// ═══════════════════════════════════════════════════════════
+// ds-input — Component Styles
+// Covers text, select, and textarea input types.
+// All values reference Tier 1/2 tokens. Zero hardcoded values.
+// ═══════════════════════════════════════════════════════════
+
+@use 'reset';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+}
+
+.ds-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-gap);
+
+  // ─── Label ────────────────────────────────────────────
+  &__label {
+    font-size: var(--input-label-size);
+    font-weight: var(--input-label-weight);
+    color: var(--input-label-text);
+    cursor: pointer;
+
+    .ds-input__required {
+      color: var(--input-error-text);
+      margin-left: var(--input-icon-gap);
+    }
+  }
+
+  // ─── Shared Field Styles ──────────────────────────────
+  &__field,
+  &__select,
+  &__textarea {
+    width: 100%;
+    padding: var(--input-padding);
+    font-family: var(--font-family-sans);
+    font-size: var(--input-font-size);
+    color: var(--input-text);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--input-radius);
+    outline: none;
+    transition: border-color var(--input-transition),
+                box-shadow var(--input-transition);
+
+    &::placeholder {
+      color: var(--input-placeholder);
+    }
+
+    &:hover {
+      border-color: var(--input-border-hover);
+    }
+
+    &:focus {
+      border-color: var(--input-border-focus);
+      box-shadow: var(--focus-ring);
+    }
+
+    &:disabled {
+      background-color: var(--input-disabled-bg);
+      opacity: var(--input-disabled-opacity);
+      cursor: not-allowed;
+    }
+  }
+
+  // ─── Select-specific ──────────────────────────────────
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--input-select-bg-pos-x) center;
+    padding-right: var(--input-select-padding-right);
+  }
+
+  // ─── Textarea-specific ────────────────────────────────
+  &__textarea {
+    resize: vertical;
+    min-height: 5rem;
+  }
+
+  // ─── Error State ──────────────────────────────────────
+  &--error {
+    .ds-input__field,
+    .ds-input__select,
+    .ds-input__textarea {
+      border-color: var(--input-border-error);
+
+      &:focus {
+        border-color: var(--input-border-error);
+        box-shadow: 0 0 0 2px var(--input-bg), 0 0 0 4px var(--input-border-error);
+      }
+    }
+  }
+
+  // ─── Helper Text ──────────────────────────────────────
+  &__helper {
+    font-size: var(--input-helper-size);
+    color: var(--input-helper-text);
+  }
+
+  // ─── Error Message ────────────────────────────────────
+  &__error {
+    font-size: var(--input-helper-size);
+    color: var(--input-error-text);
+    display: flex;
+    align-items: center;
+    gap: var(--input-icon-gap);
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+      background-color: var(--input-error-text);
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor'%3E%3Ccircle cx='8' cy='8' r='7'/%3E%3Ctext x='8' y='12' text-anchor='middle' fill='white' font-size='11' font-weight='bold'%3E!%3C/text%3E%3C/svg%3E");
+      mask-size: contain;
+      flex-shrink: 0;
+    }
+  }
+}

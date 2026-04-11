@@ -1,0 +1,63 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — Tabs Component Tokens
+// Scoped to ds-tabs. References Tier 1 semantic tokens.
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  --ds-tabs-transition:           var(--transition-fast);
+  --ds-tabs-focus-ring:           var(--focus-ring);
+  
+  // Base structural
+  --ds-tabs-font-family:          var(--font-family-sans);
+  --ds-tabs-font-size:            var(--type-label-m);
+  --ds-tabs-font-weight-default:  var(--type-weight-medium);
+  --ds-tabs-font-weight-active:   var(--type-weight-semibold);
+  
+  --ds-tabs-icon-gap:             var(--space-xxs);
+  --ds-tabs-icon-size:            1.125rem;
+  
+  // Badges within tabs
+  --ds-tabs-badge-bg:             var(--color-bg-sunken);
+  --ds-tabs-badge-text:           var(--color-text-secondary);
+  --ds-tabs-badge-active-bg:      var(--color-bg-accent);
+  --ds-tabs-badge-active-text:    var(--color-text-on-accent);
+  --ds-tabs-badge-radius:         var(--radius-full);
+  --ds-tabs-badge-font-size:      var(--type-label-s);
+  --ds-tabs-badge-min-width:      1.25rem;
+
+  // Variant: Underline
+  --ds-tabs-underline-gap:        var(--space-md);
+  --ds-tabs-underline-text:       var(--color-text-secondary);
+  --ds-tabs-underline-text-hover: var(--color-text-primary);
+  --ds-tabs-underline-text-active:var(--color-text-accent);
+  --ds-tabs-underline-border:     transparent;
+  --ds-tabs-underline-border-active: var(--color-border-accent);
+  --ds-tabs-underline-list-border: var(--color-border-subtle);
+  
+  // Variant: Pill
+  --ds-tabs-pill-gap:             var(--space-xs);
+  --ds-tabs-pill-radius:          var(--radius-full);
+  --ds-tabs-pill-text:            var(--color-text-secondary);
+  --ds-tabs-pill-text-hover:      var(--color-text-primary);
+  --ds-tabs-pill-text-active:     var(--color-text-on-accent);
+  --ds-tabs-pill-bg:              transparent;
+  --ds-tabs-pill-bg-hover:        var(--color-bg-sunken);
+  --ds-tabs-pill-bg-active:       var(--color-bg-accent); 
+  
+  // Variant: Segmented
+  --ds-tabs-segmented-gap:        var(--space-xxs);
+  --ds-tabs-segmented-list-bg:    var(--color-bg-sunken);
+  --ds-tabs-segmented-list-pad:   var(--space-xxs);
+  --ds-tabs-segmented-list-rad:   var(--radius-full);
+  --ds-tabs-segmented-radius:     calc(var(--radius-full) - 2px);
+  --ds-tabs-segmented-text:       var(--color-text-secondary);
+  --ds-tabs-segmented-text-active:var(--color-text-primary);
+  --ds-tabs-segmented-bg-active:  var(--color-bg-surface);
+  --ds-tabs-segmented-shadow:     0 1px 3px rgba(0, 0, 0, 0.15);
+
+  // Variant: Minimal
+  --ds-tabs-minimal-gap:          var(--space-md);
+  --ds-tabs-minimal-text:         var(--color-text-secondary);
+  --ds-tabs-minimal-text-hover:   var(--color-text-primary);
+  --ds-tabs-minimal-text-active:  var(--color-text-primary);
+}

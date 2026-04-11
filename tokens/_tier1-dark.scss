@@ -1,0 +1,46 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 1 — Dark Theme Overrides
+// Swap semantic values for dark mode. Applied via
+// [data-theme="dark"] on the root element.
+// ═══════════════════════════════════════════════════════════
+
+@use 'tier0-colors' as *;
+
+[data-theme="dark"] {
+  // ─── Color Roles ───────────────────────────────────────
+  --color-bg-page:         #{$raw-neutral-900};
+  --color-bg-surface:      #{$raw-neutral-800};
+  --color-bg-raised:       #{$raw-neutral-700};
+  --color-bg-sunken:       #{$raw-neutral-1000};
+  --color-bg-accent:       #{$raw-brand-500};
+  --color-bg-accent-hover: #{$raw-brand-400};
+  --color-bg-accent-subtle:#{$raw-brand-900};
+
+  --color-text-primary:    #{$raw-neutral-50};
+  --color-text-secondary:  #{$raw-neutral-400};
+  --color-text-tertiary:   #{$raw-neutral-500};
+  --color-text-disabled:   #{$raw-neutral-600};
+  --color-text-on-accent:  #{$raw-neutral-0};
+  --color-text-accent:     #{$raw-brand-400};
+
+  --color-border-subtle:   #{$raw-neutral-700};
+  --color-border-default:  #{$raw-neutral-600};
+  --color-border-strong:   #{$raw-neutral-500};
+  --color-border-focus:    #{$raw-brand-400};
+
+  --color-status-success:       #{$raw-green-500};
+  --color-status-success-subtle:#{$raw-green-700};
+  --color-status-error:         #{$raw-red-500};
+  --color-status-error-subtle:  #{$raw-red-700};
+  --color-status-warning:       #{$raw-yellow-500};
+  --color-status-warning-subtle:#{$raw-yellow-700};
+
+  // ─── Shadows (stronger for dark bg) ────────────────────
+  --shadow-card:     0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --shadow-dropdown: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-modal:    0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  // ─── Focus Ring ────────────────────────────────────────
+  --focus-ring: 0 0 0 2px var(--color-bg-surface), 0 0 0 4px var(--color-border-focus);
+}

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="ds-base-path" content="">
+  <title>E-Commerce Design System - Documentation</title>
+  <link rel="icon" href="data:,">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="/dist/tokens.css">
+  <link rel="stylesheet" href="/demo/demo.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header-mobile" aria-label="Mobile navigation">
+    <a class="site-brand" href="#top" aria-label="Back to top">
+      <span class="site-brand__mark">DS</span>
+      <span class="site-brand__name">Commerce Design System</span>
+    </a>
+    <div class="site-header-mobile__actions">
+      <button id="theme-toggle-mobile" class="demo-action" type="button">Switch to Dark</button>
+      <button id="menu-toggle" class="demo-action menu-toggle" type="button" aria-expanded="false"
+        aria-controls="site-sidebar" aria-label="Open navigation menu">
+        <span class="menu-toggle__line" aria-hidden="true"></span>
+        <span class="menu-toggle__line" aria-hidden="true"></span>
+        <span class="menu-toggle__line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="site-menu-backdrop" class="site-menu-backdrop" hidden></div>
+
+  <div class="site-layout">
+    <aside id="site-sidebar" class="site-sidebar" aria-label="Section navigation">
+      <div class="site-sidebar__header">
+        <a class="site-brand" href="#top" aria-label="Back to top">
+          <span class="site-brand__mark">DS</span>
+          <span class="site-brand__name">Commerce Design System</span>
+        </a>
+        <button id="sidebar-toggle" class="sidebar-toggle" type="button" aria-label="Collapse sidebar"
+          title="Collapse sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="site-sidebar__nav">
+        <span class="nav-group-label">Foundation</span>
+        <a href="#color" data-abbr="Co"><span class="nav-label">Color</span></a>
+        <a href="#typography" data-abbr="Ty"><span class="nav-label">Typography</span></a>
+        <a href="#spacing" data-abbr="Sp"><span class="nav-label">Spacing</span></a>
+        <a href="#effects" data-abbr="Ef"><span class="nav-label">Effects</span></a>
+
+        <span class="nav-group-label">Components</span>
+        <a href="#ds-button" data-abbr="Bt"><span class="nav-label">Button</span></a>
+        <a href="#ds-badge" data-abbr="Bd"><span class="nav-label">Badge</span></a>
+        <a href="#ds-input" data-abbr="In"><span class="nav-label">Input</span></a>
+        <a href="#ds-toggle" data-abbr="To"><span class="nav-label">Toggle</span></a>
+        <a href="#ds-surface" data-abbr="Su"><span class="nav-label">Surface</span></a>
+        <a href="#ds-breadcrumb" data-abbr="Bc"><span class="nav-label">Breadcrumb</span></a>
+        <a href="#ds-tabs" data-abbr="Tb"><span class="nav-label">Tabs</span></a>
+
+        <span class="nav-group-label">Layouts</span>
+        <a href="#product-grid" data-abbr="Pg"><span class="nav-label">Product Grid</span></a>
+
+        <a href="#usage" data-abbr="Us" class="nav-link--usage"><span class="nav-label">Usage</span></a>
+      </nav>
+
+      <div class="site-sidebar__footer">
+        <button id="theme-toggle" class="demo-action" type="button">Switch to Dark</button>
+      </div>
+    </aside>
+
+    <div class="site-content">
+      <main id="main">
+        <section id="top" class="hero" aria-labelledby="page-title">
+          <div class="hero__content">
+            <p class="eyebrow">Design system MVP</p>
+            <h1 id="page-title">A practical foundation for e-commerce interfaces.</h1>
+            <p>
+              Tokens, primitives, and vanilla Web Components organized as a reusable documentation kit.
+              This guide explains the structure, the contract, and the live examples in one place.
+            </p>
+            <div class="hero__meta" aria-label="System summary">
+              <span>3-tier tokens</span>
+              <span>Shadow DOM components</span>
+              <span>SCSS source</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="contents" aria-labelledby="contents-title">
+          <div class="contents__intro">
+            <p class="eyebrow">Contents</p>
+            <h2 id="contents-title">Read the system from foundations to implementation.</h2>
+          </div>
+          <ol class="contents__list">
+            <li><a href="#foundations"><span>01</span> Foundations</a></li>
+            <li><a href="#color"><span>02</span> Color</a></li>
+            <li><a href="#typography"><span>03</span> Typography</a></li>
+            <li><a href="#spacing"><span>04</span> Spacing</a></li>
+            <li><a href="#effects"><span>05</span> Effects</a></li>
+            <li><a href="#components"><span>06</span> Components</a></li>
+            <li><a href="#layouts"><span>07</span> Layouts</a></li>
+            <li><a href="#usage"><span>08</span> Usage</a></li>
+          </ol>
+        </section>
+
+        <section id="foundations" class="doc-section" aria-labelledby="foundations-title">
+          <div class="section-heading">
+            <h2 id="foundations-title"><span class="section-number">01</span> Foundations</h2>
+            <p>
+              The system uses a strict 3-tier token model. Raw SCSS values feed semantic CSS custom
+              properties, and component-scoped tokens reference those semantic roles.
+            </p>
+          </div>
+
+          <div class="tier-diagram" aria-label="Token architecture">
+            <article class="tier-box">
+              <span>Tier 0</span>
+              <h3>Raw</h3>
+              <p>Brand-agnostic SCSS scales for color, type, spacing, shadows, and breakpoints.</p>
+            </article>
+            <article class="tier-box">
+              <span>Tier 1</span>
+              <h3>Semantic</h3>
+              <p>CSS custom properties on <code>:root</code>, including dark-theme overrides.</p>
+            </article>
+            <article class="tier-box">
+              <span>Tier 2</span>
+              <h3>Component</h3>
+              <p>Button, input, toggle, and surface tokens that reference Tier 1 roles.</p>
+            </article>
+          </div>
+
+          <div class="specimen-grid specimen-grid--wide">
+            <article class="specimen">
+              <span class="specimen__label">Token flow</span>
+              <pre><code>$raw-brand-500: #3b82f6;
+--color-bg-accent: #{$raw-brand-500};
+--button-default-bg: var(--color-bg-accent);
+
+.ds-button--default {
+  background-color: var(--button-default-bg);
+}</code></pre>
+            </article>
+            <article class="specimen">
+              <span class="specimen__label">Why this matters</span>
+              <p>
+                Components never consume raw values directly. Theme changes happen by remapping semantic
+                values, while component CSS keeps the same public contract.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="color" class="doc-section" aria-labelledby="color-title">
+          <div class="section-heading">
+            <h2 id="color-title"><span class="section-number">02</span> Color</h2>
+            <p>
+              These swatches show roles, not raw colors. Toggle the theme to see the semantic values
+              change without changing component markup.
+            </p>
+          </div>
+
+          <div class="palette-group">
+            <div class="palette-group__heading">
+              <h3>Background</h3>
+              <p>Page, surface, raised, sunken, and accent roles.</p>
+            </div>
+            <div class="swatch-grid">
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-page)"></span><span>--color-bg-page</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-surface)"></span><span>--color-bg-surface</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-raised)"></span><span>--color-bg-raised</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-sunken)"></span><span>--color-bg-sunken</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-accent)"></span><span>--color-bg-accent</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-accent-hover)"></span><span>--color-bg-accent-hover</span>
+              </div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-bg-accent-subtle)"></span><span>--color-bg-accent-subtle</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div class="palette-group__heading">
+              <h3>Text</h3>
+              <p>Primary, secondary, tertiary, disabled, and accent text roles.</p>
+            </div>
+            <div class="swatch-grid">
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-text-primary)"></span><span>--color-text-primary</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-text-secondary)"></span><span>--color-text-secondary</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-text-tertiary)"></span><span>--color-text-tertiary</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-text-disabled)"></span><span>--color-text-disabled</span></div>
+              <div class="swatch swatch--on-accent"><span class="swatch__color"
+                  style="background-color: var(--color-text-on-accent)"></span><span>--color-text-on-accent</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-text-accent)"></span><span>--color-text-accent</span></div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div class="palette-group__heading">
+              <h3>Border</h3>
+              <p>Subtle, default, strong, and focus border roles.</p>
+            </div>
+            <div class="swatch-grid">
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-border-subtle)"></span><span>--color-border-subtle</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-border-default)"></span><span>--color-border-default</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-border-strong)"></span><span>--color-border-strong</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-border-focus)"></span><span>--color-border-focus</span></div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div class="palette-group__heading">
+              <h3>Status</h3>
+              <p>Feedback colors and their subtle background tints.</p>
+            </div>
+            <div class="swatch-grid">
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-status-success)"></span><span>--color-status-success</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-status-success-subtle)"></span><span>--color-status-success-subtle</span>
+              </div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-status-warning)"></span><span>--color-status-warning</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-status-warning-subtle)"></span><span>--color-status-warning-subtle</span>
+              </div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-status-error)"></span><span>--color-status-error</span></div>
+              <div class="swatch"><span class="swatch__color"
+                  style="background-color: var(--color-status-error-subtle)"></span><span>--color-status-error-subtle</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="typography" class="doc-section" aria-labelledby="typography-title">
+          <div class="section-heading">
+            <h2 id="typography-title"><span class="section-number">03</span> Typography</h2>
+            <p>
+              Inter is used as the primary interface family, with JetBrains Mono reserved for token names
+              and code snippets.
+            </p>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Type scale</h3>
+              <p>Heading, body, and label sizes.</p>
+            </div>
+            <div class="type-demo">
+              <div class="type-demo__item">
+                <span>--type-heading-xxl</span>
+                <strong class="type-demo__xxl">Heading XXL</strong>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-heading-xl</span>
+                <strong class="type-demo__xl">Heading XL</strong>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-heading-l</span>
+                <strong class="type-demo__l">Heading L</strong>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-heading-m</span>
+                <strong class="type-demo__m">Heading M</strong>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-heading-s</span>
+                <strong class="type-demo__s">Heading S</strong>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-body-l</span>
+                <p class="type-demo__body-l">Large body copy for lead paragraphs and introductions.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-body-m</span>
+                <p>Body copy stays readable across dense product tables, checkout flows, and documentation pages.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-body-s</span>
+                <p class="type-demo__body-s">Small body copy for helper text, captions, and secondary information.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-label-m</span>
+                <p class="type-demo__label-m">Medium label</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-label-s</span>
+                <p class="type-demo__label">Compact label text</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Font families</h3>
+              <p>Sans-serif for UI, monospace for code and tokens.</p>
+            </div>
+            <div class="type-demo">
+              <div class="type-demo__item">
+                <span>--font-family-sans</span>
+                <p style="font-family: var(--font-family-sans); font-size: var(--type-body-m);">The quick brown fox
+                  jumps over the lazy dog. 0123456789</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--font-family-mono</span>
+                <p style="font-family: var(--font-family-mono); font-size: var(--type-body-m);">--color-bg-accent:
+                  #3b82f6; --space-md: 1rem;</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Weights</h3>
+              <p>Regular through bold.</p>
+            </div>
+            <div class="type-demo">
+              <div class="type-demo__item">
+                <span>--type-weight-regular</span>
+                <p style="font-weight: var(--type-weight-regular); font-size: var(--type-body-m);">The quick brown fox
+                  jumps over the lazy dog.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-weight-medium</span>
+                <p style="font-weight: var(--type-weight-medium); font-size: var(--type-body-m);">The quick brown fox
+                  jumps over the lazy dog.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-weight-semibold</span>
+                <p style="font-weight: var(--type-weight-semibold); font-size: var(--type-body-m);">The quick brown fox
+                  jumps over the lazy dog.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-weight-bold</span>
+                <p style="font-weight: var(--type-weight-bold); font-size: var(--type-body-m);">The quick brown fox
+                  jumps over the lazy dog.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Line height</h3>
+              <p>Tight for headings, normal for body copy.</p>
+            </div>
+            <div class="type-demo">
+              <div class="type-demo__item">
+                <span>--type-leading-tight</span>
+                <p style="line-height: var(--type-leading-tight); font-size: var(--type-body-m); max-width: 32ch;">Tight
+                  leading compresses multi-line headings and display text into a dense, punchy block. Used at scale.</p>
+              </div>
+              <div class="type-demo__item">
+                <span>--type-leading-normal</span>
+                <p style="line-height: var(--type-leading-normal); font-size: var(--type-body-m); max-width: 32ch;">
+                  Normal leading keeps body paragraphs comfortable and scannable across longer reading sessions and
+                  dense UI.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="spacing" class="doc-section" aria-labelledby="spacing-title">
+          <div class="section-heading">
+            <h2 id="spacing-title"><span class="section-number">04</span> Spacing</h2>
+            <p>
+              Use spacing tokens for component internals, page gutters, and repeated documentation rhythm.
+            </p>
+          </div>
+
+          <div class="space-demo">
+            <div class="space-demo__item"><span>--space-xxs</span><i
+                style="width: var(--space-xxs); min-width: 2px;"></i><em>2px</em></div>
+            <div class="space-demo__item"><span>--space-xs</span><i style="width: var(--space-xs);"></i><em>4px</em>
+            </div>
+            <div class="space-demo__item"><span>--space-sm</span><i style="width: var(--space-sm);"></i><em>8px</em>
+            </div>
+            <div class="space-demo__item"><span>--space-md</span><i style="width: var(--space-md);"></i><em>16px</em>
+            </div>
+            <div class="space-demo__item"><span>--space-lg</span><i style="width: var(--space-lg);"></i><em>24px</em>
+            </div>
+            <div class="space-demo__item"><span>--space-xl</span><i style="width: var(--space-xl);"></i><em>32px</em>
+            </div>
+            <div class="space-demo__item"><span>--space-2xl</span><i style="width: var(--space-2xl);"></i><em>48px</em>
+            </div>
+            <div class="space-demo__item"><span>--space-3xl</span><i style="width: var(--space-3xl);"></i><em>64px</em>
+            </div>
+          </div>
+        </section>
+
+        <section id="effects" class="doc-section" aria-labelledby="effects-title">
+          <div class="section-heading">
+            <h2 id="effects-title"><span class="section-number">05</span> Effects</h2>
+            <p>
+              Shadows, radius, motion, and focus tokens define depth, shape, and interactivity across every
+              component. These never appear in typography or color sections but drive the tactile feel of the UI.
+            </p>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Shadows</h3>
+              <p>Elevation scale from card to modal.</p>
+            </div>
+            <div class="shadow-demo">
+              <div class="shadow-swatch">
+                <span class="shadow-swatch__box" style="box-shadow: var(--shadow-card)"></span>
+                <span>--shadow-card</span>
+              </div>
+              <div class="shadow-swatch">
+                <span class="shadow-swatch__box" style="box-shadow: var(--shadow-dropdown)"></span>
+                <span>--shadow-dropdown</span>
+              </div>
+              <div class="shadow-swatch">
+                <span class="shadow-swatch__box" style="box-shadow: var(--shadow-modal)"></span>
+                <span>--shadow-modal</span>
+              </div>
+              <div class="shadow-swatch">
+                <span class="shadow-swatch__box" style="box-shadow: var(--shadow-elevated)"></span>
+                <span>--shadow-elevated</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Radius</h3>
+              <p>Border-radius scale from tight to pill.</p>
+              <div class="radius-toggle" role="group" aria-label="Base radius preset">
+                <button class="radius-toggle__btn" data-preset="none">None</button>
+                <button class="radius-toggle__btn" data-preset="small">S</button>
+                <button class="radius-toggle__btn is-active" data-preset="medium">M</button>
+                <button class="radius-toggle__btn" data-preset="large">L</button>
+              </div>
+            </div>
+            <div class="radius-demo">
+              <div class="radius-swatch radius-swatch--base">
+                <span class="radius-swatch__box" style="border-radius: var(--radius)"></span>
+                <span>--radius</span>
+                <em id="radius-base-label">0.625rem base</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-sm)"></span>
+                <span>--radius-sm</span>
+                <em>× 0.6 (~6px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-md)"></span>
+                <span>--radius-md</span>
+                <em>× 0.8 (~8px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-lg)"></span>
+                <span>--radius-lg</span>
+                <em>× 1.0 (10px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-xl)"></span>
+                <span>--radius-xl</span>
+                <em>× 1.4 (~14px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-2xl)"></span>
+                <span>--radius-2xl</span>
+                <em>× 1.8 (~18px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-3xl)"></span>
+                <span>--radius-3xl</span>
+                <em>× 2.2 (~22px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-4xl)"></span>
+                <span>--radius-4xl</span>
+                <em>× 2.6 (~26px)</em>
+              </div>
+              <div class="radius-swatch">
+                <span class="radius-swatch__box" style="border-radius: var(--radius-full)"></span>
+                <span>--radius-full</span>
+                <em>9999px literal</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Transitions</h3>
+              <p>Hover each button to compare speeds.</p>
+            </div>
+            <div class="motion-demo">
+              <div class="motion-demo__item">
+                <button class="motion-btn motion-btn--fast">Hover me</button>
+                <span>--transition-fast</span>
+                <em>150ms ease</em>
+              </div>
+              <div class="motion-demo__item">
+                <button class="motion-btn motion-btn--normal">Hover me</button>
+                <span>--transition-normal</span>
+                <em>250ms ease</em>
+              </div>
+              <div class="motion-demo__item">
+                <button class="motion-btn motion-btn--slow">Hover me</button>
+                <span>--transition-slow</span>
+                <em>350ms ease</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Focus ring</h3>
+              <p>Tab to the button to inspect the ring.</p>
+            </div>
+            <div class="focus-demo">
+              <button class="focus-demo__btn">Tab to focus me</button>
+              <span>--focus-ring: 2px surface offset + 4px border-focus</span>
+            </div>
+          </div>
+
+          <div class="palette-group">
+            <div>
+              <h3>Layout</h3>
+              <p>Container width, page gutter, and grid gap.</p>
+            </div>
+            <div class="specimen-grid">
+              <article class="specimen">
+                <span class="specimen__label">Layout tokens</span>
+                <pre><code>--layout-container-max: 1280px
+--layout-gutter-page:   1.5rem  /* 24px */
+--layout-gap-grid:      1rem    /* 16px */</code></pre>
+              </article>
+              <article class="specimen">
+                <span class="specimen__label">Usage</span>
+                <p>The container max constrains page width at the widest breakpoint. The page gutter sets horizontal
+                  padding on the main content area. The grid gap spaces column and row tracks in multi-column layouts.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="components" class="doc-section" aria-labelledby="components-title">
+          <div class="section-heading">
+            <h2 id="components-title"><span class="section-number">06</span> Components</h2>
+            <p>
+              Components use Shadow DOM, inherit global CSS custom properties, and expose small attribute
+              APIs with predictable defaults.
+            </p>
+          </div>
+
+          <div class="component-block" id="ds-button">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-button</span>
+              <h3>Actions</h3>
+              <p>Shadcn-style button variants and sizes adapted to native Web Components.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack button-doc">
+              <div class="button-doc__group">
+                <div class="button-doc__heading">
+                  <h4>Variants</h4>
+                  <p>Use semantic variants for action priority, boundaries, destructive actions, and low-emphasis links.
+                  </p>
+                </div>
+                <div class="button-doc__row">
+                  <ds-button variant="default">Default</ds-button>
+                  <ds-button variant="outline">Outline</ds-button>
+                  <ds-button variant="ghost">Ghost</ds-button>
+                  <ds-button variant="destructive">Destructive</ds-button>
+                  <ds-button variant="secondary">Secondary</ds-button>
+                  <ds-button variant="link">Link</ds-button>
+                </div>
+              </div>
+
+              <div class="button-doc__group">
+                <div class="button-doc__heading">
+                  <h4>Text sizes</h4>
+                  <p>The default size matches the standard action height; xs and sm fit dense interfaces.</p>
+                </div>
+                <div class="button-doc__row">
+                  <ds-button variant="outline" size="xs">Extra small</ds-button>
+                  <ds-button variant="outline" size="sm">Small</ds-button>
+                  <ds-button variant="outline" size="default">Default</ds-button>
+                  <ds-button variant="outline" size="lg">Large</ds-button>
+                </div>
+              </div>
+
+              <div class="button-doc__group">
+                <div class="button-doc__heading">
+                  <h4>Icon sizes</h4>
+                  <p>Icon-only buttons require a useful <code>aria-label</code> on the host element.</p>
+                </div>
+                <div class="button-doc__row button-doc__row--icons">
+                  <ds-button variant="outline" size="icon-xs" aria-label="Open cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="9" cy="20" r="1.5"></circle>
+                      <circle cx="17" cy="20" r="1.5"></circle>
+                      <path d="M3 4h2l2.4 11.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L21 8H7"></path>
+                    </svg>
+                  </ds-button>
+                  <ds-button variant="outline" size="icon-sm" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="11" cy="11" r="7"></circle>
+                      <path d="m16 16 4 4"></path>
+                    </svg>
+                  </ds-button>
+                  <ds-button variant="outline" size="icon" aria-label="Add item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M12 5v14"></path>
+                      <path d="M5 12h14"></path>
+                    </svg>
+                  </ds-button>
+                  <ds-button variant="outline" size="icon-lg" aria-label="Open settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z"></path>
+                      <path
+                        d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1A2 2 0 1 1 4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.3 7A2 2 0 1 1 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 1 1 19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.1a2 2 0 1 1 0 4H21a1.7 1.7 0 0 0-1.6 1Z">
+                      </path>
+                    </svg>
+                  </ds-button>
+                </div>
+              </div>
+
+              <div class="button-doc__group">
+                <div class="button-doc__heading">
+                  <h4>Disabled and legacy aliases</h4>
+                  <p>Legacy attributes keep working, but new docs use the canonical shadcn-style values.</p>
+                </div>
+                <div class="button-doc__row">
+                  <ds-button variant="default" disabled>Disabled</ds-button>
+                  <ds-button variant="destructive" disabled>Delete</ds-button>
+                  <ds-button variant="primary" size="m">Legacy primary</ds-button>
+                  <ds-button variant="ghost" size="s" icon-only aria-label="Legacy icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M12 5v14"></path>
+                      <path d="M5 12h14"></path>
+                    </svg>
+                  </ds-button>
+                </div>
+              </div>
+
+              <div class="button-doc__reference">
+                <table class="button-doc__api">
+                  <caption>Button attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>variant</code></th>
+                      <td><code>default</code>, <code>outline</code>, <code>ghost</code>, <code>destructive</code>,
+                        <code>secondary</code>, <code>link</code>
+                      </td>
+                      <td><code>default</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>size</code></th>
+                      <td><code>default</code>, <code>xs</code>, <code>sm</code>, <code>lg</code>, <code>icon</code>,
+                        <code>icon-xs</code>, <code>icon-sm</code>, <code>icon-lg</code>
+                      </td>
+                      <td><code>default</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="button-doc__code"><code>&lt;ds-button variant="default" size="default"&gt;Save changes&lt;/ds-button&gt;
+&lt;ds-button variant="outline" size="icon-sm" aria-label="Search"&gt;
+  &lt;svg aria-hidden="true"&gt;...&lt;/svg&gt;
+&lt;/ds-button&gt;</code></pre>
+              </div>
+
+              <p class="button-doc__note">
+                Legacy aliases: <code>variant="primary"</code> maps to <code>default</code>, <code>size="s|m|l"</code>
+                maps to <code>sm|default|lg</code>, and <code>icon-only</code> maps the current size to the matching
+                icon size.
+              </p>
+            </div>
+          </div>
+
+          <div class="component-block" id="ds-badge">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-badge</span>
+              <h3>Status labels</h3>
+              <p>Badge variants, dot treatments, icons, and closable labels built on component tokens.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack badge-doc">
+              <div class="badge-doc__group">
+                <div class="badge-doc__heading">
+                  <h4>Variants</h4>
+                  <p>Use badges for short status, category, metadata labels, and compact actions.</p>
+                </div>
+                <div class="badge-doc__row">
+                  <ds-badge variant="default">Default</ds-badge>
+                  <ds-badge variant="secondary">Secondary</ds-badge>
+                  <ds-badge variant="destructive">Destructive</ds-badge>
+                  <ds-badge variant="outline">Outline</ds-badge>
+                  <ds-badge variant="ghost">Ghost</ds-badge>
+                  <ds-badge variant="link">Open details</ds-badge>
+                </div>
+              </div>
+
+              <div class="badge-doc__group">
+                <div class="badge-doc__heading">
+                  <h4>Dot badges</h4>
+                  <p>Dot-only badges need an accessible label; number and text dots keep visible content.</p>
+                </div>
+                <div class="badge-doc__row">
+                  <ds-badge variant="dot" aria-label="Online"></ds-badge>
+                  <ds-badge variant="number dot">8</ds-badge>
+                  <ds-badge variant="text-dot">Dot Badge</ds-badge>
+                </div>
+              </div>
+
+              <div class="badge-doc__group">
+                <div class="badge-doc__heading">
+                  <h4>Sizes</h4>
+                  <p>Use small for dense tables, default for inline metadata, and large for prominent states.</p>
+                </div>
+                <div class="badge-doc__row">
+                  <ds-badge variant="outline" size="small">Small</ds-badge>
+                  <ds-badge variant="outline" size="default">Default</ds-badge>
+                  <ds-badge variant="outline" size="large">Large</ds-badge>
+                </div>
+              </div>
+
+              <div class="badge-doc__group">
+                <div class="badge-doc__heading">
+                  <h4>Icons</h4>
+                  <p>The named <code>icon</code> slot renders before or after the label.</p>
+                </div>
+                <div class="badge-doc__row">
+                  <ds-badge variant="secondary" icon="start">
+                    <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                    Verified
+                  </ds-badge>
+                  <ds-badge variant="outline" icon="end">
+                    Bookmark
+                    <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      aria-hidden="true">
+                      <path d="M19 21 12 17 5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"></path>
+                    </svg>
+                  </ds-badge>
+                </div>
+              </div>
+
+              <div class="badge-doc__group">
+                <div class="badge-doc__heading">
+                  <h4>Closable</h4>
+                  <p>Closable badges emit <code>ds-remove</code> with the visible badge text.</p>
+                </div>
+                <div class="badge-doc__row">
+                  <ds-badge variant="secondary" closable>Archived</ds-badge>
+                  <ds-badge variant="outline" size="small" closable>Filter</ds-badge>
+                  <ds-badge variant="destructive" size="large" closable>Failed</ds-badge>
+                </div>
+              </div>
+
+              <div class="badge-doc__reference">
+                <table class="badge-doc__api">
+                  <caption>Badge attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>variant</code></th>
+                      <td><code>default</code>, <code>secondary</code>, <code>destructive</code>, <code>outline</code>,
+                        <code>ghost</code>, <code>link</code>, <code>dot</code>, <code>number-dot</code>,
+                        <code>text-dot</code>
+                      </td>
+                      <td><code>default</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>size</code></th>
+                      <td><code>small</code>, <code>default</code>, <code>large</code></td>
+                      <td><code>default</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>icon</code></th>
+                      <td><code>start</code>, <code>end</code></td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>closable</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="badge-doc__code"><code>&lt;ds-badge variant="secondary" icon="start"&gt;
+  &lt;svg slot="icon" aria-hidden="true"&gt;...&lt;/svg&gt;
+  Verified
+&lt;/ds-badge&gt;
+
+&lt;ds-badge variant="link"&gt;Open details&lt;/ds-badge&gt;
+
+&lt;ds-badge variant="text-dot" closable&gt;Dot Badge&lt;/ds-badge&gt;</code></pre>
+              </div>
+
+              <p class="badge-doc__note">
+                Aliases: <code>variant="number dot"</code> maps to <code>number-dot</code> and
+                <code>variant="Text dot"</code> maps to <code>text-dot</code>. Link badges use the default
+                visual style, render a trailing arrow icon, and behave like buttons.
+              </p>
+            </div>
+          </div>
+
+          <div class="component-block" id="ds-input">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-input</span>
+              <h3>Form fields</h3>
+              <p>Text, email, password, select, and textarea fields with helper and error states.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack">
+              <ds-input label="Email Address" type="email" placeholder="name@example.com"
+                helper="We'll never share your email."></ds-input>
+              <ds-input label="Password" type="password" placeholder="Enter password"
+                error="Password must be at least 8 characters."></ds-input>
+              <ds-input label="Category" type="select">
+                <option value="">Choose a category...</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing and Apparel</option>
+                <option value="home">Home and Garden</option>
+              </ds-input>
+            </div>
+          </div>
+
+          <div class="component-block" id="ds-toggle">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-toggle</span>
+              <h3>Choices</h3>
+              <p>Checkbox, radio, and switch controls emit composed change events.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack">
+              <ds-toggle type="checkbox" label="Accept terms and conditions"></ds-toggle>
+              <ds-toggle type="checkbox" label="Subscribe to newsletter" checked></ds-toggle>
+              <ds-toggle type="radio" name="shipping" value="standard" label="Standard Shipping" checked></ds-toggle>
+              <ds-toggle type="switch" label="Email notifications"></ds-toggle>
+            </div>
+          </div>
+
+          <div class="component-block" id="ds-surface">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-surface</span>
+              <h3>Containers and labels</h3>
+              <p>Cards and chips group content without leaking styles. Use <code>ds-badge</code> for badge states.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack">
+              <ds-surface variant="card">
+                <h4 class="surface-demo__title">Default Card</h4>
+                <p class="surface-demo__text">A surface container for grouped content.</p>
+              </ds-surface>
+              <div class="chip-row">
+                <ds-surface variant="tag">Electronics</ds-surface>
+                <ds-surface variant="chip" removable>Color: Blue</ds-surface>
+                <ds-surface variant="chip">Non-removable</ds-surface>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-block" id="ds-breadcrumb">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-breadcrumb</span>
+              <h3>Navigation path</h3>
+              <p>Shows current location within site hierarchy. Supports 4 separator styles and 3 visual variants.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack">
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Default + Chevron</h4>
+                <ds-breadcrumb separator="chevron" variant="default">
+                  <ds-breadcrumb-item href="/">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Slash + Home Icon</h4>
+                <ds-breadcrumb separator="slash" variant="default">
+                  <ds-breadcrumb-item href="/" icon="home">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Double Chevron + All Icons</h4>
+                <ds-breadcrumb separator="double-chevron" variant="default">
+                  <ds-breadcrumb-item href="/" icon="home">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents" icon="folder">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item icon="document" current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Dot Separator</h4>
+                <ds-breadcrumb separator="dot" variant="default">
+                  <ds-breadcrumb-item href="/">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Pill Variant</h4>
+                <ds-breadcrumb separator="chevron" variant="pill">
+                  <ds-breadcrumb-item href="/">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Pill + Icon + Dropdown</h4>
+                <ds-breadcrumb separator="slash" variant="pill">
+                  <ds-breadcrumb-item href="/" icon="home">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current dropdown>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Collapsed Middle Items</h4>
+                <ds-breadcrumb separator="double-chevron" variant="default">
+                  <ds-breadcrumb-item href="/" icon="home">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents" icon="folder" collapsed>Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+              <div class="breadcrumb-doc__group">
+                <h4 class="breadcrumb-doc__heading">Contained</h4>
+                <ds-breadcrumb separator="chevron" variant="contained">
+                  <ds-breadcrumb-item href="/" icon="home">Home</ds-breadcrumb-item>
+                  <ds-breadcrumb-item href="/documents">Documents</ds-breadcrumb-item>
+                  <ds-breadcrumb-item current>Add Document</ds-breadcrumb-item>
+                </ds-breadcrumb>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="component-block" id="ds-tabs">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-tabs</span>
+              <h3>Tabs</h3>
+              <p>Atomic tabs configured via bg, color, shadow, icon, orientation, border, and label properties.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack">
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Segmented Pill (Sunken list, Surface tab, Foreground text)</h4>
+                <ds-tabs list-bg="sunken" bg="bg" color="foreground" radius="full" shadow="sm">
+                  <ds-tab-list>
+                    <ds-tab value="1" icon="compass" icon-pos="end">Explore</ds-tab>
+                    <ds-tab value="2" icon="compass" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="compass">Surprise Me</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Fully rounded list using sunken background.</ds-tab-panel>
+                    <ds-tab-panel value="2">Active tab uses surface background and shadow.</ds-tab-panel>
+                    <ds-tab-panel value="3">And fully rounded corners (pill).</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Segmented Top Icons</h4>
+                <ds-tabs list-bg="sunken" bg="bg" color="foreground" shadow="sm" icon-pos="top">
+                  <ds-tab-list>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift">Surprise Me</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Icon positioned above text using icon-pos="top".</ds-tab-panel>
+                    <ds-tab-panel value="2">Uses standard radius-sm mapping.</ds-tab-panel>
+                    <ds-tab-panel value="3">Sunken container and bg-surface on active perfectly matches.</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Outlined Pill</h4>
+                <ds-tabs bg="transparent" border="true" color="foreground" radius="full">
+                  <ds-tab-list style="gap: var(--space-xs);">
+                    <ds-tab value="1">Explore</ds-tab>
+                    <ds-tab value="2">Favorites</ds-tab>
+                    <ds-tab value="3">Surprise Me</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Active tab uses an outline border instead of background.</ds-tab-panel>
+                    <ds-tab-panel value="2">Supports hover and transitions perfectly.</ds-tab-panel>
+                    <ds-tab-panel value="3">Also uses full pill shape radius.</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Vertical Icon-Only Pill</h4>
+                <ds-tabs orientation="vertical" list-bg="sunken" bg="bg" shadow="sm" color="foreground" radius="full">
+                  <ds-tab-list style="width: max-content;">
+                    <ds-tab value="1" icon="book" label="false"></ds-tab>
+                    <ds-tab value="2" icon="heart" label="false"></ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Vertical orientation.</ds-tab-panel>
+                    <ds-tab-panel value="2">With label="false" to render only icons.</ds-tab-panel>
+                    <ds-tab-panel value="3">And sunken list background perfectly matching the variant picture!</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Segmented-like (BG + Shadow)</h4>
+                <ds-tabs list-bg="sunken" bg="bg" color="foreground" shadow="sm">
+                  <ds-tab-list>
+                    <ds-tab value="1" icon="compass">Explore</ds-tab>
+                    <ds-tab value="2">Favorites</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Surface background with shadow.</ds-tab-panel>
+                    <ds-tab-panel value="2">And standard foreground text.</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Underlined (Animated Line Indicator)</h4>
+                <ds-tabs bg="transparent" color="foreground" indicator="line">
+                  <ds-tab-list style="gap: 0;">
+                    <ds-tab value="1">Explore</ds-tab>
+                    <ds-tab value="2">Favorites</ds-tab>
+                    <ds-tab value="3">Surprise Me</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Line matched to primary text color.</ds-tab-panel>
+                    <ds-tab-panel value="2">Hover the tabs to see the gray subtle line appear.</ds-tab-panel>
+                    <ds-tab-panel value="3">Indicator logic is handled with pure custom CSS properties.</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Solid Vertical</h4>
+                <ds-tabs orientation="vertical">
+                  <ds-tab-list>
+                    <ds-tab value="1" bg="primary" color="primary-fg" radius="full">Intro</ds-tab>
+                    <ds-tab value="2" bg="primary" color="primary-fg" radius="full">Details</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Vertical layout using primary background.</ds-tab-panel>
+                    <ds-tab-panel value="2">Active text is on-accent foreground.</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="layouts" class="doc-section" aria-labelledby="layouts-title">
+          <div class="section-heading">
+            <h2 id="layouts-title"><span class="section-number">07</span> Layouts</h2>
+            <p>
+              Layout specimens document responsive structure, spacing controls, and composition patterns
+              without adding product data or page-level application behavior.
+            </p>
+          </div>
+
+          <div class="product-grid-doc" id="product-grid">
+            <div class="component-block__copy">
+              <span class="specimen__label">product-grid</span>
+              <h3>Responsive product grid</h3>
+              <p>Use this specimen to evaluate max width, outside margin, column count, and filter placement.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack product-grid-doc__demo">
+              <form class="product-grid-controls" aria-label="Product grid layout controls">
+                <label>
+                  <span>Max width</span>
+                  <select data-product-grid-control="maxWidth">
+                    <option value="960px">960px</option>
+                    <option value="1120px" selected>1120px</option>
+                    <option value="1280px">1280px</option>
+                    <option value="100%">100%</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Margin</span>
+                  <select data-product-grid-control="margin">
+                    <option value="0px">0px</option>
+                    <option value="16px">16px</option>
+                    <option value="24px" selected>24px</option>
+                    <option value="32px">32px</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Max columns</span>
+                  <select data-product-grid-control="columns">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Filter position</span>
+                  <select data-product-grid-control="filterPosition">
+                    <option value="side" selected>Side</option>
+                    <option value="top">Top</option>
+                    <option value="curtain">Curtain</option>
+                  </select>
+                </label>
+                <label class="product-grid-controls__check">
+                  <input type="checkbox" data-product-grid-control="filtersEnabled" checked>
+                  <span>Show filters</span>
+                </label>
+              </form>
+
+              <div class="product-grid-stage">
+                <div id="product-grid-specimen" class="product-grid-specimen" data-filter-position="side"
+                  data-filters-enabled="true"
+                  style="--demo-product-grid-max-width: 1120px; --demo-product-grid-margin: 24px; --demo-product-grid-columns: 4;">
+                  <button class="product-grid-curtain-button" type="button" aria-expanded="false"
+                    aria-controls="product-grid-filter">
+                    Filters
+                  </button>
+                  <div class="product-grid-curtain-backdrop" data-product-grid-close hidden></div>
+
+                  <aside id="product-grid-filter" class="product-grid-filter" aria-label="Filter block">
+                    <div class="product-grid-filter__header">
+                      <span>Filters</span>
+                      <button class="product-grid-filter__close" type="button" data-product-grid-close
+                        aria-label="Close filters">Close</button>
+                    </div>
+                    <div class="product-grid-filter__group">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="product-grid-filter__group product-grid-filter__group--short">
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </aside>
+
+                  <div class="product-grid-products" aria-label="Product placeholder grid">
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                    <article class="product-shape"><span
+                        class="product-shape__image"></span><span></span><span></span><i></i></article>
+                  </div>
+                </div>
+              </div>
+
+              <pre class="product-grid-code"><code>&lt;div class="product-grid"
+  style="--max-width: 1120px; --margin: 24px; --columns: 4;"
+  data-filter-position="side"
+  data-filters-enabled="true"&gt;
+  &lt;aside&gt;Filter block&lt;/aside&gt;
+  &lt;div&gt;Responsive product cards&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="usage" class="doc-section" aria-labelledby="usage-title">
+          <div class="section-heading">
+            <h2 id="usage-title"><span class="section-number">08</span> Usage</h2>
+            <p>
+              The demo uses native ES modules and a Sass-only build step. There is no JavaScript bundler
+              requirement for this MVP.
+            </p>
+          </div>
+
+          <div class="specimen-grid specimen-grid--wide">
+            <article class="specimen">
+              <span class="specimen__label">Page setup</span>
+              <pre><code>&lt;link rel="stylesheet" href="/dist/tokens.css"&gt;
+&lt;script type="module" src="/components/index.js"&gt;&lt;/script&gt;</code></pre>
+            </article>
+            <article class="specimen">
+              <span class="specimen__label">Build commands</span>
+              <pre><code>npm.cmd install
+npm.cmd run build
+npm.cmd run demo</code></pre>
+            </article>
+          </div>
+
+          <div class="usage-callout">
+            <h3>Theme control</h3>
+            <p>
+              Dark mode is a semantic-token override on <code>html[data-theme="dark"]</code>. Component
+              styles keep referencing the same Tier 2 tokens.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="site-brand" href="#top" aria-label="Back to top">
+          <span class="site-brand__mark">DS</span>
+          <span class="site-brand__name">Commerce Design System</span>
+        </a>
+        <div class="site-footer__links">
+          <a href="#foundations">Back to foundations</a>
+          <a href="#components">Components</a>
+          <a href="#layouts">Layouts</a>
+          <a href="#usage">Usage</a>
+        </div>
+        <p>Built as a reusable token and Web Component boilerplate.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script type="module" src="/components/index.js"></script>
+  <script src="/demo/demo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 0 — Raw Typography Primitives
+// Literal size/weight/leading scales. NEVER use directly.
+// ═══════════════════════════════════════════════════════════
+
+// Type size scale
+$raw-type-size-100:  0.75rem;     // 12px
+$raw-type-size-200:  0.8125rem;   // 13px
+$raw-type-size-300:  0.875rem;    // 14px
+$raw-type-size-400:  1rem;        // 16px
+$raw-type-size-500:  1.125rem;    // 18px
+$raw-type-size-600:  1.25rem;     // 20px
+$raw-type-size-700:  1.5rem;      // 24px
+$raw-type-size-800:  1.875rem;    // 30px
+$raw-type-size-900:  2.25rem;     // 36px
+$raw-type-size-1000: 3rem;        // 48px
+
+// Font weights
+$raw-type-weight-regular:  400;
+$raw-type-weight-medium:   500;
+$raw-type-weight-semibold: 600;
+$raw-type-weight-bold:     700;
+
+// Line heights
+$raw-type-leading-tight:   1.25;
+$raw-type-leading-snug:    1.375;
+$raw-type-leading-normal:  1.5;
+$raw-type-leading-relaxed: 1.625;
+$raw-type-leading-loose:   1.75;
+
+// Font families
+$raw-font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$raw-font-mono:  'JetBrains Mono', 'Fira Code', ui-monospace, monospace;

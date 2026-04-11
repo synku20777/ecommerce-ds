@@ -1,0 +1,106 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 1 — Semantic Tokens (Light Theme Default)
+// Meaningful aliases referencing Tier 0. This is the theming
+// pivot point. Components consume ONLY these CSS variables.
+// ═══════════════════════════════════════════════════════════
+
+@use 'tier0-colors' as *;
+@use 'tier0-typography' as *;
+@use 'tier0-space' as *;
+@use 'tier0-shadows' as *;
+
+:root {
+  // ─── Color Roles ───────────────────────────────────────
+  --color-bg-page:         #{$raw-neutral-50};
+  --color-bg-surface:      #{$raw-neutral-0};
+  --color-bg-raised:       #{$raw-neutral-0};
+  --color-bg-sunken:       #{$raw-neutral-100};
+  --color-bg-accent:       #{$raw-brand-500};
+  --color-bg-accent-hover: #{$raw-brand-600};
+  --color-bg-accent-subtle:#{$raw-brand-50};
+
+  --color-text-primary:    #{$raw-neutral-900};
+  --color-text-secondary:  #{$raw-neutral-500};
+  --color-text-tertiary:   #{$raw-neutral-400};
+  --color-text-disabled:   #{$raw-neutral-300};
+  --color-text-on-accent:  #{$raw-neutral-0};
+  --color-text-accent:     #{$raw-brand-600};
+
+  --color-border-subtle:   #{$raw-neutral-200};
+  --color-border-default:  #{$raw-neutral-300};
+  --color-border-strong:   #{$raw-neutral-400};
+  --color-border-focus:    #{$raw-brand-500};
+
+  --color-status-success:       #{$raw-green-500};
+  --color-status-success-subtle:#{$raw-green-50};
+  --color-status-error:         #{$raw-red-500};
+  --color-status-error-subtle:  #{$raw-red-50};
+  --color-status-warning:       #{$raw-yellow-500};
+  --color-status-warning-subtle:#{$raw-yellow-50};
+
+  // ─── Typography Roles ──────────────────────────────────
+  --font-family-sans:      #{$raw-font-sans};
+  --font-family-mono:      #{$raw-font-mono};
+
+  --type-heading-xxl:      #{$raw-type-size-1000};
+  --type-heading-xl:       #{$raw-type-size-900};
+  --type-heading-l:        #{$raw-type-size-800};
+  --type-heading-m:        #{$raw-type-size-700};
+  --type-heading-s:        #{$raw-type-size-600};
+
+  --type-body-l:           #{$raw-type-size-500};
+  --type-body-m:           #{$raw-type-size-400};
+  --type-body-s:           #{$raw-type-size-300};
+
+  --type-label-m:          #{$raw-type-size-300};
+  --type-label-s:          #{$raw-type-size-100};
+
+  --type-weight-regular:   #{$raw-type-weight-regular};
+  --type-weight-medium:    #{$raw-type-weight-medium};
+  --type-weight-semibold:  #{$raw-type-weight-semibold};
+  --type-weight-bold:      #{$raw-type-weight-bold};
+
+  --type-leading-tight:    #{$raw-type-leading-tight};
+  --type-leading-normal:   #{$raw-type-leading-normal};
+
+  // ─── Spacing Roles ─────────────────────────────────────
+  --space-xxs:  #{$raw-space-2};
+  --space-xs:   #{$raw-space-4};
+  --space-sm:   #{$raw-space-8};
+  --space-md:   #{$raw-space-16};
+  --space-lg:   #{$raw-space-24};
+  --space-xl:   #{$raw-space-32};
+  --space-2xl:  #{$raw-space-48};
+  --space-3xl:  #{$raw-space-64};
+
+  // ─── Shadow Roles ──────────────────────────────────────
+  --shadow-card:     #{$raw-shadow-sm};
+  --shadow-dropdown: #{$raw-shadow-md};
+  --shadow-modal:    #{$raw-shadow-lg};
+  --shadow-elevated: #{$raw-shadow-xl};
+
+  // ─── Layout Roles ──────────────────────────────────────
+  --layout-container-max:  1280px;
+  --layout-gutter-page:    #{$raw-space-24};
+  --layout-gap-grid:       #{$raw-space-16};
+
+  // ─── Radius ────────────────────────────────────────────
+  --radius: 0.625rem;  /* base — override once to retheme all radii */
+
+  --radius-sm:   calc(var(--radius) * 0.6);   /* ~6px  */
+  --radius-md:   calc(var(--radius) * 0.8);   /* ~8px  */
+  --radius-lg:   var(--radius);               /* 10px  */
+  --radius-xl:   calc(var(--radius) * 1.4);   /* ~14px */
+  --radius-2xl:  calc(var(--radius) * 1.8);   /* ~18px */
+  --radius-3xl:  calc(var(--radius) * 2.2);   /* ~22px */
+  --radius-4xl:  calc(var(--radius) * 2.6);   /* ~26px */
+  --radius-full: 9999px;
+
+  // ─── Transitions ───────────────────────────────────────
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   350ms ease;
+
+  // ─── Focus Ring ────────────────────────────────────────
+  --focus-ring: 0 0 0 2px var(--color-bg-surface), 0 0 0 4px var(--color-border-focus);
+}

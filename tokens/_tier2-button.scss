@@ -1,0 +1,90 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — Button Component Tokens
+// Scoped to ds-button. References Tier 1 semantic tokens.
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // Default variant
+  --button-default-bg:          var(--color-bg-accent);
+  --button-default-text:        var(--color-text-on-accent);
+  --button-default-hover-bg:    var(--color-bg-accent-hover);
+  --button-default-border:      transparent;
+
+  // Secondary variant
+  --button-secondary-bg:        var(--color-bg-sunken);
+  --button-secondary-text:      var(--color-text-primary);
+  --button-secondary-hover-bg:  color-mix(in srgb, var(--color-bg-sunken) 82%, var(--color-bg-raised));
+  --button-secondary-border:    transparent;
+
+  // Outline variant
+  --button-outline-bg:          transparent;
+  --button-outline-text:        var(--color-text-primary);
+  --button-outline-hover-bg:    var(--color-bg-sunken);
+  --button-outline-border:      var(--color-border-default);
+
+  // Ghost variant
+  --button-ghost-bg:            transparent;
+  --button-ghost-text:          var(--color-text-primary);
+  --button-ghost-hover-bg:      var(--color-bg-sunken);
+  --button-ghost-border:        transparent;
+
+  // Destructive variant
+  --button-destructive-bg:       var(--color-status-error);
+  --button-destructive-text:     var(--color-text-on-accent);
+  --button-destructive-hover-bg: color-mix(in srgb, var(--color-status-error) 88%, var(--color-bg-page));
+  --button-destructive-border:   transparent;
+
+  // Link variant
+  --button-link-bg:              transparent;
+  --button-link-text:            var(--color-text-accent);
+  --button-link-hover-bg:        transparent;
+  --button-link-border:          transparent;
+
+  // Size: text buttons
+  --button-height-xs:          1.75rem;
+  --button-height-sm:          2rem;
+  --button-height-default:     2.25rem;
+  --button-height-lg:          2.5rem;
+
+  --button-padding-xs:         0 var(--space-sm);
+  --button-padding-sm:         0 calc(var(--space-sm) + var(--space-xs));
+  --button-padding-default:    0 var(--space-md);
+  --button-padding-lg:         0 var(--space-lg);
+
+  --button-font-size-xs:       var(--type-label-s);
+  --button-font-size-sm:       var(--type-label-s);
+  --button-font-size-default:  var(--type-label-m);
+  --button-font-size-lg:       var(--type-body-m);
+
+  // Size: icon buttons
+  --button-icon-size-xs:       var(--button-height-xs);
+  --button-icon-size-sm:       var(--button-height-sm);
+  --button-icon-size-default:  var(--button-height-default);
+  --button-icon-size-lg:       var(--button-height-lg);
+
+  --button-icon-glyph-xs:      0.875rem;
+  --button-icon-glyph-sm:      1rem;
+  --button-icon-glyph-default: 1.125rem;
+  --button-icon-glyph-lg:      1.25rem;
+
+  // Shared
+  --button-gap:                var(--space-xs);
+  --button-radius:             var(--radius-md);
+  --button-disabled-opacity:   0.5;
+  --button-active-scale:       0.97;
+  --button-transition:         var(--transition-fast);
+  --button-text:               var(--color-text-primary);
+  --button-font-weight:        var(--type-weight-medium);
+
+  // Legacy token aliases
+  --button-primary-bg:         var(--button-default-bg);
+  --button-primary-text:       var(--button-default-text);
+  --button-primary-hover-bg:   var(--button-default-hover-bg);
+  --button-primary-border:     var(--button-default-border);
+  --button-padding-s:          var(--button-padding-sm);
+  --button-padding-m:          var(--button-padding-default);
+  --button-padding-l:          var(--button-padding-lg);
+  --button-font-size-s:        var(--button-font-size-sm);
+  --button-font-size-m:        var(--button-font-size-default);
+  --button-font-size-l:        var(--button-font-size-lg);
+}

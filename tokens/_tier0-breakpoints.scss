@@ -1,0 +1,21 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 0 — Raw Breakpoint Primitives
+// Device-context breakpoints. NEVER hardcode in components.
+// ═══════════════════════════════════════════════════════════
+
+$raw-bp-xs:  320px;
+$raw-bp-sm:  480px;
+$raw-bp-md:  768px;
+$raw-bp-lg:  1024px;
+$raw-bp-xl:  1280px;
+$raw-bp-2xl: 1536px;
+
+// Mixin: responsive breakpoint
+@mixin bp($size) {
+  @if $size == xs  { @media (min-width: $raw-bp-xs)  { @content; } }
+  @if $size == sm  { @media (min-width: $raw-bp-sm)  { @content; } }
+  @if $size == md  { @media (min-width: $raw-bp-md)  { @content; } }
+  @if $size == lg  { @media (min-width: $raw-bp-lg)  { @content; } }
+  @if $size == xl  { @media (min-width: $raw-bp-xl)  { @content; } }
+  @if $size == 2xl { @media (min-width: $raw-bp-2xl) { @content; } }
+}

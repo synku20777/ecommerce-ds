@@ -1,0 +1,22 @@
+// ═══════════════════════════════════════════════════════════
+// Base Reset
+// Minimal reset for Shadow DOM components.
+// Applied inside each component's shadow root.
+// ═══════════════════════════════════════════════════════════
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Inherit font from host page (where tokens define the family)
+:host {
+  font-family: var(--font-family-sans);
+  color: var(--color-text-primary);
+  line-height: var(--type-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

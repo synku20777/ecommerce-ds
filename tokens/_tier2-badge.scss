@@ -1,0 +1,83 @@
+// Tier 2 - Badge Component Tokens
+// Scoped to ds-badge. References Tier 1 semantic tokens.
+
+:root {
+  // Variant colors
+  --ds-badge-default-bg:             var(--color-bg-accent);
+  --ds-badge-default-text:           var(--color-text-on-accent);
+  --ds-badge-default-border:         transparent;
+
+  --ds-badge-secondary-bg:           var(--color-bg-sunken);
+  --ds-badge-secondary-text:         var(--color-text-primary);
+  --ds-badge-secondary-border:       transparent;
+
+  --ds-badge-destructive-bg:         var(--color-status-error);
+  --ds-badge-destructive-text:       var(--color-text-on-accent);
+  --ds-badge-destructive-border:     transparent;
+
+  --ds-badge-outline-bg:             transparent;
+  --ds-badge-outline-text:           var(--color-text-primary);
+  --ds-badge-outline-border:         var(--color-border-default);
+
+  --ds-badge-ghost-bg:               transparent;
+  --ds-badge-ghost-text:             var(--color-text-primary);
+  --ds-badge-ghost-border:           transparent;
+
+  --ds-badge-link-bg:                var(--ds-badge-default-bg);
+  --ds-badge-link-text:              var(--ds-badge-default-text);
+  --ds-badge-link-border:            var(--ds-badge-default-border);
+  --ds-badge-link-hover-bg:          var(--color-bg-accent-hover);
+
+  --ds-badge-dot-bg:                 var(--color-bg-accent);
+  --ds-badge-dot-border:             transparent;
+
+  --ds-badge-number-dot-bg:          var(--color-bg-accent);
+  --ds-badge-number-dot-text:        var(--color-text-on-accent);
+  --ds-badge-number-dot-border:      transparent;
+
+  --ds-badge-text-dot-bg:            var(--color-bg-surface);
+  --ds-badge-text-dot-text:          var(--color-text-primary);
+  --ds-badge-text-dot-border:        var(--color-border-subtle);
+
+  // Size
+  --ds-badge-height-small:           1.25rem;
+  --ds-badge-height-default:         1.5rem;
+  --ds-badge-height-large:           1.75rem;
+
+  --ds-badge-padding-small:          0 var(--space-xs);
+  --ds-badge-padding-default:        0 var(--space-sm);
+  --ds-badge-padding-large:          0 calc(var(--space-sm) + var(--space-xs));
+
+  --ds-badge-font-size-small:        var(--type-label-s);
+  --ds-badge-font-size-default:      var(--type-label-s);
+  --ds-badge-font-size-large:        var(--type-label-m);
+  --ds-badge-font-weight:            var(--type-weight-semibold);
+
+  // Dot and icon sizing
+  --ds-badge-dot-size-small:         0.375rem;
+  --ds-badge-dot-size-default:       0.5rem;
+  --ds-badge-dot-size-large:         0.625rem;
+
+  --ds-badge-dot-hit-size-small:     0.5rem;
+  --ds-badge-dot-hit-size-default:   0.625rem;
+  --ds-badge-dot-hit-size-large:     0.75rem;
+
+  --ds-badge-number-dot-size-small:  1rem;
+  --ds-badge-number-dot-size-default: 1.25rem;
+  --ds-badge-number-dot-size-large:  1.5rem;
+
+  --ds-badge-icon-size-small:        0.75rem;
+  --ds-badge-icon-size-default:      0.875rem;
+  --ds-badge-icon-size-large:        1rem;
+
+  --ds-badge-close-size-small:       0.875rem;
+  --ds-badge-close-size-default:     1rem;
+  --ds-badge-close-size-large:       1.125rem;
+  --ds-badge-close-hover-bg:         color-mix(in srgb, currentColor 14%, transparent);
+
+  // Shared
+  --ds-badge-gap:                    var(--space-xs);
+  --ds-badge-radius:                 var(--radius-full);
+  --ds-badge-transition:             var(--transition-fast);
+  --ds-badge-icon-negative-margin:   calc(var(--space-xxs) * -1);
+}
