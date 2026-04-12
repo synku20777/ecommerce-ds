@@ -1040,7 +1040,11 @@ a {
 .button-doc__heading p,
 .button-doc__note,
 .badge-doc__heading p,
-.badge-doc__note {
+.badge-doc__note,
+.input-doc__note,
+.toggle-doc__note,
+.surface-doc__note,
+.breadcrumb-doc__note {
   margin: 0;
   color: var(--color-text-secondary);
   font-size: var(--type-body-s);
@@ -1059,7 +1063,11 @@ a {
 }
 
 .button-doc__reference,
-.badge-doc__reference {
+.badge-doc__reference,
+.input-doc__reference,
+.toggle-doc__reference,
+.surface-doc__reference,
+.breadcrumb-doc__reference {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr);
   gap: var(--space-md);
@@ -1067,7 +1075,11 @@ a {
 }
 
 .button-doc__api,
-.badge-doc__api {
+.badge-doc__api,
+.input-doc__api,
+.toggle-doc__api,
+.surface-doc__api,
+.breadcrumb-doc__api {
   width: 100%;
   border-collapse: collapse;
   color: var(--color-text-secondary);
@@ -1075,7 +1087,11 @@ a {
 }
 
 .button-doc__api caption,
-.badge-doc__api caption {
+.badge-doc__api caption,
+.input-doc__api caption,
+.toggle-doc__api caption,
+.surface-doc__api caption,
+.breadcrumb-doc__api caption {
   margin-bottom: var(--space-xs);
   color: var(--color-text-primary);
   font-weight: var(--type-weight-semibold);
@@ -1085,7 +1101,15 @@ a {
 .button-doc__api th,
 .button-doc__api td,
 .badge-doc__api th,
-.badge-doc__api td {
+.badge-doc__api td,
+.input-doc__api th,
+.input-doc__api td,
+.toggle-doc__api th,
+.toggle-doc__api td,
+.surface-doc__api th,
+.surface-doc__api td,
+.breadcrumb-doc__api th,
+.breadcrumb-doc__api td {
   padding: var(--space-sm) 0;
   border-bottom: 1px solid var(--color-border-subtle);
   text-align: left;
@@ -1093,7 +1117,11 @@ a {
 }
 
 .button-doc__api th,
-.badge-doc__api th {
+.badge-doc__api th,
+.input-doc__api th,
+.toggle-doc__api th,
+.surface-doc__api th,
+.breadcrumb-doc__api th {
   color: var(--color-text-primary);
   font-weight: var(--type-weight-semibold);
 }
@@ -1101,13 +1129,25 @@ a {
 .button-doc__api code,
 .button-doc__note code,
 .badge-doc__api code,
-.badge-doc__note code {
+.badge-doc__note code,
+.input-doc__api code,
+.input-doc__note code,
+.toggle-doc__api code,
+.toggle-doc__note code,
+.surface-doc__api code,
+.surface-doc__note code,
+.breadcrumb-doc__api code,
+.breadcrumb-doc__note code {
   color: var(--color-text-primary);
   font-size: 0.95em;
 }
 
 .button-doc__code,
-.badge-doc__code {
+.badge-doc__code,
+.input-doc__code,
+.toggle-doc__code,
+.surface-doc__code,
+.breadcrumb-doc__code {
   margin: 0;
   overflow-x: auto;
   padding: var(--space-md);
@@ -1505,7 +1545,11 @@ body.menu-open {
   }
 
   .button-doc__reference,
-  .badge-doc__reference {
+  .badge-doc__reference,
+  .input-doc__reference,
+  .toggle-doc__reference,
+  .surface-doc__reference,
+  .breadcrumb-doc__reference {
     grid-template-columns: 1fr;
   }
 

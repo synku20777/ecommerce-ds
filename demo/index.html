@@ -867,6 +867,79 @@
                 <option value="clothing">Clothing and Apparel</option>
                 <option value="home">Home and Garden</option>
               </ds-input>
+
+              <div class="input-doc__reference">
+                <table class="input-doc__api">
+                  <caption>Input attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>type</code></th>
+                      <td><code>text</code>, <code>password</code>, <code>email</code>, <code>number</code>, <code>tel</code>, <code>url</code>, <code>search</code>, <code>select</code>, <code>textarea</code></td>
+                      <td><code>text</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>label</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>placeholder</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>helper</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>error</code></th>
+                      <td>string (enables error state, replaces helper)</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>disabled</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>required</code></th>
+                      <td>boolean (adds asterisk to label)</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>value</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>name</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="input-doc__code"><code>&lt;ds-input label="Email" type="email"
+  placeholder="name@example.com"
+  helper="We'll never share."&gt;
+&lt;/ds-input&gt;
+
+&lt;ds-input label="Category" type="select"&gt;
+  &lt;option value="electronics"&gt;Electronics&lt;/option&gt;
+&lt;/ds-input&gt;</code></pre>
+              </div>
+
+              <p class="input-doc__note">
+                Events: <code>ds-input</code> (continuous, detail: {value, name}),
+                <code>ds-change</code> (committed, detail: {value, name}).
+              </p>
             </div>
           </div>
 
@@ -881,6 +954,66 @@
               <ds-toggle type="checkbox" label="Subscribe to newsletter" checked></ds-toggle>
               <ds-toggle type="radio" name="shipping" value="standard" label="Standard Shipping" checked></ds-toggle>
               <ds-toggle type="switch" label="Email notifications"></ds-toggle>
+
+              <div class="toggle-doc__reference">
+                <table class="toggle-doc__api">
+                  <caption>Toggle attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>type</code></th>
+                      <td><code>checkbox</code>, <code>radio</code>, <code>switch</code></td>
+                      <td><code>checkbox</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>label</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>checked</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>disabled</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>name</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>value</code></th>
+                      <td>string</td>
+                      <td>none</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="toggle-doc__code"><code>&lt;ds-toggle type="checkbox"
+  label="Accept terms"&gt;
+&lt;/ds-toggle&gt;
+
+&lt;ds-toggle type="radio" name="size"
+  value="m" label="Medium" checked&gt;
+&lt;/ds-toggle&gt;
+
+&lt;ds-toggle type="switch"
+  label="Notifications"&gt;
+&lt;/ds-toggle&gt;</code></pre>
+              </div>
+
+              <p class="toggle-doc__note">
+                Event: <code>ds-change</code> (detail: {checked, value, name, type}).
+              </p>
             </div>
           </div>
 
@@ -900,6 +1033,50 @@
                 <ds-surface variant="chip" removable>Color: Blue</ds-surface>
                 <ds-surface variant="chip">Non-removable</ds-surface>
               </div>
+
+              <div class="surface-doc__reference">
+                <table class="surface-doc__api">
+                  <caption>Surface attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>variant</code></th>
+                      <td><code>card</code>, <code>badge</code>, <code>tag</code>, <code>chip</code></td>
+                      <td><code>card</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>elevated</code></th>
+                      <td>boolean (card only)</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>removable</code></th>
+                      <td>boolean (chip only)</td>
+                      <td>off</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="surface-doc__code"><code>&lt;ds-surface variant="card" elevated&gt;
+  &lt;h4&gt;Title&lt;/h4&gt;
+  &lt;p&gt;Card content.&lt;/p&gt;
+&lt;/ds-surface&gt;
+
+&lt;ds-surface variant="tag"&gt;Electronics&lt;/ds-surface&gt;
+
+&lt;ds-surface variant="chip" removable&gt;
+  Color: Blue
+&lt;/ds-surface&gt;</code></pre>
+              </div>
+
+              <p class="surface-doc__note">
+                Event: <code>ds-remove</code> (chips only, detail: {value}).
+              </p>
             </div>
           </div>
 
@@ -983,6 +1160,88 @@
                 </ds-breadcrumb>
               </div>
 
+              <div class="breadcrumb-doc__reference">
+                <table class="breadcrumb-doc__api">
+                  <caption>ds-breadcrumb attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>separator</code></th>
+                      <td><code>chevron</code>, <code>slash</code>, <code>double-chevron</code>, <code>dot</code></td>
+                      <td><code>chevron</code></td>
+                    </tr>
+                    <tr>
+                      <th><code>variant</code></th>
+                      <td><code>default</code>, <code>pill</code>, <code>contained</code></td>
+                      <td><code>default</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="breadcrumb-doc__code"><code>&lt;ds-breadcrumb separator="chevron"&gt;
+  &lt;ds-breadcrumb-item href="/"&gt;
+    Home
+  &lt;/ds-breadcrumb-item&gt;
+  &lt;ds-breadcrumb-item current&gt;
+    Page
+  &lt;/ds-breadcrumb-item&gt;
+&lt;/ds-breadcrumb&gt;</code></pre>
+              </div>
+
+              <div class="breadcrumb-doc__reference" style="margin-top: var(--space-md);">
+                <table class="breadcrumb-doc__api">
+                  <caption>ds-breadcrumb-item attributes</caption>
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Values</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><code>href</code></th>
+                      <td>string (URL)</td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>icon</code></th>
+                      <td><code>home</code>, <code>folder</code>, <code>document</code></td>
+                      <td>none</td>
+                    </tr>
+                    <tr>
+                      <th><code>current</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>collapsed</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                    <tr>
+                      <th><code>dropdown</code></th>
+                      <td>boolean</td>
+                      <td>off</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pre class="breadcrumb-doc__code"><code>&lt;ds-breadcrumb-item
+  href="/docs"
+  icon="folder"&gt;
+  Documents
+&lt;/ds-breadcrumb-item&gt;
+
+&lt;ds-breadcrumb-item
+  current dropdown&gt;
+  Page
+&lt;/ds-breadcrumb-item&gt;</code></pre>
+              </div>
             </div>
           </div>
 

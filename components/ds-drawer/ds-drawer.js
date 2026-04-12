@@ -2,6 +2,7 @@ import { DSBaseComponent } from '../../core/base-component.js';
 
 const DRAWER_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
 const DRAWER_SIZES = ['sm', 'md', 'lg'];
+const DRAWER_CLOSE_DELAY = 250;
 
 const normalizeToken = (value) => String(value || '')
   .trim()
@@ -30,10 +31,13 @@ export class DSDrawer extends DSBaseComponent {
   constructor() {
     super();
     this._handleKeyDown = this._handleKeyDown.bind(this);
+    this._isClosing = false;
+    this._closeTimer = null;
   }
 
   disconnectedCallback() {
     document.removeEventListener('keydown', this._handleKeyDown);
+    window.clearTimeout(this._closeTimer);
   }
 
   get open() {
@@ -51,11 +55,27 @@ export class DSDrawer extends DSBaseComponent {
   }
 
   show() {
+    const wasClosing = this._isClosing;
+    window.clearTimeout(this._closeTimer);
+    this._isClosing = false;
     this.setAttribute('open', '');
+    if (wasClosing && this.isConnected) {
+      this._render();
+      this._setupEventListeners();
+    }
   }
 
   close() {
-    this.removeAttribute('open');
+    if (!this.open || this._isClosing) return;
+
+    this._isClosing = true;
+    this._render();
+    this._setupEventListeners();
+
+    this._closeTimer = window.setTimeout(() => {
+      this._isClosing = false;
+      this.removeAttribute('open');
+    }, DRAWER_CLOSE_DELAY);
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -64,6 +84,7 @@ export class DSDrawer extends DSBaseComponent {
     if (name !== 'open' || oldValue === newValue || !this.isConnected) return;
 
     const isOpen = newValue !== null;
+    if (isOpen) this._isClosing = false;
     this._emit('ds-open-change', { open: isOpen });
 
     if (isOpen) {
@@ -76,7 +97,7 @@ export class DSDrawer extends DSBaseComponent {
   _setupEventListeners() {
     document.removeEventListener('keydown', this._handleKeyDown);
 
-    if (!this.open) return;
+    if (!this.open || this._isClosing) return;
 
     document.addEventListener('keydown', this._handleKeyDown);
     this.shadowRoot.querySelector('.ds-drawer__close')?.addEventListener('click', () => this.close());
@@ -92,10 +113,11 @@ export class DSDrawer extends DSBaseComponent {
   }
 
   get template() {
-    if (!this.open) return '';
+    if (!this.open && !this._isClosing) return '';
 
     const placement = this.placement;
     const size = this.size;
+    const state = this._isClosing ? 'closing' : 'open';
     const label = this._getAttr('label', '');
     const ariaLabel = this.getAttribute('aria-label') || label || 'Drawer';
     const labelMarkup = label
@@ -106,7 +128,7 @@ export class DSDrawer extends DSBaseComponent {
       : `aria-label="${escapeAttribute(ariaLabel)}"`;
 
     return `
-      <div class="ds-drawer ds-drawer--${placement}" data-state="open">
+      <div class="ds-drawer ds-drawer--${placement}" data-state="${state}">
         <div class="ds-drawer__backdrop" aria-hidden="true"></div>
         <section
           class="ds-drawer__panel ds-drawer__panel--${placement} ds-drawer__panel--${size}"

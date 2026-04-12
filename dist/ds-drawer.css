@@ -32,6 +32,14 @@
   background: var(--ds-overlay-backdrop-bg);
 }
 
+.ds-drawer[data-state=open] .ds-drawer__backdrop {
+  animation: ds-drawer-backdrop-in var(--ds-drawer-transition) both;
+}
+
+.ds-drawer[data-state=closing] .ds-drawer__backdrop {
+  animation: ds-drawer-backdrop-out var(--ds-drawer-transition) both;
+}
+
 .ds-drawer__panel {
   position: relative;
   z-index: 1;
@@ -47,6 +55,7 @@
   background: var(--ds-drawer-bg);
   box-shadow: var(--ds-drawer-shadow);
   outline: none;
+  will-change: transform;
 }
 
 .ds-drawer__panel--left {
@@ -56,11 +65,27 @@
   border-bottom: 0;
 }
 
+.ds-drawer[data-state=open] .ds-drawer__panel--left {
+  animation: ds-drawer-left-in var(--ds-drawer-transition) both;
+}
+
+.ds-drawer[data-state=closing] .ds-drawer__panel--left {
+  animation: ds-drawer-left-out var(--ds-drawer-transition) both;
+}
+
 .ds-drawer__panel--right {
   justify-self: end;
   border-right: 0;
   border-top: 0;
   border-bottom: 0;
+}
+
+.ds-drawer[data-state=open] .ds-drawer__panel--right {
+  animation: ds-drawer-right-in var(--ds-drawer-transition) both;
+}
+
+.ds-drawer[data-state=closing] .ds-drawer__panel--right {
+  animation: ds-drawer-right-out var(--ds-drawer-transition) both;
 }
 
 .ds-drawer__panel--top,
@@ -76,11 +101,27 @@
   border-right: 0;
 }
 
+.ds-drawer[data-state=open] .ds-drawer__panel--top {
+  animation: ds-drawer-top-in var(--ds-drawer-transition) both;
+}
+
+.ds-drawer[data-state=closing] .ds-drawer__panel--top {
+  animation: ds-drawer-top-out var(--ds-drawer-transition) both;
+}
+
 .ds-drawer__panel--bottom {
   align-self: end;
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
+}
+
+.ds-drawer[data-state=open] .ds-drawer__panel--bottom {
+  animation: ds-drawer-bottom-in var(--ds-drawer-transition) both;
+}
+
+.ds-drawer[data-state=closing] .ds-drawer__panel--bottom {
+  animation: ds-drawer-bottom-out var(--ds-drawer-transition) both;
 }
 
 .ds-drawer__panel--sm {
@@ -160,5 +201,91 @@
   .ds-drawer__panel--left,
   .ds-drawer__panel--right {
     width: min(100vw, 22rem);
+  }
+}
+@keyframes ds-drawer-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ds-drawer-backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes ds-drawer-left-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes ds-drawer-left-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes ds-drawer-right-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes ds-drawer-right-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes ds-drawer-top-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes ds-drawer-top-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes ds-drawer-bottom-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes ds-drawer-bottom-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-drawer__backdrop,
+  .ds-drawer__panel {
+    animation: none !important;
   }
 }

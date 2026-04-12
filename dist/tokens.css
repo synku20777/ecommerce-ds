@@ -402,6 +402,7 @@
   --ds-drawer-shadow: var(--shadow-modal);
   --ds-drawer-padding: var(--space-lg);
   --ds-drawer-gap: var(--space-md);
+  --ds-drawer-transition: var(--transition-normal);
   --ds-drawer-size-sm: 20rem;
   --ds-drawer-size-md: 28rem;
   --ds-drawer-size-lg: 36rem;
