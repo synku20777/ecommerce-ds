@@ -1,0 +1,15 @@
+// ═══════════════════════════════════════════════════════════
+// ds-menu-separator — thin divider for menus
+// ═══════════════════════════════════════════════════════════
+
+@use 'reset';
+
+:host {
+  display: block;
+}
+
+.ds-menu-separator {
+  border: none;
+  border-top: 1px solid var(--ds-menu-sep-color);
+  margin: var(--ds-menu-sep-margin);
+}

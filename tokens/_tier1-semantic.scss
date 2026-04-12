@@ -30,6 +30,7 @@
   --color-border-default:  #{$raw-neutral-300};
   --color-border-strong:   #{$raw-neutral-400};
   --color-border-focus:    #{$raw-brand-500};
+  --color-border-accent:   var(--color-border-focus);
 
   --color-status-success:       #{$raw-green-500};
   --color-status-success-subtle:#{$raw-green-50};

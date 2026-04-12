@@ -1,0 +1,28 @@
+// Tier 2 overlay tokens shared by dialog and drawer primitives.
+
+:root {
+  --ds-overlay-backdrop-bg: rgba(15, 23, 42, 0.48);
+  --ds-overlay-z-index: 1000;
+  --ds-overlay-transition: var(--transition-normal);
+
+  --ds-dialog-bg: var(--color-bg-surface);
+  --ds-dialog-text: var(--color-text-primary);
+  --ds-dialog-border: var(--color-border-subtle);
+  --ds-dialog-radius: var(--radius-lg);
+  --ds-dialog-shadow: var(--shadow-modal);
+  --ds-dialog-padding: var(--space-lg);
+  --ds-dialog-gap: var(--space-md);
+  --ds-dialog-width-sm: 24rem;
+  --ds-dialog-width-md: 32rem;
+  --ds-dialog-width-lg: 42rem;
+
+  --ds-drawer-bg: var(--color-bg-surface);
+  --ds-drawer-text: var(--color-text-primary);
+  --ds-drawer-border: var(--color-border-subtle);
+  --ds-drawer-shadow: var(--shadow-modal);
+  --ds-drawer-padding: var(--space-lg);
+  --ds-drawer-gap: var(--space-md);
+  --ds-drawer-size-sm: 20rem;
+  --ds-drawer-size-md: 28rem;
+  --ds-drawer-size-lg: 36rem;
+}

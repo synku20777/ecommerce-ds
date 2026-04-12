@@ -1,0 +1,58 @@
+// ═══════════════════════════════════════════════════════════
+// ds-menu-header — avatar + name + email block
+// ═══════════════════════════════════════════════════════════
+
+@use 'reset';
+
+:host {
+  display: block;
+}
+
+.ds-menu-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-menu-header-gap);
+  padding: var(--ds-menu-header-padding);
+}
+
+.ds-menu-header__avatar {
+  width: var(--ds-menu-avatar-size);
+  height: var(--ds-menu-avatar-size);
+  border-radius: var(--ds-menu-avatar-radius);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.ds-menu-header__avatar--initials {
+  background: var(--ds-menu-avatar-bg);
+  color: var(--ds-menu-avatar-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ds-menu-header__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ds-menu-header__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-menu-header__email {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

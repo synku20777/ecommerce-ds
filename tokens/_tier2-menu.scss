@@ -1,0 +1,35 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — Menu component tokens
+// Covers ds-menu panel, ds-menu-separator, ds-menu-header
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // Panel
+  --ds-menu-bg: var(--color-bg-surface);
+  --ds-menu-border: var(--color-border-subtle);
+  --ds-menu-shadow: var(--shadow-card);
+  --ds-menu-radius: var(--radius-md);
+  --ds-menu-padding: var(--space-xs);
+  --ds-menu-min-width: 14rem;
+  --ds-menu-z-index: 900;
+
+  // Items
+  --ds-menu-item-bg-hover: var(--color-bg-accent-subtle);
+  --ds-menu-item-bg-selected: var(--color-bg-accent-subtle);
+  --ds-menu-item-radius: var(--radius-sm);
+  --ds-menu-item-gap: var(--space-sm);
+  --ds-menu-item-icon-color: var(--color-text-secondary);
+  --ds-menu-item-check-color: var(--color-text-accent);
+
+  // Separator
+  --ds-menu-sep-color: var(--color-border-subtle);
+  --ds-menu-sep-margin: var(--space-xs) 0;
+
+  // Header
+  --ds-menu-header-padding: var(--space-sm) var(--space-sm);
+  --ds-menu-header-gap: var(--space-sm);
+  --ds-menu-avatar-size: 2rem;
+  --ds-menu-avatar-radius: var(--radius-full);
+  --ds-menu-avatar-bg: var(--color-bg-accent);
+  --ds-menu-avatar-color: var(--color-text-on-accent);
+}

@@ -11,6 +11,10 @@ const escapeHtml = (str) => String(str || '')
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
+const escapeAttribute = (str) => String(str || '')
+  .replace(/&/g, '&amp;')
+  .replace(/"/g, '&quot;');
+
 const CSS_FILE = 'ds-tabs.css';
 
 // ═══════════════════════════════════════════════════════════
@@ -72,7 +76,7 @@ const ICONS = {
 export class DSTab extends DSBaseComponent {
   static get componentStyles() { return CSS_FILE; }
   static get observedAttributes() {
-    return ['value', 'icon', 'icon-pos', 'label', 'bg', 'color', 'orientation', 'active', 'disabled', 'indicator', 'shadow', 'radius', 'border'];
+    return ['value', 'icon', 'icon-pos', 'label', 'bg', 'color', 'orientation', 'active', 'disabled', 'indicator', 'shadow', 'radius', 'border', 'data-abbr', 'aria-label'];
   }
 
   constructor() {
@@ -108,6 +112,8 @@ export class DSTab extends DSBaseComponent {
 
     const iconPos = normalizeToken(this._getAttr('icon-pos', 'start'));
     const hasLabel = this._getAttr('label') !== 'false';
+    const abbr = this.getAttribute('data-abbr') || '';
+    const ariaLabel = this.getAttribute('aria-label') || '';
     const isActive = this._hasBooleanAttr('active');
     const isDisabled = this._hasBooleanAttr('disabled');
     const iconName = this.getAttribute('icon');
@@ -119,7 +125,12 @@ export class DSTab extends DSBaseComponent {
       iconHtml = `<span class="icon-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></svg></span>`;
     }
 
-    const slotHtml = hasLabel ? `<span class="label-slot"><slot></slot></span>` : '';
+    let slotHtml = '';
+    if (hasLabel) {
+      slotHtml = `<span class="label-slot"><slot></slot></span>`;
+    } else if (abbr) {
+      slotHtml = `<span class="label-slot abbr-label">${escapeHtml(abbr)}</span>`;
+    }
 
     let contentHtml = '';
     if (iconPos === 'end') {
@@ -132,14 +143,16 @@ export class DSTab extends DSBaseComponent {
     const border = normalizeToken(this._getAttr('border', 'none'));
     const indicator = normalizeToken(this._getAttr('indicator', 'none'));
     const radius = normalizeToken(this._getAttr('radius', 'sm', 'full'));
+    const ariaLabelAttr = ariaLabel ? `aria-label="${escapeAttribute(ariaLabel)}"` : '';
 
     return `
-      <button 
-        class="ds-tab ds-tab--${orientation} active-bg--${bg} active-color--${color} shadow--${shadow} border--${border} indicator--${indicator} radius--${radius} icon-only--${!hasLabel}" 
-        role="tab" 
+      <button
+        class="ds-tab ds-tab--${orientation} active-bg--${bg} active-color--${color} shadow--${shadow} border--${border} indicator--${indicator} radius--${radius} icon-only--${!hasLabel && !abbr}"
+        role="tab"
         icon-pos="${iconPos}"
         aria-selected="${isActive ? 'true' : 'false'}"
         tabindex="${isActive ? '0' : '-1'}"
+        ${ariaLabelAttr}
         ${isDisabled ? 'disabled' : ''}
       >
         ${contentHtml}
@@ -188,7 +201,7 @@ export class DSTabs extends DSBaseComponent {
 
   _handleTabClick(e) {
     const val = e.detail.value;
-    if (val) this.setAttribute('value', val);
+    if (val) this._setValue(val, { emit: true });
   }
 
   _handleKeyDown(e) {
@@ -215,8 +228,24 @@ export class DSTabs extends DSBaseComponent {
     if (nextIdx !== activeIdx && tabs[nextIdx]) {
       e.preventDefault();
       const nextTab = tabs[nextIdx];
-      this.setAttribute('value', nextTab.getAttribute('value'));
+      this._setValue(nextTab.getAttribute('value'), { emit: true });
       nextTab.focus();
+    }
+  }
+
+  _setValue(value, { emit = false } = {}) {
+    if (!value) return;
+
+    const previousValue = this.getAttribute('value');
+    if (previousValue === value) return;
+
+    this.setAttribute('value', value);
+
+    if (emit) {
+      this._emit('ds-change', {
+        value,
+        previousValue,
+      });
     }
   }
 

@@ -56,25 +56,32 @@
       </div>
 
       <nav class="site-sidebar__nav">
-        <span class="nav-group-label">Foundation</span>
-        <a href="#color" data-abbr="Co"><span class="nav-label">Color</span></a>
-        <a href="#typography" data-abbr="Ty"><span class="nav-label">Typography</span></a>
-        <a href="#spacing" data-abbr="Sp"><span class="nav-label">Spacing</span></a>
-        <a href="#effects" data-abbr="Ef"><span class="nav-label">Effects</span></a>
+        <ds-tabs orientation="vertical" indicator="line" bg="transparent" color="foreground" style="display: flex; flex-direction: column; flex: 1;">
+          <ds-tab-list style="width: 100%; height: 100%; gap: 0;">
+            <span class="nav-group-label">Foundation</span>
+            <ds-tab value="color" data-abbr="Co">Color</ds-tab>
+            <ds-tab value="typography" data-abbr="Ty">Typography</ds-tab>
+            <ds-tab value="spacing" data-abbr="Sp">Spacing</ds-tab>
+            <ds-tab value="effects" data-abbr="Ef">Effects</ds-tab>
 
-        <span class="nav-group-label">Components</span>
-        <a href="#ds-button" data-abbr="Bt"><span class="nav-label">Button</span></a>
-        <a href="#ds-badge" data-abbr="Bd"><span class="nav-label">Badge</span></a>
-        <a href="#ds-input" data-abbr="In"><span class="nav-label">Input</span></a>
-        <a href="#ds-toggle" data-abbr="To"><span class="nav-label">Toggle</span></a>
-        <a href="#ds-surface" data-abbr="Su"><span class="nav-label">Surface</span></a>
-        <a href="#ds-breadcrumb" data-abbr="Bc"><span class="nav-label">Breadcrumb</span></a>
-        <a href="#ds-tabs" data-abbr="Tb"><span class="nav-label">Tabs</span></a>
+            <span class="nav-group-label">Components</span>
+            <ds-tab value="ds-button" data-abbr="Bt">Button</ds-tab>
+            <ds-tab value="ds-badge" data-abbr="Bd">Badge</ds-tab>
+            <ds-tab value="ds-input" data-abbr="In">Input</ds-tab>
+            <ds-tab value="ds-toggle" data-abbr="To">Toggle</ds-tab>
+            <ds-tab value="ds-surface" data-abbr="Su">Surface</ds-tab>
+            <ds-tab value="ds-breadcrumb" data-abbr="Bc">Breadcrumb</ds-tab>
+            <ds-tab value="ds-tabs" data-abbr="Tb">Tabs</ds-tab>
+            <ds-tab value="ds-dialog" data-abbr="Di">Dialog</ds-tab>
+            <ds-tab value="ds-drawer" data-abbr="Dr">Drawer</ds-tab>
+            <ds-tab value="ds-menu" data-abbr="Mn">Menu</ds-tab>
 
-        <span class="nav-group-label">Layouts</span>
-        <a href="#product-grid" data-abbr="Pg"><span class="nav-label">Product Grid</span></a>
+            <span class="nav-group-label">Layouts</span>
+            <ds-tab value="product-grid" data-abbr="Pg">Product Grid</ds-tab>
 
-        <a href="#usage" data-abbr="Us" class="nav-link--usage"><span class="nav-label">Usage</span></a>
+            <ds-tab value="usage" data-abbr="Us" class="nav-link--usage" style="margin-top: auto;">Usage</ds-tab>
+          </ds-tab-list>
+        </ds-tabs>
       </nav>
 
       <div class="site-sidebar__footer">
@@ -988,17 +995,20 @@
             <div class="component-block__demo component-block__demo--stack">
 
               <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
-                <h4 style="margin-bottom: var(--space-md);">Segmented Pill (Sunken list, Surface tab, Foreground text)</h4>
+                <h4 style="margin-bottom: var(--space-md);">Segmented Pill (Sunken list, Surface tab, Foreground text)
+                </h4>
                 <ds-tabs list-bg="sunken" bg="bg" color="foreground" radius="full" shadow="sm">
                   <ds-tab-list>
-                    <ds-tab value="1" icon="compass" icon-pos="end">Explore</ds-tab>
-                    <ds-tab value="2" icon="compass" icon-pos="end">Favorites</ds-tab>
-                    <ds-tab value="3" icon="compass">Surprise Me</ds-tab>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Fully rounded list using sunken background.</ds-tab-panel>
-                    <ds-tab-panel value="2">Active tab uses surface background and shadow.</ds-tab-panel>
-                    <ds-tab-panel value="3">And fully rounded corners (pill).</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
@@ -1008,13 +1018,15 @@
                 <ds-tabs list-bg="sunken" bg="bg" color="foreground" shadow="sm" icon-pos="top">
                   <ds-tab-list>
                     <ds-tab value="1" icon="book">Explore</ds-tab>
-                    <ds-tab value="2" icon="heart">Favorites</ds-tab>
-                    <ds-tab value="3" icon="gift">Surprise Me</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Icon positioned above text using icon-pos="top".</ds-tab-panel>
-                    <ds-tab-panel value="2">Uses standard radius-sm mapping.</ds-tab-panel>
-                    <ds-tab-panel value="3">Sunken container and bg-surface on active perfectly matches.</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
@@ -1023,46 +1035,52 @@
                 <h4 style="margin-bottom: var(--space-md);">Outlined Pill</h4>
                 <ds-tabs bg="transparent" border="true" color="foreground" radius="full">
                   <ds-tab-list style="gap: var(--space-xs);">
-                    <ds-tab value="1">Explore</ds-tab>
-                    <ds-tab value="2">Favorites</ds-tab>
-                    <ds-tab value="3">Surprise Me</ds-tab>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Active tab uses an outline border instead of background.</ds-tab-panel>
-                    <ds-tab-panel value="2">Supports hover and transitions perfectly.</ds-tab-panel>
-                    <ds-tab-panel value="3">Also uses full pill shape radius.</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
 
               <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
                 <h4 style="margin-bottom: var(--space-md);">Folder Tabs</h4>
-                <ds-tabs bg="bg" color="foreground" indicator="folder">
+                <ds-tabs color="foreground" indicator="folder">
                   <ds-tab-list>
-                    <ds-tab value="1">Explore</ds-tab>
-                    <ds-tab value="2">Favorites</ds-tab>
-                    <ds-tab value="3">Surprise Me</ds-tab>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Active tab overlaps the list border seamlessly.</ds-tab-panel>
-                    <ds-tab-panel value="2">Classic folder tab paradigm using atomic classes.</ds-tab-panel>
-                    <ds-tab-panel value="3">Background perfectly seals the bottom line.</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
 
               <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
-                <h4 style="margin-bottom: var(--space-md);">Vertical Icon-Only Pill</h4>
+                <h4 style="margin-bottom: var(--space-md);">Vertical Pill</h4>
                 <ds-tabs orientation="vertical" list-bg="sunken" bg="bg" shadow="sm" color="foreground" radius="full">
                   <ds-tab-list style="width: max-content;">
-                    <ds-tab value="1" icon="book" label="false"></ds-tab>
-                    <ds-tab value="2" icon="heart" label="false"></ds-tab>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
                     <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Vertical orientation.</ds-tab-panel>
-                    <ds-tab-panel value="2">With label="false" to render only icons.</ds-tab-panel>
-                    <ds-tab-panel value="3">And sunken list background perfectly matching the variant picture!</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
@@ -1071,12 +1089,16 @@
                 <h4 style="margin-bottom: var(--space-md);">Segmented-like (BG + Shadow)</h4>
                 <ds-tabs list-bg="sunken" bg="bg" color="foreground" shadow="sm">
                   <ds-tab-list>
-                    <ds-tab value="1" icon="compass">Explore</ds-tab>
-                    <ds-tab value="2">Favorites</ds-tab>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Surface background with shadow.</ds-tab-panel>
-                    <ds-tab-panel value="2">And standard foreground text.</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
@@ -1085,35 +1107,189 @@
                 <h4 style="margin-bottom: var(--space-md);">Underlined (Animated Line Indicator)</h4>
                 <ds-tabs bg="transparent" color="foreground" indicator="line">
                   <ds-tab-list style="gap: 0;">
-                    <ds-tab value="1">Explore</ds-tab>
-                    <ds-tab value="2">Favorites</ds-tab>
-                    <ds-tab value="3">Surprise Me</ds-tab>
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Line matched to primary text color.</ds-tab-panel>
-                    <ds-tab-panel value="2">Hover the tabs to see the gray subtle line appear.</ds-tab-panel>
-                    <ds-tab-panel value="3">Indicator logic is handled with pure custom CSS properties.</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
 
               <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
+                <h4 style="margin-bottom: var(--space-md);">Vertical Line Indicator</h4>
+                <ds-tabs orientation="vertical" indicator="line" bg="transparent" color="foreground">
+                  <ds-tab-list style="width: max-content;">
+                    <ds-tab value="1" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4">Settings</ds-tab>
+                  </ds-tab-list>
+                  <ds-tab-panels>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
+                  </ds-tab-panels>
+                </ds-tabs>
+              </div>
+              <div class="tabs-doc__group" style="padding-bottom: var(--space-xl)">
                 <h4 style="margin-bottom: var(--space-md);">Solid Vertical</h4>
                 <ds-tabs orientation="vertical">
                   <ds-tab-list>
-                    <ds-tab value="1" bg="primary" color="primary-fg" radius="full">Intro</ds-tab>
-                    <ds-tab value="2" bg="primary" color="primary-fg" radius="full">Details</ds-tab>
+                    <ds-tab value="1" bg="primary" color="primary-fg" radius="full" icon="book">Explore</ds-tab>
+                    <ds-tab value="2" bg="primary" color="primary-fg" radius="full" icon="heart" icon-pos="end">Favorites</ds-tab>
+                    <ds-tab value="3" bg="primary" color="primary-fg" radius="full" icon="gift" label="false"></ds-tab>
+                    <ds-tab value="4" bg="primary" color="primary-fg" radius="full">Settings</ds-tab>
                   </ds-tab-list>
                   <ds-tab-panels>
-                    <ds-tab-panel value="1">Vertical layout using primary background.</ds-tab-panel>
-                    <ds-tab-panel value="2">Active text is on-accent foreground.</ds-tab-panel>
+                    <ds-tab-panel value="1">Panel 1: Icon at start.</ds-tab-panel>
+                    <ds-tab-panel value="2">Panel 2: Icon at end.</ds-tab-panel>
+                    <ds-tab-panel value="3">Panel 3: Icon only.</ds-tab-panel>
+                    <ds-tab-panel value="4">Panel 4: Label only.</ds-tab-panel>
                   </ds-tab-panels>
                 </ds-tabs>
               </div>
 
             </div>
           </div>
+
+          <div class="component-block overlay-doc" id="ds-dialog">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-dialog</span>
+              <h3>Dialog</h3>
+              <p>Modal surface for confirmations, focused tasks, and blocking decisions.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack overlay-doc__demo">
+              <div class="overlay-doc__row">
+                <ds-button id="open-dialog-demo" variant="default">Open dialog</ds-button>
+                <ds-button id="open-dialog-large-demo" variant="outline">Large dialog</ds-button>
+              </div>
+              <table class="overlay-doc__api">
+                <caption>Dialog attributes</caption>
+                <tbody>
+                  <tr><th><code>open</code></th><td>boolean</td></tr>
+                  <tr><th><code>size</code></th><td><code>sm</code>, <code>md</code>, <code>lg</code>, <code>fullscreen</code></td></tr>
+                  <tr><th><code>label</code></th><td>accessible title text</td></tr>
+                  <tr><th><code>persistent</code></th><td>disables Escape and backdrop close</td></tr>
+                </tbody>
+              </table>
+              <pre class="overlay-doc__code"><code>&lt;ds-dialog label="Confirm action" size="md"&gt;
+  Dialog content
+  &lt;ds-button slot="footer"&gt;Confirm&lt;/ds-button&gt;
+&lt;/ds-dialog&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="component-block overlay-doc" id="ds-drawer">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-drawer</span>
+              <h3>Drawer</h3>
+              <p>Edge-attached overlay for filters, navigation, and contextual panels.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack overlay-doc__demo">
+              <div class="overlay-doc__row">
+                <ds-button id="open-drawer-demo" variant="default">Open drawer</ds-button>
+                <ds-button id="open-drawer-bottom-demo" variant="outline">Bottom drawer</ds-button>
+              </div>
+              <table class="overlay-doc__api">
+                <caption>Drawer attributes</caption>
+                <tbody>
+                  <tr><th><code>open</code></th><td>boolean</td></tr>
+                  <tr><th><code>placement</code></th><td><code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code></td></tr>
+                  <tr><th><code>size</code></th><td><code>sm</code>, <code>md</code>, <code>lg</code></td></tr>
+                  <tr><th><code>persistent</code></th><td>disables Escape and backdrop close</td></tr>
+                </tbody>
+              </table>
+              <pre class="overlay-doc__code"><code>&lt;ds-drawer label="Filters" placement="right" size="md"&gt;
+  Filter controls
+&lt;/ds-drawer&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="component-block overlay-doc" id="ds-menu">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-menu</span>
+              <h3>Menu</h3>
+              <p>Anchor-positioned floating panel. Wraps <code>ds-menu-item</code>, <code>ds-menu-separator</code>, and <code>ds-menu-header</code>.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack overlay-doc__demo">
+              <div class="overlay-doc__row" style="min-height: 320px; align-items: flex-start; padding-top: var(--space-lg); gap: var(--space-lg);">
+                <div>
+                  <ds-button id="open-user-menu" variant="outline">User Profile</ds-button>
+                </div>
+                <div>
+                  <ds-button id="open-ctx-menu" variant="ghost">Actions ▾</ds-button>
+                </div>
+              </div>
+              <table class="overlay-doc__api">
+                <caption>Menu attributes</caption>
+                <tbody>
+                  <tr><th><code>anchor</code></th><td>CSS selector for trigger element</td></tr>
+                  <tr><th><code>placement</code></th><td><code>bottom-start</code>, <code>bottom-end</code>, <code>top-start</code>, <code>top-end</code></td></tr>
+                  <tr><th><code>size</code></th><td><code>sm</code>, <code>md</code>, <code>lg</code></td></tr>
+                  <tr><th><code>open</code></th><td>boolean — show/hide</td></tr>
+                </tbody>
+              </table>
+              <pre class="overlay-doc__code"><code>&lt;ds-button id="trigger"&gt;Profile&lt;/ds-button&gt;
+&lt;ds-menu anchor="#trigger" placement="bottom-start"&gt;
+  &lt;ds-menu-header name="Phillip George" email="p@example.com" avatar="PG"&gt;&lt;/ds-menu-header&gt;
+  &lt;ds-menu-separator&gt;&lt;/ds-menu-separator&gt;
+  &lt;ds-menu-item label="Profile" icon="user"&gt;&lt;/ds-menu-item&gt;
+  &lt;ds-menu-item label="Sign out" icon="link"&gt;&lt;/ds-menu-item&gt;
+&lt;/ds-menu&gt;</code></pre>
+            </div>
+          </div>
         </section>
+
+        <ds-dialog id="dialog-demo" label="Confirm action" size="md">
+          <p>This modal uses shared overlay tokens, focuses itself when opened, and closes on Escape or backdrop click.</p>
+          <ds-button slot="footer" variant="outline" data-overlay-close="dialog-demo">Cancel</ds-button>
+          <ds-button slot="footer" variant="default" data-overlay-close="dialog-demo">Confirm</ds-button>
+        </ds-dialog>
+
+        <ds-dialog id="dialog-large-demo" label="Review component contract" size="lg">
+          <p>Large dialogs keep the same event contract while giving longer content more room.</p>
+          <ds-button slot="footer" variant="default" data-overlay-close="dialog-large-demo">Done</ds-button>
+        </ds-dialog>
+
+        <ds-drawer id="drawer-demo" label="Filters" placement="right" size="md">
+          <p>Drawer panels use the same overlay close behavior and are ready for filter, menu, and cart compositions.</p>
+          <ds-button slot="footer" variant="default" data-overlay-close="drawer-demo">Apply filters</ds-button>
+        </ds-drawer>
+
+        <ds-drawer id="drawer-bottom-demo" label="Mobile actions" placement="bottom" size="sm">
+          <p>Bottom placement supports small-screen action sheets without adding a separate component.</p>
+          <ds-button slot="footer" variant="default" data-overlay-close="drawer-bottom-demo">Close</ds-button>
+        </ds-drawer>
+
+        <!-- User profile menu -->
+        <ds-menu anchor="#open-user-menu" placement="bottom-start">
+          <ds-menu-header name="Phillip George" email="phillip@example.com" avatar="PG"></ds-menu-header>
+          <ds-menu-separator></ds-menu-separator>
+          <ds-menu-item label="Profile" icon="user"></ds-menu-item>
+          <ds-menu-item label="Billing" icon="link"></ds-menu-item>
+          <ds-menu-separator></ds-menu-separator>
+          <ds-menu-item label="Invite users" icon-end="chevron"></ds-menu-item>
+          <ds-menu-item label="GitHub" icon="link"></ds-menu-item>
+          <ds-menu-item label="Support" icon="info"></ds-menu-item>
+          <ds-menu-separator></ds-menu-separator>
+          <ds-menu-item label="API" disabled></ds-menu-item>
+        </ds-menu>
+
+        <!-- Context actions menu -->
+        <ds-menu anchor="#open-ctx-menu" placement="bottom-end">
+          <ds-menu-item label="Edit" icon="edit"></ds-menu-item>
+          <ds-menu-item label="Copy link" icon="copy"></ds-menu-item>
+          <ds-menu-item label="Share" icon="share"></ds-menu-item>
+          <ds-menu-separator></ds-menu-separator>
+          <ds-menu-item label="Delete" icon="trash"></ds-menu-item>
+        </ds-menu>
 
         <section id="layouts" class="doc-section" aria-labelledby="layouts-title">
           <div class="section-heading">
@@ -1124,7 +1300,7 @@
             </p>
           </div>
 
-          <div class="product-grid-doc" id="product-grid">
+          <div class="component-block product-grid-doc" id="product-grid">
             <div class="component-block__copy">
               <span class="specimen__label">product-grid</span>
               <h3>Responsive product grid</h3>

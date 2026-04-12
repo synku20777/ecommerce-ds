@@ -1,0 +1,36 @@
+// ═══════════════════════════════════════════════════════════
+// ds-menu — floating panel shell + animation
+// ═══════════════════════════════════════════════════════════
+
+@use 'reset';
+
+:host {
+  display: contents;
+}
+
+.ds-menu__panel {
+  position: fixed;
+  z-index: var(--ds-menu-z-index);
+  background: var(--ds-menu-bg);
+  border: 1px solid var(--ds-menu-border);
+  border-radius: var(--ds-menu-radius);
+  box-shadow: var(--ds-menu-shadow);
+  padding: var(--ds-menu-padding);
+  min-width: var(--ds-menu-min-width);
+  outline: none;
+  animation: ds-menu-in 120ms ease;
+}
+
+@keyframes ds-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ds-menu__panel--sm { min-width: 10rem; }
+.ds-menu__panel--lg { min-width: 16rem; }

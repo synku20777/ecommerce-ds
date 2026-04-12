@@ -96,23 +96,28 @@ customElements.define('ds-foo', DSFoo);
 ### Sidebar nav structure
 ```html
 <nav class="site-sidebar__nav">
-  <span class="nav-group-label">Foundation</span>
-  <a href="#section-id" data-abbr="Ab"><span class="nav-label">Name</span></a>
-  ...
-  <span class="nav-group-label">Components</span>
-  ...
-  <span class="nav-group-label">Layouts</span>
-  ...
+  <ds-tabs orientation="vertical" indicator="line" bg="transparent" color="foreground">
+    <ds-tab-list>
+      <span class="nav-group-label">Foundation</span>
+      <ds-tab value="section-id" data-abbr="Ab">Name</ds-tab>
+      ...
+      <span class="nav-group-label">Components</span>
+      ...
+      <span class="nav-group-label">Layouts</span>
+      ...
+    </ds-tab-list>
+  </ds-tabs>
 </nav>
 ```
-- `data-abbr` = 2-letter code shown when sidebar collapsed (via CSS `::before` content)
-- Nav links styled as ghost buttons: `border: 1px solid var(--color-border-subtle)`, transparent bg, hover fills sunken, active gets accent bg + accent border
+- `value` must match the target section or component block `id`.
+- `demo/demo.js` listens to `ds-change` on the sidebar `ds-tabs` and scrolls to the matching section.
+- `data-abbr` = 2-letter code reserved for collapsed navigation treatment.
 
 ### Section order in sidebar
 Foundation → Components → Layouts → Usage
 
 ### Current components in sidebar (in order)
-Button, Badge, Input, Toggle, Surface, Breadcrumb | Layout: Product Grid
+Button, Badge, Input, Toggle, Surface, Breadcrumb, Tabs, Dialog, Drawer | Layout: Product Grid
 
 ### Demo component block pattern
 
@@ -143,10 +148,20 @@ Same HTML but add modifier class with:
 → No card chrome. Copy top, full-width demo below.
 
 ### Adding a new component to demo
-1. Sidebar nav: add `<a href="#ds-{name}" data-abbr="Xx"><span class="nav-label">Name</span></a>` under correct group
+1. Sidebar nav: add `<ds-tab value="ds-{name}" data-abbr="Xx">Name</ds-tab>` under correct group
 2. Demo section: add `.component-block` section after the last sibling in its group
 3. `demo.css`: add any modifier class needed (group headings, specimen override, etc.)
 4. `demo/demo.js` IntersectionObserver already watches `.component-block[id]` — auto active state
+
+## Public Component Contract
+
+- Attributes use lowercase kebab-case. Values normalize to lowercase kebab-case and silently fall back to the documented default when invalid.
+- Boolean attributes follow Web Component conventions: presence means true, absence means false. Avoid `true` / `false` string APIs unless needed for compatibility.
+- Events use `ds-*`, bubble, and cross Shadow DOM via `composed: true`. Use `ds-change` for value changes, `ds-input` for continuous field input, `ds-remove` for removal, and `ds-open-change` / `ds-close` for overlays.
+- Disabled components must forward disabled behavior to the internal native control when one exists, suppress user-triggered events, and preserve stable layout.
+- Focus styles use `--focus-ring`; every interactive internal control must have a visible focus state.
+- Docs for every public component should include live examples, a compact attribute table, and one code snippet.
+- Add every component in all required places: component JS/SCSS, Tier 2 tokens, `tokens/tokens.scss`, `tokens/_index.scss`, `components/index.js`, `package.json` build/watch scripts, `demo/index.html`, and any demo styles or JS.
 
 ## Naming Conventions
 
@@ -159,7 +174,7 @@ Same HTML but add modifier class with:
 
 Colors: `--color-bg-{page|surface|raised|sunken|accent|accent-hover|accent-subtle}`
 Text: `--color-text-{primary|secondary|tertiary|disabled|on-accent|accent}`
-Border: `--color-border-{subtle|default|strong|focus|accent}` ← note: `--color-border-accent` may not exist; use `--color-border-focus` for accent borders
+Border: `--color-border-{subtle|default|strong|focus|accent}`
 Space: `--space-{xxs|xs|sm|md|lg|xl|xxl}`
 Type: `--type-body-{s|m|l}`, `--type-label-{s|m}`, `--type-weight-{regular|medium|semibold|bold}`
 Radius: `--radius-{sm|md|lg|full}`

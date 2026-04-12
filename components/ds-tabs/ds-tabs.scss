@@ -5,6 +5,12 @@
   display: block;
 }
 
+// // Folder tab: active host extends 1px below tab-list border to cover it
+// :host([indicator="folder"][active]) {
+//   position: relative;
+//   z-index: 1;
+// }
+
 // ═══════════════════════════════════════════════════════════
 // ds-tabs (Orchestrator)
 // ═══════════════════════════════════════════════════════════
@@ -30,7 +36,7 @@
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -41,23 +47,45 @@
 
 
   // List BG container styles
-  &.list-bg--primary-alpha20 { background-color: var(--color-bg-accent-subtle); padding: var(--space-xxs); }
-  &.list-bg--bg { background-color: var(--color-bg-surface); padding: var(--space-xxs); }
-  &.list-bg--sunken { background-color: var(--color-bg-sunken); padding: var(--space-xxs); }
+  &.list-bg--primary-alpha20 {
+    background-color: var(--color-bg-accent-subtle);
+    padding: var(--space-xxs);
+  }
+
+  &.list-bg--bg {
+    background-color: var(--color-bg-surface);
+    padding: var(--space-xxs);
+  }
+
+  &.list-bg--sunken {
+    background-color: var(--color-bg-sunken);
+    padding: var(--space-xxs);
+  }
 
   // Radius map
-  &.radius--full { border-radius: var(--radius-full); }
-  &.radius--sm { border-radius: var(--radius-md); } // default list padding scale
+  &.radius--full {
+    border-radius: var(--radius-full);
+
+    &.ds-tab-list--vertical {
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  &.radius--sm {
+    border-radius: var(--radius-md);
+  }
+
+  // default list padding scale
 
   &.indicator--line {
     border-radius: 0 !important;
   }
 
   &.indicator--folder {
-    box-shadow: inset 0 -1px 0 var(--color-border-default);
     border-radius: 0;
     gap: 0;
-    padding: 0 var(--space-md);
+    overflow: visible;
+    align-items: flex-end;
   }
 }
 
@@ -65,7 +93,9 @@
 // ds-tab (Trigger Button)
 // ═══════════════════════════════════════════════════════════
 .ds-tab {
-  display: inline-flex;
+  display: flex;
+  width: 100%;
+  height: 100%;
   flex: 1;
   position: relative;
   align-items: center;
@@ -79,13 +109,22 @@
   color: var(--color-text-secondary);
   border: none;
   border-radius: var(--radius-sm);
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-sm) var(--space-md);
   transition: all var(--transition-fast);
   white-space: nowrap;
-  
+
   &.icon-only--true {
     padding: var(--space-sm);
-    aspect-ratio: 1 / 1;
+
+    &.ds-tab--vertical {
+      padding-top: var(--space-sm);
+      padding-bottom: var(--space-sm);
+    }
+
+    // Only apply aspect ratio to horizontal tabs
+    &:not(.ds-tab--vertical) {
+      aspect-ratio: 1 / 1;
+    }
   }
 
   &:hover:not([disabled]) {
@@ -109,6 +148,7 @@
     justify-content: center;
     width: 1.2em;
     height: 1.2em;
+
     svg {
       width: 100%;
       height: 100%;
@@ -118,31 +158,64 @@
   // Orientation
   &--vertical {
     justify-content: flex-start;
-    padding: var(--space-xs) var(--space-md) var(--space-xs) var(--space-sm);
+    padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-sm);
   }
 
   // Active Map: BG Color
-  &.active-bg--bg[aria-selected="true"] { background-color: var(--color-bg-surface); }
-  &.active-bg--primary[aria-selected="true"] { background-color: var(--color-bg-accent); }
-  &.active-bg--primary-alpha20[aria-selected="true"] { background-color: var(--color-bg-accent-subtle); }
-  &.active-bg--transparent[aria-selected="true"] { background-color: transparent; }
+  &.active-bg--bg[aria-selected="true"] {
+    background-color: var(--color-bg-surface);
+  }
+
+  &.active-bg--primary[aria-selected="true"] {
+    background-color: var(--color-bg-accent);
+  }
+
+  &.active-bg--primary-alpha20[aria-selected="true"] {
+    background-color: var(--color-bg-accent-subtle);
+  }
+
+  &.active-bg--transparent[aria-selected="true"] {
+    background-color: transparent;
+  }
 
   // Active Map: Text Color
-  &.active-color--foreground[aria-selected="true"] { color: var(--color-text-primary); }
-  &.active-color--primary-fg[aria-selected="true"] { color: var(--color-text-on-accent); }
+  &.active-color--foreground[aria-selected="true"] {
+    color: var(--color-text-primary);
+  }
+
+  &.active-color--primary-fg[aria-selected="true"] {
+    color: var(--color-text-on-accent);
+  }
+
   &.active-color--primary-alpha-60[aria-selected="true"],
-  &.active-color--primary-alpha60[aria-selected="true"] { color: var(--color-text-secondary); }
-  &.active-color--primary[aria-selected="true"] { color: var(--color-text-accent); } // fallback logic
+  &.active-color--primary-alpha60[aria-selected="true"] {
+    color: var(--color-text-secondary);
+  }
+
+  &.active-color--primary[aria-selected="true"] {
+    color: var(--color-text-accent);
+  }
+
+  // fallback logic
 
   // Active Map: Shadow
-  &.shadow--sm[aria-selected="true"] { box-shadow: var(--shadow-card); }
+  &.shadow--sm[aria-selected="true"] {
+    box-shadow: var(--shadow-card);
+  }
 
   // Active Map: Border
-  &.border--true { border: 1px solid transparent; }
-  &.border--true[aria-selected="true"] { border-color: var(--color-border-default); }
+  &.border--true {
+    border: 1px solid transparent;
+  }
+
+  &.border--true[aria-selected="true"] {
+    border-color: var(--color-border-default);
+  }
 
   // Active Map: Radius
-  &.radius--full { border-radius: var(--radius-full); }
+  &.radius--full {
+    border-radius: var(--radius-full);
+  }
 
   // Indicator Setup
   &::after {
@@ -155,13 +228,14 @@
 
     &.ds-tab--vertical {
       border-bottom: none;
-      border-left: 2px solid transparent;
-      
+      border-left: 2px solid var(--color-border-subtle);
+
       &[aria-selected="true"] {
         border-left-color: currentColor;
       }
+
       &:not([aria-selected="true"]):hover {
-        border-left-color: transparent; // or var(--color-border-subtle) if desired, but user image shows transparent
+        border-left-color: var(--color-border-strong);
       }
     }
 
@@ -175,18 +249,17 @@
   }
 
   &.indicator--folder {
-    border: 1px solid transparent;
-    border-bottom-color: transparent; // Ensure bottom border retains layout space but remains invisible
+    border-bottom: 1px solid var(--color-border-default);
     border-radius: var(--radius-md) var(--radius-md) 0 0;
-    
+
     &[aria-selected="true"] {
       border-color: var(--color-border-default);
+      border: 1px solid var(--color-border-default);
       border-bottom-color: transparent;
-      z-index: 1;
     }
-    
+
     &:not([aria-selected="true"]):hover {
-      background-color: var(--color-surface-sunken);
+      background-color: var(--color-bg-sunken);
     }
   }
 
@@ -194,7 +267,7 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--space-xxs);
-    
+
     .icon-slot svg {
       width: 20px;
       height: 20px;
@@ -224,6 +297,7 @@
   display: block;
   outline: none;
 }
+
 .ds-tab-panel[hidden] {
   display: none !important;
 }

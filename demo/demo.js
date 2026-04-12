@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const productGridCurtainButton = document.querySelector('.product-grid-curtain-button');
   const productGridCurtainBackdrop = productGrid?.querySelector('.product-grid-curtain-backdrop');
   const productGridCloseButtons = productGrid?.querySelectorAll('[data-product-grid-close]');
+  const overlayOpenButtons = {
+    'open-dialog-demo': 'dialog-demo',
+    'open-dialog-large-demo': 'dialog-large-demo',
+    'open-drawer-demo': 'drawer-demo',
+    'open-drawer-bottom-demo': 'drawer-bottom-demo',
+  };
   const html = document.documentElement;
 
   // ── Theme ─────────────────────────────────────────────────────
@@ -82,6 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebarToggle.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
     sidebarToggle.setAttribute('title', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
     localStorage.setItem('ds-sidebar-collapsed', String(collapsed));
+
+    sidebar?.querySelectorAll('.site-sidebar__nav ds-tab').forEach(tab => {
+      if (collapsed) {
+        const fullText = tab.textContent.trim();
+        tab.setAttribute('label', 'false');
+        tab.setAttribute('aria-label', fullText);
+        tab.setAttribute('title', fullText);
+      } else {
+        tab.removeAttribute('label');
+        tab.removeAttribute('aria-label');
+        tab.removeAttribute('title');
+      }
+    });
   }
 
   // ── Sidebar drawer (mobile) ───────────────────────────────────
@@ -96,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   sidebar?.addEventListener('click', (event) => {
-    if (event.target.closest('a') && window.innerWidth <= 900) {
+    if (event.target.closest('a, ds-tab') && window.innerWidth <= 900) {
       setMenuOpen(false);
     }
   });
@@ -189,22 +208,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const sections = document.querySelectorAll('.doc-section');
-  const navLinks = sidebar?.querySelectorAll('.site-sidebar__nav a');
+  Object.entries(overlayOpenButtons).forEach(([buttonId, overlayId]) => {
+    document.getElementById(buttonId)?.addEventListener('click', () => {
+      document.getElementById(overlayId)?.show();
+    });
+  });
 
-  if (sections.length && navLinks?.length) {
+  document.querySelectorAll('[data-overlay-close]').forEach(button => {
+    button.addEventListener('click', () => {
+      document.getElementById(button.dataset.overlayClose)?.close();
+    });
+  });
+
+  const sections = document.querySelectorAll('.doc-section');
+  const navTabs = sidebar?.querySelector('.site-sidebar__nav ds-tabs');
+
+  if (sections.length && navTabs) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navLinks.forEach(link => link.classList.remove('active'));
-          const activeLink = sidebar.querySelector(`.site-sidebar__nav a[href="#${entry.target.id}"]`);
-          activeLink?.classList.add('active');
+          navTabs.setAttribute('value', entry.target.id);
         }
       });
     }, { rootMargin: '-15% 0px -70% 0px' });
 
     sections.forEach(section => observer.observe(section));
     document.querySelectorAll('.component-block[id]').forEach(block => observer.observe(block));
+
+    navTabs.addEventListener('ds-change', (event) => {
+      const section = document.getElementById(event.detail.value);
+      if (section) {
+        // Use smooth scroll
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   }
 
   // ── Component event handlers ──────────────────────────────────
