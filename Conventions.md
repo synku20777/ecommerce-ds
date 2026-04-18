@@ -4,186 +4,170 @@ description: How this design system repo is structured, how to add components, t
 type: project
 ---
 
-## Stack
+### Project conventions — ecommerce-ds (React + Astro)
+description: A comprehensive guide on how this design system repository is structured, the philosophy behind the stack, token architecture, component creation workflows, and documentation patterns for the migrated architecture.
+type: project
 
-- **SCSS** → compiled to `dist/` via `sass` CLI (no bundler, no JS build step)
-- **Web Components** (native custom elements, Shadow DOM, no framework)
-- **Static demo** served via `npx serve .` (launch.json configured for preview tool)
-- **No TypeScript**
+### Stack & Architectural Philosophy
 
-## Token Architecture (3-tier, strict)
+Our design system leverages a modern, performance-first stack. By combining Astro's static generation with React's component model, we get the best of both worlds: excellent developer experience and zero-overhead performance for end users.
 
-### Tier 0 — Raw primitives (`tokens/_tier0-*.scss`)
-SCSS `$variables` only. No CSS output. Brand-agnostic scales.
-Files: `_tier0-colors`, `_tier0-typography`, `_tier0-space`, `_tier0-shadows`, `_tier0-breakpoints`
+Astro → Serves as the primary host, router, and static site generator (SSG) for our documentation and demo environment.
 
-### Tier 1 — Semantic (`tokens/_tier1-semantic.scss`, `_tier1-dark.scss`)
-CSS custom properties on `:root`. Meaningful role aliases referencing Tier 0.
-Key roles: `--color-bg-*`, `--color-text-*`, `--color-border-*`, `--color-status-*`
-Dark overrides in `_tier1-dark.scss` via `[data-theme="dark"] :root`.
+Why: Astro provides a zero-JS baseline. Using its "Islands Architecture," we only hydrate components that actually need JavaScript.
 
-### Tier 2 — Component-scoped (`tokens/_tier2-{component}.scss`)
-CSS custom properties on `:root`. Components reference these; never Tier 1 directly from within their CSS (except in tier2 definition files which alias tier1).
-Naming: `--ds-{component}-{role}` (e.g. `--ds-breadcrumb-icon-size`)
-OR `--button-{variant}-{role}` for the button (legacy naming).
+React → Used for declarative component composition and state management.
 
-### Entry points
-- `tokens/tokens.scss` — `@use`s all tiers → compiles to `dist/tokens.css`. **Must add every new tier2 file here manually.**
-- `tokens/_index.scss` — `@forward`s everything (for component SCSS `@use 'tokens'`). Also needs updating but is less critical.
+Why: React provides a robust ecosystem for managing complex UI state (like complex data tables, focus trapping in dialogs, and interactive menus) while allowing us to build a highly reusable API.
 
-**GOTCHA:** Adding a tier2 file to `_index.scss` is NOT enough. Must also add `@use 'tier2-{component}'` to `tokens/tokens.scss` or tokens won't appear in `dist/tokens.css`.
+TypeScript → Strict type-safety enforced for all component props, state, and base types.
 
-## Base SCSS
+Why: It acts as our first layer of documentation and prevents runtime errors by ensuring developers pass the correct variants, sizes, and data types.
 
-`base/_reset.scss` — box-sizing, margin/padding reset, `:host` font/color/smoothing defaults
-`base/_typography.scss` — heading/body utility classes
+SCSS → Compiled via Astro/Vite and scoped tightly to BEM classes.
 
-Components do `@use 'reset'` (via `--load-path=base`) to pull the reset into their shadow DOM stylesheet.
+Why: We intentionally avoid CSS-in-JS or Shadow DOM to ensure our styles remain portable, easily cacheable, and leverage the natural CSS cascade through our strict tiered token system.
 
-## Component Structure
+Static demo → Served locally via the Astro dev server (npm run dev) or built into a static output directory for production deployment.
 
-Every component lives in `components/ds-{name}/`:
-- `ds-{name}.js` — Web Component class
-- `ds-{name}.scss` — Shadow DOM styles
-- `ds-{name}-item.js` (compound only) — child element, no Shadow DOM
+### Token Architecture (3-tier, strict)
 
-### Base class: `DSBaseComponent` (`core/base-component.js`)
-- `attachShadow({ mode: 'open' })` in constructor
-- `connectedCallback()` → `_injectStyles()` + `_render()` + `_setupEventListeners()`
-- `_injectStyles()` — injects `<link rel="stylesheet" href="${basePath}/dist/${componentStyles}">` into shadow root once
-- `_render()` — clears shadow DOM (preserving `<link>`s), sets `innerHTML` from `get template()`
-- `attributeChangedCallback()` → re-renders on attr change if connected
+Our styling relies on a highly disciplined, three-tier token architecture. This ensures that global brand changes are simple, dark mode is practically automatic, and individual components can be customized without breaking the rest of the system.
 
-### Subclass pattern
-```js
-export class DSFoo extends DSBaseComponent {
-  static get observedAttributes() { return ['variant', 'size']; }
-  static get componentStyles() { return 'ds-foo.css'; }
-  get template() { /* build HTML string */ return `<div class="ds-foo ds-foo--${this.variant}">...</div>`; }
-}
-customElements.define('ds-foo', DSFoo);
-```
+## Tier 0 — Raw Primitives (src/styles/tokens/_tier0-*.scss)
 
-### Compound component (parent + child items)
-`ds-breadcrumb` is the only compound component so far:
-- `ds-breadcrumb-item` (child): no Shadow DOM, no base class. Pure data holder. Dispatches `ds-breadcrumb-item-change` on attr change.
-- `ds-breadcrumb` (parent): `MutationObserver` on light DOM watching child attrs. Debounced via `queueMicrotask`. Parent `get template()` queries `this.querySelectorAll('ds-breadcrumb-item')` and builds full shadow DOM.
+SCSS $variables only. This tier outputs absolutely no CSS to the final bundle. These are your raw, brand-agnostic scales (the "DNA" of the design system).
 
-### Barrel file
-`components/index.js` — import all components here. Demo HTML loads this as `<script type="module">`.
+Role: Define the absolute values allowed in the system.
 
-## Build System
+Examples: $blue-500: #0ea5e9;, $spacing-4: 1rem;, $font-weight-bold: 700;
 
-```json
-"build:tokens":    "sass tokens/tokens.scss dist/tokens.css --style=expanded --no-source-map"
-"build:components":"sass components/ds-{x}/ds-{x}.scss:dist/ds-{x}.css ... --load-path=tokens --load-path=base"
-"build":           "build:tokens && build:components"
-"watch":           "sass --watch {all source:dist pairs}"
-"demo":            "npx serve ."
-```
+Files: _tier0-colors, _tier0-typography, _tier0-space, _tier0-shadows, _tier0-breakpoints
 
-**When adding a new component:** add its `scss:dist` pair to BOTH `build:components` AND `watch` in `package.json`.
+## Tier 1 — Semantic / Theming (src/styles/tokens/_tier1-semantic.scss, _tier1-dark.scss)
 
-**CSS custom properties inherit into Shadow DOM** by spec — no need to re-inject tokens into shadow root. They flow through automatically.
+CSS custom properties (--var) applied to the :root selector. This tier maps meaningless primitive colors to meaningful semantic roles.
 
-## Demo (`demo/index.html` + `demo/demo.css`)
+Role: Enables light/dark mode and global theming.
 
-### Layout
-- Sidebar (`<aside id="site-sidebar">`) + content (`<div class="site-content">`)
-- Sidebar collapsible: `data-sidebar-collapsed="true"` on `.site-layout`. Collapsed = 56px wide, shows `data-abbr` abbreviations.
-- Dark mode: `data-theme="dark"` on `<html>`.
+Examples: --color-bg-primary: #{$white};, --color-text-danger: #{$red-600};
 
-### Sidebar nav structure
-```html
-<nav class="site-sidebar__nav">
-  <ds-tabs orientation="vertical" indicator="line" bg="transparent" color="foreground">
-    <ds-tab-list>
-      <span class="nav-group-label">Foundation</span>
-      <ds-tab value="section-id" data-abbr="Ab">Name</ds-tab>
-      ...
-      <span class="nav-group-label">Components</span>
-      ...
-      <span class="nav-group-label">Layouts</span>
-      ...
-    </ds-tab-list>
-  </ds-tabs>
-</nav>
-```
-- `value` must match the target section or component block `id`.
-- `demo/demo.js` listens to `ds-change` on the sidebar `ds-tabs` and scrolls to the matching section.
-- `data-abbr` = 2-letter code reserved for collapsed navigation treatment.
+Dark Mode: Handled via overrides in _tier1-dark.scss targeting [data-theme="dark"] :root. Because components only consume Tier 2 and Tier 1, switching the theme instantly updates all components.
 
-### Section order in sidebar
-Foundation → Components → Layouts → Usage
+## Tier 2 — Component-Scoped (src/styles/tokens/_tier2-{component}.scss)
 
-### Current components in sidebar (in order)
-Button, Badge, Input, Toggle, Surface, Breadcrumb, Tabs, Dialog, Drawer | Layout: Product Grid
+CSS custom properties specific to a single component, mapped from Tier 1.
 
-### Demo component block pattern
+Role: Acts as the public styling API for a component. If a consumer needs to override a specific button's background, they target --ds-button-bg, not the global Tier 1 token.
 
-**Regular component block** (Button, Badge, Input, Toggle, Surface, Breadcrumb):
-```html
-<div class="component-block {name}-doc" id="{id}">
-  <div class="component-block__copy">
-    <span class="specimen__label">ds-{name}</span>
-    <h3>Title</h3>
-    <p>Description.</p>
-  </div>
-  <div class="component-block__demo">
-    <!-- live component variants -->
-  </div>
-</div>
-```
-→ 2-column card layout: copy left, demo right. Bordered card.
+Rule: Components reference these directly via BEM classes (e.g., .ds-button { background: var(--ds-button-bg); }). Never reference Tier 1 directly from within component CSS.
 
-**Specimen/canvas block** (Product Grid, interactive stages):
-Same HTML but add modifier class with:
-```css
-.your-specimen-block {
-  grid-template-columns: 1fr;  /* single column */
-  border: none;
-  background: transparent;
-}
-```
-→ No card chrome. Copy top, full-width demo below.
+Adding a Component: Step-by-Step
 
-### Adding a new component to demo
-1. Sidebar nav: add `<ds-tab value="ds-{name}" data-abbr="Xx">Name</ds-tab>` under correct group
-2. Demo section: add `.component-block` section after the last sibling in its group
-3. `demo.css`: add any modifier class needed (group headings, specimen override, etc.)
-4. `demo/demo.js` IntersectionObserver already watches `.component-block[id]` — auto active state
+Creating a new component requires adherence to a strict workflow to ensure consistency across the design system.
 
-## Public Component Contract
+### Location & Structure:
 
-- Attributes use lowercase kebab-case. Values normalize to lowercase kebab-case and silently fall back to the documented default when invalid.
-- Boolean attributes follow Web Component conventions: presence means true, absence means false. Avoid `true` / `false` string APIs unless needed for compatibility.
-- Events use `ds-*`, bubble, and cross Shadow DOM via `composed: true`. Use `ds-change` for value changes, `ds-input` for continuous field input, `ds-remove` for removal, and `ds-open-change` / `ds-close` for overlays.
-- Disabled components must forward disabled behavior to the internal native control when one exists, suppress user-triggered events, and preserve stable layout.
-- Focus styles use `--focus-ring`; every interactive internal control must have a visible focus state.
-- Docs for every public component should include live examples, a compact attribute table, and one code snippet.
-- Add every component in all required places: component JS/SCSS, Tier 2 tokens, `tokens/tokens.scss`, `tokens/_index.scss`, `components/index.js`, `package.json` build/watch scripts, `demo/index.html`, and any demo styles or JS.
+Create a dedicated folder: src/components/{ComponentName}/.
 
-## Naming Conventions
+Include the main component file ({ComponentName}.tsx), an index file for clean exporting (index.ts), and its specific styles if necessary.
 
-- **BEM**: `.ds-{component}__element--modifier`
-- Component classes: `.ds-breadcrumb`, `.ds-breadcrumb__item`, `.ds-breadcrumb--pill`
-- Separator/variant classes: `ds-breadcrumb--sep-chevron`, `ds-breadcrumb--default`
-- SCSS partial files: `_name.scss` (leading underscore, imported without it via `@use 'name'`)
+Example: src/components/Button/Button.tsx
 
-## Key Token Names (Tier 1 reference)
+### Interface & Prop Design:
 
-Colors: `--color-bg-{page|surface|raised|sunken|accent|accent-hover|accent-subtle}`
-Text: `--color-text-{primary|secondary|tertiary|disabled|on-accent|accent}`
-Border: `--color-border-{subtle|default|strong|focus|accent}`
-Space: `--space-{xxs|xs|sm|md|lg|xl|xxl}`
-Type: `--type-body-{s|m|l}`, `--type-label-{s|m}`, `--type-weight-{regular|medium|semibold|bold}`
-Radius: `--radius-{sm|md|lg|full}`
-Transitions: `--transition-fast`
-Focus: `--focus-ring`
-Font families: `--font-family-sans`, `--font-family-mono`
+Export a functional React component.
 
-## Preview Tool
+Define a strictly typed Props interface that extends the global BaseProps interface (which should include standard HTML attributes).
 
-`.claude/launch.json` → `npm run demo` → `npx serve .` → port 3000
-`autoPort: true` needed or preview tool can't start its own process if port 3000 is taken.
-The `serve` package respects `PORT` env var when no `--listen` flag is set.
+Document every prop using JSDoc comments (/** ... */) so IntelliSense can pick them up.
+
+### Styling & BEM Implementation:
+
+Use standard BEM classes instead of native HTML element tags to prevent styling bleed.
+
+Use a classNames() utility to gracefully merge incoming className props from the consumer with your internal structural classes.
+
+Crucial: Do not use :host or Shadow DOM selectors. We rely entirely on class specificity.
+
+### State, Events, & Accessibility (a11y):
+
+Use standard React hooks (useState, useEffect) for internal logic.
+
+Prefer controlled components (state managed by the parent via value and onChange) but support uncontrolled usage where sensible.
+
+Accessibility: Ensure proper ARIA attributes are applied dynamically. For interactive elements without native equivalents, manage tabIndex, aria-expanded, and keyboard events (like listening for Enter or Space).
+
+### Type Standardization:
+
+Ensure polymorphic or standardized props are used across the board.
+
+Examples: Always use isDisabled (boolean) instead of disabled, isOpen instead of visible, and standardize how children and icon props are handled.
+
+### Token Integration:
+
+Define your component's variables in _tier2-{component}.scss.
+
+Add the new tier 2 token file to the import list in src/styles/global.scss to ensure it is bundled.
+
+Documentation & Demo:
+
+Add the component to src/pages/index.astro (or its specific docs page).
+
+Show multiple variants (primary, secondary, disabled states).
+
+Hydration Rule: Use Astro's client:load directive only if the component requires JS interactivity (e.g., Accordions, Dialogs, Tabs). Static components (Buttons, Badges, Cards) must render as zero-JS HTML by omitting the client directive.
+
+### Naming Conventions
+
+Strict naming conventions keep the codebase predictable and easy to search.
+
+React Components: PascalCase (e.g., Accordion, Button, BreadcrumbItem).
+
+React Props: CamelCase. Prefix booleans with is, has, or should (e.g., isLoading, hasIcon). Prefix event handlers with on (e.g., onClick, onToggle).
+
+Files: PascalCase for React component files (Button.tsx), kebab-case for styling/tokens (_tier2-button.scss).
+
+BEM Architecture: .ds-{component}__element--modifier
+
+Block: .ds-breadcrumb
+
+Element: .ds-breadcrumb__item
+
+Modifier: .ds-breadcrumb--pill
+
+SCSS partial files: _name.scss (Use a leading underscore, but import them without it via @use 'name').
+
+## Key Token Names (Tier 1 Reference)
+
+When defining Tier 2 component variables, always map them to these standard Tier 1 semantic tokens.
+
+# Colors (Backgrounds): * --color-bg-page (main body background)
+
+--color-bg-surface (cards, sidebars, standard containers)
+
+--color-bg-raised / --color-bg-sunken (modals / well areas)
+
+--color-bg-accent, --color-bg-accent-hover, --color-bg-accent-subtle (primary brand colors)
+
+# Colors (Text & Typography): * --color-text-primary, --color-text-secondary, --color-text-tertiary
+
+--color-text-disabled, --color-text-on-accent, --color-text-accent
+
+# Colors (Borders & Dividers): * --color-border-subtle, --color-border-default, --color-border-strong
+
+--color-border-focus (accessibility focus rings), --color-border-accent
+
+# Spacing (Margin & Padding): * --space-{xxs|xs|sm|md|lg|xl|xxl}
+
+# Typography: * --type-body-{s|m|l}, --type-label-{s|m}
+
+--type-weight-{regular|medium|semibold|bold}
+
+--font-family-base, --font-family-mono
+
+# Structure & Interactivity: * --radius-{sm|md|lg|full}
+
+--transition-fast, --transition-default, --transition-slow
+
+--focus-ring (Standardized box-shadow for focus states)

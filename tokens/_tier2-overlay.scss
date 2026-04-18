@@ -1,6 +1,8 @@
 // Tier 2 overlay tokens shared by dialog and drawer primitives.
 
-:root {
+.ds-overlay,
+.ds-dialog,
+.ds-drawer {
   --ds-overlay-backdrop-bg: rgba(15, 23, 42, 0.48);
   --ds-overlay-z-index: 1000;
   --ds-overlay-transition: var(--transition-normal);

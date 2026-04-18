@@ -1,0 +1,139 @@
+.ds-toggle-group {
+  display: inline-flex;
+  gap: var(--space-sm);
+}
+
+.ds-toggle-group--radio,
+.ds-toggle-group--checkbox {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ds-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--toggle-gap);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ds-toggle__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ds-toggle__label {
+  font-size: var(--toggle-label-size);
+  color: var(--toggle-label-text);
+  line-height: 1;
+}
+
+.ds-toggle__box {
+  position: relative;
+  width: var(--toggle-size);
+  height: var(--toggle-size);
+  border: 2px solid var(--toggle-border);
+  background-color: var(--toggle-bg);
+  transition: background-color var(--toggle-transition), border-color var(--toggle-transition), box-shadow var(--toggle-transition);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-toggle--checkbox .ds-toggle__box {
+  border-radius: var(--toggle-radius-checkbox);
+}
+
+.ds-toggle--radio .ds-toggle__box {
+  border-radius: var(--toggle-radius-radio);
+}
+
+.ds-toggle__checkmark {
+  width: 0.75rem;
+  height: 0.75rem;
+  opacity: 0;
+  transition: opacity var(--toggle-transition);
+  color: var(--toggle-checkmark-color);
+}
+
+.ds-toggle__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--toggle-radius-radio);
+  background-color: var(--toggle-checkmark-color);
+  opacity: 0;
+  transition: opacity var(--toggle-transition);
+}
+
+.ds-toggle__input:checked ~ .ds-toggle__box {
+  background-color: var(--toggle-checked-bg);
+  border-color: var(--toggle-checked-border);
+}
+
+.ds-toggle--checkbox .ds-toggle__input:checked ~ .ds-toggle__box .ds-toggle__checkmark {
+  opacity: 1;
+}
+
+.ds-toggle--radio .ds-toggle__input:checked ~ .ds-toggle__box .ds-toggle__dot {
+  opacity: 1;
+}
+
+.ds-toggle:hover .ds-toggle__box {
+  border-color: var(--toggle-border-hover);
+}
+
+.ds-toggle:hover .ds-toggle__input:checked ~ .ds-toggle__box {
+  border-color: var(--toggle-checked-border);
+}
+
+.ds-toggle__input:focus-visible ~ .ds-toggle__box {
+  box-shadow: var(--focus-ring);
+}
+
+.ds-toggle--disabled {
+  opacity: var(--toggle-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-toggle__track {
+  position: relative;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  background-color: var(--switch-bg);
+  border-radius: var(--switch-track-radius);
+  transition: background-color var(--toggle-transition);
+  flex-shrink: 0;
+}
+
+.ds-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.1875rem;
+  transform: translateY(-50%);
+  width: var(--switch-thumb-size);
+  height: var(--switch-thumb-size);
+  background-color: var(--switch-thumb-bg);
+  border-radius: var(--switch-thumb-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: left var(--toggle-transition);
+}
+
+.ds-toggle__input:checked ~ .ds-toggle__track {
+  background-color: var(--switch-checked-bg);
+}
+
+.ds-toggle__input:checked ~ .ds-toggle__track .ds-toggle__thumb {
+  left: calc(100% - var(--switch-thumb-size) - 0.1875rem);
+}
+
+.ds-toggle__input:focus-visible ~ .ds-toggle__track {
+  box-shadow: var(--focus-ring);
+}

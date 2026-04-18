@@ -3,7 +3,7 @@
 // Scoped to ds-button. References Tier 1 semantic tokens.
 // ═══════════════════════════════════════════════════════════
 
-:root {
+.ds-button {
   // Default variant
   --button-default-bg:          var(--color-bg-accent);
   --button-default-text:        var(--color-text-on-accent);

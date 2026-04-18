@@ -3,7 +3,7 @@
 // Scoped to ds-input. References Tier 1 semantic tokens.
 // ═══════════════════════════════════════════════════════════
 
-:root {
+.ds-input {
   // Field
   --input-bg:              var(--color-bg-surface);
   --input-text:            var(--color-text-primary);

@@ -1,0 +1,3 @@
+[  554064ms] [LOG] [ds-change] {value: ds-dialog, previousValue: color} @ http://localhost:54075/demo/demo.js:245
+[  635628ms] [LOG] [ds-change] {value: ds-dialog, previousValue: foundations} @ http://localhost:54075/demo/demo.js:245
+[  665943ms] [LOG] [ds-change] {value: ds-dialog, previousValue: color} @ http://localhost:54075/demo/demo.js:245

@@ -6,7 +6,8 @@
 
 @use 'tier0-colors' as *;
 
-[data-theme="dark"] {
+[data-theme="dark"],
+[data-theme="dark"] :root {
   // ─── Color Roles ───────────────────────────────────────
   --color-bg-page:         #{$raw-neutral-900};
   --color-bg-surface:      #{$raw-neutral-800};

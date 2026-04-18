@@ -1,0 +1,1318 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e3]:
+    - complementary "Section navigation" [ref=e4]:
+      - generic [ref=e5]:
+        - link "Back to top" [ref=e6] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e7]: DS
+          - generic [ref=e8]: Commerce Design System
+        - button "Collapse sidebar" [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+      - navigation [ref=e12]:
+        - tablist [ref=e16]:
+          - generic:
+            - generic [ref=e17]: Foundation
+            - tab "Color" [selected] [ref=e19] [cursor=pointer]:
+              - generic [ref=e20]:
+                - generic: Color
+            - tab "Typography" [ref=e22] [cursor=pointer]:
+              - generic [ref=e23]:
+                - generic: Typography
+            - tab "Spacing" [ref=e25] [cursor=pointer]:
+              - generic [ref=e26]:
+                - generic: Spacing
+            - tab "Effects" [ref=e28] [cursor=pointer]:
+              - generic [ref=e29]:
+                - generic: Effects
+            - generic [ref=e30]: Components
+            - tab "Button" [ref=e32] [cursor=pointer]:
+              - generic [ref=e33]:
+                - generic: Button
+            - tab "Badge" [ref=e35] [cursor=pointer]:
+              - generic [ref=e36]:
+                - generic: Badge
+            - tab "Input" [ref=e38] [cursor=pointer]:
+              - generic [ref=e39]:
+                - generic: Input
+            - tab "Toggle" [ref=e41] [cursor=pointer]:
+              - generic [ref=e42]:
+                - generic: Toggle
+            - tab "Surface" [ref=e44] [cursor=pointer]:
+              - generic [ref=e45]:
+                - generic: Surface
+            - tab "Breadcrumb" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]:
+                - generic: Breadcrumb
+            - tab "Tabs" [ref=e50] [cursor=pointer]:
+              - generic [ref=e51]:
+                - generic: Tabs
+            - tab "Dialog" [ref=e53] [cursor=pointer]:
+              - generic [ref=e54]:
+                - generic: Dialog
+            - tab "Drawer" [ref=e56] [cursor=pointer]:
+              - generic [ref=e57]:
+                - generic: Drawer
+            - tab "Menu" [ref=e59] [cursor=pointer]:
+              - generic [ref=e60]:
+                - generic: Menu
+            - generic [ref=e61]: Layouts
+            - tab "Product Grid" [ref=e63] [cursor=pointer]:
+              - generic [ref=e64]:
+                - generic: Product Grid
+            - tab "Usage" [ref=e66] [cursor=pointer]:
+              - generic [ref=e67]:
+                - generic: Usage
+      - button "Switch to Dark" [ref=e69] [cursor=pointer]
+    - generic [ref=e70]:
+      - main [ref=e71]:
+        - region "A practical foundation for e-commerce interfaces." [ref=e72]:
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: Design system MVP
+            - heading "A practical foundation for e-commerce interfaces." [level=1] [ref=e75]
+            - paragraph [ref=e76]: Tokens, primitives, and vanilla Web Components organized as a reusable documentation kit. This guide explains the structure, the contract, and the live examples in one place.
+            - generic "System summary" [ref=e77]:
+              - generic [ref=e78]: 3-tier tokens
+              - generic [ref=e79]: Shadow DOM components
+              - generic [ref=e80]: SCSS source
+        - region "Read the system from foundations to implementation." [ref=e81]:
+          - generic [ref=e82]:
+            - paragraph [ref=e83]: Contents
+            - heading "Read the system from foundations to implementation." [level=2] [ref=e84]
+          - list [ref=e85]:
+            - listitem [ref=e86]:
+              - link "01 Foundations" [ref=e87] [cursor=pointer]:
+                - /url: "#foundations"
+                - generic [ref=e88]: "01"
+                - text: Foundations
+            - listitem [ref=e89]:
+              - link "02 Color" [ref=e90] [cursor=pointer]:
+                - /url: "#color"
+                - generic [ref=e91]: "02"
+                - text: Color
+            - listitem [ref=e92]:
+              - link "03 Typography" [ref=e93] [cursor=pointer]:
+                - /url: "#typography"
+                - generic [ref=e94]: "03"
+                - text: Typography
+            - listitem [ref=e95]:
+              - link "04 Spacing" [ref=e96] [cursor=pointer]:
+                - /url: "#spacing"
+                - generic [ref=e97]: "04"
+                - text: Spacing
+            - listitem [ref=e98]:
+              - link "05 Effects" [ref=e99] [cursor=pointer]:
+                - /url: "#effects"
+                - generic [ref=e100]: "05"
+                - text: Effects
+            - listitem [ref=e101]:
+              - link "06 Components" [ref=e102] [cursor=pointer]:
+                - /url: "#components"
+                - generic [ref=e103]: "06"
+                - text: Components
+            - listitem [ref=e104]:
+              - link "07 Layouts" [ref=e105] [cursor=pointer]:
+                - /url: "#layouts"
+                - generic [ref=e106]: "07"
+                - text: Layouts
+            - listitem [ref=e107]:
+              - link "08 Usage" [ref=e108] [cursor=pointer]:
+                - /url: "#usage"
+                - generic [ref=e109]: "08"
+                - text: Usage
+        - region "01 Foundations" [ref=e110]:
+          - generic [ref=e111]:
+            - heading "01 Foundations" [level=2] [ref=e112]
+            - paragraph [ref=e113]: The system uses a strict 3-tier token model. Raw SCSS values feed semantic CSS custom properties, and component-scoped tokens reference those semantic roles.
+          - generic "Token architecture" [ref=e114]:
+            - article [ref=e115]:
+              - generic [ref=e116]: Tier 0
+              - heading "Raw" [level=3] [ref=e117]
+              - paragraph [ref=e118]: Brand-agnostic SCSS scales for color, type, spacing, shadows, and breakpoints.
+            - article [ref=e119]:
+              - generic [ref=e120]: Tier 1
+              - heading "Semantic" [level=3] [ref=e121]
+              - paragraph [ref=e122]:
+                - text: CSS custom properties on
+                - code [ref=e123]: :root
+                - text: ", including dark-theme overrides."
+            - article [ref=e124]:
+              - generic [ref=e125]: Tier 2
+              - heading "Component" [level=3] [ref=e126]
+              - paragraph [ref=e127]: Button, input, toggle, and surface tokens that reference Tier 1 roles.
+          - generic [ref=e128]:
+            - article [ref=e129]:
+              - generic [ref=e130]: Token flow
+              - code [ref=e132]: "$raw-brand-500: #3b82f6; --color-bg-accent: #{$raw-brand-500}; --button-default-bg: var(--color-bg-accent); .ds-button--default { background-color: var(--button-default-bg); }"
+            - article [ref=e133]:
+              - generic [ref=e134]: Why this matters
+              - paragraph [ref=e135]: Components never consume raw values directly. Theme changes happen by remapping semantic values, while component CSS keeps the same public contract.
+        - region "02 Color" [ref=e136]:
+          - generic [ref=e137]:
+            - heading "02 Color" [level=2] [ref=e138]
+            - paragraph [ref=e139]: These swatches show roles, not raw colors. Toggle the theme to see the semantic values change without changing component markup.
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Background" [level=3] [ref=e142]
+              - paragraph [ref=e143]: Page, surface, raised, sunken, and accent roles.
+            - generic [ref=e144]:
+              - generic [ref=e147]: "--color-bg-page"
+              - generic [ref=e150]: "--color-bg-surface"
+              - generic [ref=e153]: "--color-bg-raised"
+              - generic [ref=e156]: "--color-bg-sunken"
+              - generic [ref=e159]: "--color-bg-accent"
+              - generic [ref=e162]: "--color-bg-accent-hover"
+              - generic [ref=e165]: "--color-bg-accent-subtle"
+          - generic [ref=e166]:
+            - generic [ref=e167]:
+              - heading "Text" [level=3] [ref=e168]
+              - paragraph [ref=e169]: Primary, secondary, tertiary, disabled, and accent text roles.
+            - generic [ref=e170]:
+              - generic [ref=e173]: "--color-text-primary"
+              - generic [ref=e176]: "--color-text-secondary"
+              - generic [ref=e179]: "--color-text-tertiary"
+              - generic [ref=e182]: "--color-text-disabled"
+              - generic [ref=e185]: "--color-text-on-accent"
+              - generic [ref=e188]: "--color-text-accent"
+          - generic [ref=e189]:
+            - generic [ref=e190]:
+              - heading "Border" [level=3] [ref=e191]
+              - paragraph [ref=e192]: Subtle, default, strong, and focus border roles.
+            - generic [ref=e193]:
+              - generic [ref=e196]: "--color-border-subtle"
+              - generic [ref=e199]: "--color-border-default"
+              - generic [ref=e202]: "--color-border-strong"
+              - generic [ref=e205]: "--color-border-focus"
+          - generic [ref=e206]:
+            - generic [ref=e207]:
+              - heading "Status" [level=3] [ref=e208]
+              - paragraph [ref=e209]: Feedback colors and their subtle background tints.
+            - generic [ref=e210]:
+              - generic [ref=e213]: "--color-status-success"
+              - generic [ref=e216]: "--color-status-success-subtle"
+              - generic [ref=e219]: "--color-status-warning"
+              - generic [ref=e222]: "--color-status-warning-subtle"
+              - generic [ref=e225]: "--color-status-error"
+              - generic [ref=e228]: "--color-status-error-subtle"
+        - region "03 Typography" [ref=e229]:
+          - generic [ref=e230]:
+            - heading "03 Typography" [level=2] [ref=e231]
+            - paragraph [ref=e232]: Inter is used as the primary interface family, with JetBrains Mono reserved for token names and code snippets.
+          - generic [ref=e233]:
+            - generic [ref=e234]:
+              - heading "Type scale" [level=3] [ref=e235]
+              - paragraph [ref=e236]: Heading, body, and label sizes.
+            - generic [ref=e237]:
+              - generic [ref=e238]:
+                - generic [ref=e239]: "--type-heading-xxl"
+                - strong [ref=e240]: Heading XXL
+              - generic [ref=e241]:
+                - generic [ref=e242]: "--type-heading-xl"
+                - strong [ref=e243]: Heading XL
+              - generic [ref=e244]:
+                - generic [ref=e245]: "--type-heading-l"
+                - strong [ref=e246]: Heading L
+              - generic [ref=e247]:
+                - generic [ref=e248]: "--type-heading-m"
+                - strong [ref=e249]: Heading M
+              - generic [ref=e250]:
+                - generic [ref=e251]: "--type-heading-s"
+                - strong [ref=e252]: Heading S
+              - generic [ref=e253]:
+                - generic [ref=e254]: "--type-body-l"
+                - paragraph [ref=e255]: Large body copy for lead paragraphs and introductions.
+              - generic [ref=e256]:
+                - generic [ref=e257]: "--type-body-m"
+                - paragraph [ref=e258]: Body copy stays readable across dense product tables, checkout flows, and documentation pages.
+              - generic [ref=e259]:
+                - generic [ref=e260]: "--type-body-s"
+                - paragraph [ref=e261]: Small body copy for helper text, captions, and secondary information.
+              - generic [ref=e262]:
+                - generic [ref=e263]: "--type-label-m"
+                - paragraph [ref=e264]: Medium label
+              - generic [ref=e265]:
+                - generic [ref=e266]: "--type-label-s"
+                - paragraph [ref=e267]: Compact label text
+          - generic [ref=e268]:
+            - generic [ref=e269]:
+              - heading "Font families" [level=3] [ref=e270]
+              - paragraph [ref=e271]: Sans-serif for UI, monospace for code and tokens.
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - generic [ref=e274]: "--font-family-sans"
+                - paragraph [ref=e275]: The quick brown fox jumps over the lazy dog. 0123456789
+              - generic [ref=e276]:
+                - generic [ref=e277]: "--font-family-mono"
+                - paragraph [ref=e278]: "--color-bg-accent: #3b82f6; --space-md: 1rem;"
+          - generic [ref=e279]:
+            - generic [ref=e280]:
+              - heading "Weights" [level=3] [ref=e281]
+              - paragraph [ref=e282]: Regular through bold.
+            - generic [ref=e283]:
+              - generic [ref=e284]:
+                - generic [ref=e285]: "--type-weight-regular"
+                - paragraph [ref=e286]: The quick brown fox jumps over the lazy dog.
+              - generic [ref=e287]:
+                - generic [ref=e288]: "--type-weight-medium"
+                - paragraph [ref=e289]: The quick brown fox jumps over the lazy dog.
+              - generic [ref=e290]:
+                - generic [ref=e291]: "--type-weight-semibold"
+                - paragraph [ref=e292]: The quick brown fox jumps over the lazy dog.
+              - generic [ref=e293]:
+                - generic [ref=e294]: "--type-weight-bold"
+                - paragraph [ref=e295]: The quick brown fox jumps over the lazy dog.
+          - generic [ref=e296]:
+            - generic [ref=e297]:
+              - heading "Line height" [level=3] [ref=e298]
+              - paragraph [ref=e299]: Tight for headings, normal for body copy.
+            - generic [ref=e300]:
+              - generic [ref=e301]:
+                - generic [ref=e302]: "--type-leading-tight"
+                - paragraph [ref=e303]: Tight leading compresses multi-line headings and display text into a dense, punchy block. Used at scale.
+              - generic [ref=e304]:
+                - generic [ref=e305]: "--type-leading-normal"
+                - paragraph [ref=e306]: Normal leading keeps body paragraphs comfortable and scannable across longer reading sessions and dense UI.
+        - region "04 Spacing" [ref=e307]:
+          - generic [ref=e308]:
+            - heading "04 Spacing" [level=2] [ref=e309]
+            - paragraph [ref=e310]: Use spacing tokens for component internals, page gutters, and repeated documentation rhythm.
+          - generic [ref=e311]:
+            - generic [ref=e312]:
+              - generic [ref=e313]: "--space-xxs"
+              - emphasis [ref=e315]: 2px
+            - generic [ref=e316]:
+              - generic [ref=e317]: "--space-xs"
+              - emphasis [ref=e319]: 4px
+            - generic [ref=e320]:
+              - generic [ref=e321]: "--space-sm"
+              - emphasis [ref=e323]: 8px
+            - generic [ref=e324]:
+              - generic [ref=e325]: "--space-md"
+              - emphasis [ref=e327]: 16px
+            - generic [ref=e328]:
+              - generic [ref=e329]: "--space-lg"
+              - emphasis [ref=e331]: 24px
+            - generic [ref=e332]:
+              - generic [ref=e333]: "--space-xl"
+              - emphasis [ref=e335]: 32px
+            - generic [ref=e336]:
+              - generic [ref=e337]: "--space-2xl"
+              - emphasis [ref=e339]: 48px
+            - generic [ref=e340]:
+              - generic [ref=e341]: "--space-3xl"
+              - emphasis [ref=e343]: 64px
+        - region "05 Effects" [ref=e344]:
+          - generic [ref=e345]:
+            - heading "05 Effects" [level=2] [ref=e346]
+            - paragraph [ref=e347]: Shadows, radius, motion, and focus tokens define depth, shape, and interactivity across every component. These never appear in typography or color sections but drive the tactile feel of the UI.
+          - generic [ref=e348]:
+            - generic [ref=e349]:
+              - heading "Shadows" [level=3] [ref=e350]
+              - paragraph [ref=e351]: Elevation scale from card to modal.
+            - generic [ref=e352]:
+              - generic [ref=e355]: "--shadow-card"
+              - generic [ref=e358]: "--shadow-dropdown"
+              - generic [ref=e361]: "--shadow-modal"
+              - generic [ref=e364]: "--shadow-elevated"
+          - generic [ref=e365]:
+            - generic [ref=e366]:
+              - heading "Radius" [level=3] [ref=e367]
+              - paragraph [ref=e368]: Border-radius scale from tight to pill.
+              - group "Base radius preset" [ref=e369]:
+                - button "None" [ref=e370] [cursor=pointer]
+                - button "S" [ref=e371] [cursor=pointer]
+                - button "M" [ref=e372] [cursor=pointer]
+                - button "L" [ref=e373] [cursor=pointer]
+            - generic [ref=e374]:
+              - generic [ref=e375]:
+                - generic [ref=e377]: "--radius"
+                - emphasis [ref=e378]: 0.625rem base
+              - generic [ref=e379]:
+                - generic [ref=e381]: "--radius-sm"
+                - emphasis [ref=e382]: × 0.6 (~6px)
+              - generic [ref=e383]:
+                - generic [ref=e385]: "--radius-md"
+                - emphasis [ref=e386]: × 0.8 (~8px)
+              - generic [ref=e387]:
+                - generic [ref=e389]: "--radius-lg"
+                - emphasis [ref=e390]: × 1.0 (10px)
+              - generic [ref=e391]:
+                - generic [ref=e393]: "--radius-xl"
+                - emphasis [ref=e394]: × 1.4 (~14px)
+              - generic [ref=e395]:
+                - generic [ref=e397]: "--radius-2xl"
+                - emphasis [ref=e398]: × 1.8 (~18px)
+              - generic [ref=e399]:
+                - generic [ref=e401]: "--radius-3xl"
+                - emphasis [ref=e402]: × 2.2 (~22px)
+              - generic [ref=e403]:
+                - generic [ref=e405]: "--radius-4xl"
+                - emphasis [ref=e406]: × 2.6 (~26px)
+              - generic [ref=e407]:
+                - generic [ref=e409]: "--radius-full"
+                - emphasis [ref=e410]: 9999px literal
+          - generic [ref=e411]:
+            - generic [ref=e412]:
+              - heading "Transitions" [level=3] [ref=e413]
+              - paragraph [ref=e414]: Hover each button to compare speeds.
+            - generic [ref=e415]:
+              - generic [ref=e416]:
+                - button "Hover me" [ref=e417] [cursor=pointer]
+                - generic [ref=e418]: "--transition-fast"
+                - emphasis [ref=e419]: 150ms ease
+              - generic [ref=e420]:
+                - button "Hover me" [ref=e421] [cursor=pointer]
+                - generic [ref=e422]: "--transition-normal"
+                - emphasis [ref=e423]: 250ms ease
+              - generic [ref=e424]:
+                - button "Hover me" [ref=e425] [cursor=pointer]
+                - generic [ref=e426]: "--transition-slow"
+                - emphasis [ref=e427]: 350ms ease
+          - generic [ref=e428]:
+            - generic [ref=e429]:
+              - heading "Focus ring" [level=3] [ref=e430]
+              - paragraph [ref=e431]: Tab to the button to inspect the ring.
+            - generic [ref=e432]:
+              - button "Tab to focus me" [ref=e433] [cursor=pointer]
+              - generic [ref=e434]: "--focus-ring: 2px surface offset + 4px border-focus"
+          - generic [ref=e435]:
+            - generic [ref=e436]:
+              - heading "Layout" [level=3] [ref=e437]
+              - paragraph [ref=e438]: Container width, page gutter, and grid gap.
+            - generic [ref=e439]:
+              - article [ref=e440]:
+                - generic [ref=e441]: Layout tokens
+                - code [ref=e443]: "--layout-container-max: 1280px --layout-gutter-page: 1.5rem /* 24px */ --layout-gap-grid: 1rem /* 16px */"
+              - article [ref=e444]:
+                - generic [ref=e445]: Usage
+                - paragraph [ref=e446]: The container max constrains page width at the widest breakpoint. The page gutter sets horizontal padding on the main content area. The grid gap spaces column and row tracks in multi-column layouts.
+        - region "06 Components" [ref=e447]:
+          - generic [ref=e448]:
+            - heading "06 Components" [level=2] [ref=e449]
+            - paragraph [ref=e450]: Components use Shadow DOM, inherit global CSS custom properties, and expose small attribute APIs with predictable defaults.
+          - generic [ref=e451]:
+            - generic [ref=e452]:
+              - generic [ref=e453]: ds-button
+              - heading "Actions" [level=3] [ref=e454]
+              - paragraph [ref=e455]: Shadcn-style button variants and sizes adapted to native Web Components.
+            - generic [ref=e456]:
+              - generic [ref=e457]:
+                - generic [ref=e458]:
+                  - heading "Variants" [level=4] [ref=e459]
+                  - paragraph [ref=e460]: Use semantic variants for action priority, boundaries, destructive actions, and low-emphasis links.
+                - generic [ref=e461]:
+                  - button "Default" [ref=e463] [cursor=pointer]:
+                    - generic: Default
+                  - button "Outline" [ref=e465] [cursor=pointer]:
+                    - generic: Outline
+                  - button "Ghost" [ref=e467] [cursor=pointer]:
+                    - generic: Ghost
+                  - button "Destructive" [ref=e469] [cursor=pointer]:
+                    - generic: Destructive
+                  - button "Secondary" [ref=e471] [cursor=pointer]:
+                    - generic: Secondary
+                  - button "Link" [ref=e473] [cursor=pointer]:
+                    - generic: Link
+              - generic [ref=e474]:
+                - generic [ref=e475]:
+                  - heading "Text sizes" [level=4] [ref=e476]
+                  - paragraph [ref=e477]: The default size matches the standard action height; xs and sm fit dense interfaces.
+                - generic [ref=e478]:
+                  - button "Extra small" [ref=e480] [cursor=pointer]:
+                    - generic: Extra small
+                  - button "Small" [ref=e482] [cursor=pointer]:
+                    - generic: Small
+                  - button "Default" [ref=e484] [cursor=pointer]:
+                    - generic: Default
+                  - button "Large" [ref=e486] [cursor=pointer]:
+                    - generic: Large
+              - generic [ref=e487]:
+                - generic [ref=e488]:
+                  - heading "Icon sizes" [level=4] [ref=e489]
+                  - paragraph [ref=e490]:
+                    - text: Icon-only buttons require a useful
+                    - code [ref=e491]: aria-label
+                    - text: on the host element.
+                - generic [ref=e492]:
+                  - generic "Open cart" [ref=e493]:
+                    - button "Open cart" [ref=e494] [cursor=pointer]:
+                      - generic:
+                        - img
+                  - generic "Search" [ref=e495]:
+                    - button "Search" [ref=e496] [cursor=pointer]:
+                      - generic:
+                        - img
+                  - generic "Add item" [ref=e497]:
+                    - button "Add item" [ref=e498] [cursor=pointer]:
+                      - generic:
+                        - img
+                  - generic "Open settings" [ref=e499]:
+                    - button "Open settings" [ref=e500] [cursor=pointer]:
+                      - generic:
+                        - img
+              - generic [ref=e501]:
+                - generic [ref=e502]:
+                  - heading "Disabled and legacy aliases" [level=4] [ref=e503]
+                  - paragraph [ref=e504]: Legacy attributes keep working, but new docs use the canonical shadcn-style values.
+                - generic [ref=e505]:
+                  - generic:
+                    - button "Disabled" [disabled]:
+                      - generic: Disabled
+                  - generic:
+                    - button "Delete" [disabled]:
+                      - generic: Delete
+                  - button "Legacy primary" [ref=e507] [cursor=pointer]:
+                    - generic: Legacy primary
+                  - generic "Legacy icon" [ref=e508]:
+                    - button "Legacy icon" [ref=e509] [cursor=pointer]:
+                      - generic:
+                        - img
+              - generic [ref=e510]:
+                - table "Button attributes" [ref=e511]:
+                  - caption [ref=e512]: Button attributes
+                  - rowgroup [ref=e513]:
+                    - row "Attribute Values Default" [ref=e514]:
+                      - columnheader "Attribute" [ref=e515]
+                      - columnheader "Values" [ref=e516]
+                      - columnheader "Default" [ref=e517]
+                  - rowgroup [ref=e518]:
+                    - row "variant default, outline, ghost, destructive, secondary, link default" [ref=e519]:
+                      - rowheader "variant" [ref=e520]:
+                        - code [ref=e521]: variant
+                      - cell "default, outline, ghost, destructive, secondary, link" [ref=e522]:
+                        - code [ref=e523]: default
+                        - text: ","
+                        - code [ref=e524]: outline
+                        - text: ","
+                        - code [ref=e525]: ghost
+                        - text: ","
+                        - code [ref=e526]: destructive
+                        - text: ","
+                        - code [ref=e527]: secondary
+                        - text: ","
+                        - code [ref=e528]: link
+                      - cell "default" [ref=e529]:
+                        - code [ref=e530]: default
+                    - row "size default, xs, sm, lg, icon, icon-xs, icon-sm, icon-lg default" [ref=e531]:
+                      - rowheader "size" [ref=e532]:
+                        - code [ref=e533]: size
+                      - cell "default, xs, sm, lg, icon, icon-xs, icon-sm, icon-lg" [ref=e534]:
+                        - code [ref=e535]: default
+                        - text: ","
+                        - code [ref=e536]: xs
+                        - text: ","
+                        - code [ref=e537]: sm
+                        - text: ","
+                        - code [ref=e538]: lg
+                        - text: ","
+                        - code [ref=e539]: icon
+                        - text: ","
+                        - code [ref=e540]: icon-xs
+                        - text: ","
+                        - code [ref=e541]: icon-sm
+                        - text: ","
+                        - code [ref=e542]: icon-lg
+                      - cell "default" [ref=e543]:
+                        - code [ref=e544]: default
+                - code [ref=e546]: <ds-button variant="default" size="default">Save changes</ds-button> <ds-button variant="outline" size="icon-sm" aria-label="Search"> <svg aria-hidden="true">...</svg> </ds-button>
+              - paragraph [ref=e547]:
+                - text: "Legacy aliases:"
+                - code [ref=e548]: variant="primary"
+                - text: maps to
+                - code [ref=e549]: default
+                - text: ","
+                - code [ref=e550]: size="s|m|l"
+                - text: maps to
+                - code [ref=e551]: sm|default|lg
+                - text: ", and"
+                - code [ref=e552]: icon-only
+                - text: maps the current size to the matching icon size.
+          - generic [ref=e553]:
+            - generic [ref=e554]:
+              - generic [ref=e555]: ds-badge
+              - heading "Status labels" [level=3] [ref=e556]
+              - paragraph [ref=e557]: Badge variants, dot treatments, icons, and closable labels built on component tokens.
+            - generic [ref=e558]:
+              - generic [ref=e559]:
+                - generic [ref=e560]:
+                  - heading "Variants" [level=4] [ref=e561]
+                  - paragraph [ref=e562]: Use badges for short status, category, metadata labels, and compact actions.
+                - generic [ref=e563]:
+                  - generic [ref=e566]:
+                    - generic: Default
+                  - generic [ref=e569]:
+                    - generic: Secondary
+                  - generic [ref=e572]:
+                    - generic: Destructive
+                  - generic [ref=e575]:
+                    - generic: Outline
+                  - generic [ref=e578]:
+                    - generic: Ghost
+                  - button "Open details" [ref=e580] [cursor=pointer]:
+                    - generic [ref=e581]:
+                      - generic: Open details
+                    - img [ref=e583]
+              - generic [ref=e585]:
+                - generic [ref=e586]:
+                  - heading "Dot badges" [level=4] [ref=e587]
+                  - paragraph [ref=e588]: Dot-only badges need an accessible label; number and text dots keep visible content.
+                - generic [ref=e589]:
+                  - generic "Online" [ref=e590]:
+                    - status "Online" [ref=e591]
+                  - generic [ref=e594]:
+                    - generic: "8"
+                  - generic [ref=e598]:
+                    - generic: Dot Badge
+              - generic [ref=e599]:
+                - generic [ref=e600]:
+                  - heading "Sizes" [level=4] [ref=e601]
+                  - paragraph [ref=e602]: Use small for dense tables, default for inline metadata, and large for prominent states.
+                - generic [ref=e603]:
+                  - generic [ref=e606]:
+                    - generic: Small
+                  - generic [ref=e609]:
+                    - generic: Default
+                  - generic [ref=e612]:
+                    - generic: Large
+              - generic [ref=e613]:
+                - generic [ref=e614]:
+                  - heading "Icons" [level=4] [ref=e615]
+                  - paragraph [ref=e616]:
+                    - text: The named
+                    - code [ref=e617]: icon
+                    - text: slot renders before or after the label.
+                - generic [ref=e618]:
+                  - generic [ref=e620]:
+                    - img [ref=e622]
+                    - generic [ref=e624]:
+                      - generic: Verified
+                  - generic [ref=e626]:
+                    - generic [ref=e627]:
+                      - generic: Bookmark
+                    - img [ref=e629]
+              - generic [ref=e631]:
+                - generic [ref=e632]:
+                  - heading "Closable" [level=4] [ref=e633]
+                  - paragraph [ref=e634]:
+                    - text: Closable badges emit
+                    - code [ref=e635]: ds-remove
+                    - text: with the visible badge text.
+                - generic [ref=e636]:
+                  - generic [ref=e638]:
+                    - generic [ref=e639]:
+                      - generic: Archived
+                    - button "Remove" [ref=e640] [cursor=pointer]:
+                      - generic [ref=e641]: ×
+                  - generic [ref=e643]:
+                    - generic [ref=e644]:
+                      - generic: Filter
+                    - button "Remove" [ref=e645] [cursor=pointer]:
+                      - generic [ref=e646]: ×
+                  - generic [ref=e648]:
+                    - generic [ref=e649]:
+                      - generic: Failed
+                    - button "Remove" [ref=e650] [cursor=pointer]:
+                      - generic [ref=e651]: ×
+              - generic [ref=e652]:
+                - table "Badge attributes" [ref=e653]:
+                  - caption [ref=e654]: Badge attributes
+                  - rowgroup [ref=e655]:
+                    - row "Attribute Values Default" [ref=e656]:
+                      - columnheader "Attribute" [ref=e657]
+                      - columnheader "Values" [ref=e658]
+                      - columnheader "Default" [ref=e659]
+                  - rowgroup [ref=e660]:
+                    - row "variant default, secondary, destructive, outline, ghost, link, dot, number-dot, text-dot default" [ref=e661]:
+                      - rowheader "variant" [ref=e662]:
+                        - code [ref=e663]: variant
+                      - cell "default, secondary, destructive, outline, ghost, link, dot, number-dot, text-dot" [ref=e664]:
+                        - code [ref=e665]: default
+                        - text: ","
+                        - code [ref=e666]: secondary
+                        - text: ","
+                        - code [ref=e667]: destructive
+                        - text: ","
+                        - code [ref=e668]: outline
+                        - text: ","
+                        - code [ref=e669]: ghost
+                        - text: ","
+                        - code [ref=e670]: link
+                        - text: ","
+                        - code [ref=e671]: dot
+                        - text: ","
+                        - code [ref=e672]: number-dot
+                        - text: ","
+                        - code [ref=e673]: text-dot
+                      - cell "default" [ref=e674]:
+                        - code [ref=e675]: default
+                    - row "size small, default, large default" [ref=e676]:
+                      - rowheader "size" [ref=e677]:
+                        - code [ref=e678]: size
+                      - cell "small, default, large" [ref=e679]:
+                        - code [ref=e680]: small
+                        - text: ","
+                        - code [ref=e681]: default
+                        - text: ","
+                        - code [ref=e682]: large
+                      - cell "default" [ref=e683]:
+                        - code [ref=e684]: default
+                    - row "icon start, end none" [ref=e685]:
+                      - rowheader "icon" [ref=e686]:
+                        - code [ref=e687]: icon
+                      - cell "start, end" [ref=e688]:
+                        - code [ref=e689]: start
+                        - text: ","
+                        - code [ref=e690]: end
+                      - cell "none" [ref=e691]
+                    - row "closable boolean off" [ref=e692]:
+                      - rowheader "closable" [ref=e693]:
+                        - code [ref=e694]: closable
+                      - cell "boolean" [ref=e695]
+                      - cell "off" [ref=e696]
+                - code [ref=e698]: <ds-badge variant="secondary" icon="start"> <svg slot="icon" aria-hidden="true">...</svg> Verified </ds-badge> <ds-badge variant="link">Open details</ds-badge> <ds-badge variant="text-dot" closable>Dot Badge</ds-badge>
+              - paragraph [ref=e699]:
+                - text: "Aliases:"
+                - code [ref=e700]: variant="number dot"
+                - text: maps to
+                - code [ref=e701]: number-dot
+                - text: and
+                - code [ref=e702]: variant="Text dot"
+                - text: maps to
+                - code [ref=e703]: text-dot
+                - text: . Link badges use the default visual style, render a trailing arrow icon, and behave like buttons.
+          - generic [ref=e704]:
+            - generic [ref=e705]:
+              - generic [ref=e706]: ds-input
+              - heading "Form fields" [level=3] [ref=e707]
+              - paragraph [ref=e708]: Text, email, password, select, and textarea fields with helper and error states.
+            - generic [ref=e709]:
+              - generic [ref=e711]:
+                - generic [ref=e712] [cursor=pointer]: Email Address
+                - textbox "Email Address" [ref=e713]:
+                  - /placeholder: name@example.com
+                - generic [ref=e714]: We'll never share your email.
+              - generic [ref=e716]:
+                - generic [ref=e717] [cursor=pointer]: Password
+                - textbox "Password" [ref=e718]:
+                  - /placeholder: Enter password
+                - generic [ref=e719]: Password must be at least 8 characters.
+              - generic [ref=e721]:
+                - generic [ref=e722] [cursor=pointer]: Category
+                - combobox "Category" [ref=e723]
+          - generic [ref=e724]:
+            - generic [ref=e725]:
+              - generic [ref=e726]: ds-toggle
+              - heading "Choices" [level=3] [ref=e727]
+              - paragraph [ref=e728]: Checkbox, radio, and switch controls emit composed change events.
+            - generic [ref=e729]:
+              - generic [ref=e731] [cursor=pointer]:
+                - checkbox "Accept terms and conditions" [ref=e732]
+                - img [ref=e734]
+                - generic [ref=e736]: Accept terms and conditions
+              - generic [ref=e738] [cursor=pointer]:
+                - checkbox "Subscribe to newsletter" [checked] [ref=e739]
+                - img [ref=e741]
+                - generic [ref=e743]: Subscribe to newsletter
+              - generic [ref=e745] [cursor=pointer]:
+                - radio "Standard Shipping" [checked] [ref=e746]
+                - generic [ref=e749]: Standard Shipping
+              - generic [ref=e751] [cursor=pointer]:
+                - switch "Email notifications" [ref=e752]
+                - generic [ref=e755]: Email notifications
+          - generic [ref=e756]:
+            - generic [ref=e757]:
+              - generic [ref=e758]: ds-surface
+              - heading "Containers and labels" [level=3] [ref=e759]
+              - paragraph [ref=e760]:
+                - text: Cards and chips group content without leaking styles. Use
+                - code [ref=e761]: ds-badge
+                - text: for badge states.
+            - generic [ref=e762]:
+              - generic [ref=e764]:
+                - generic:
+                  - heading "Default Card" [level=4] [ref=e765]
+                  - paragraph [ref=e766]: A surface container for grouped content.
+              - generic [ref=e767]:
+                - generic [ref=e769]:
+                  - generic: Electronics
+                - generic [ref=e771]:
+                  - generic: "Color: Blue"
+                  - button "Remove" [ref=e772] [cursor=pointer]: ×
+                - generic [ref=e774]:
+                  - generic: Non-removable
+          - generic [ref=e775]:
+            - generic [ref=e776]:
+              - generic [ref=e777]: ds-breadcrumb
+              - heading "Navigation path" [level=3] [ref=e778]
+              - paragraph [ref=e779]: Shows current location within site hierarchy. Supports 4 separator styles and 3 visual variants.
+            - generic [ref=e780]:
+              - generic [ref=e781]:
+                - heading "Default + Chevron" [level=4] [ref=e782]
+                - navigation "Breadcrumb" [ref=e784]:
+                  - list [ref=e785]:
+                    - listitem [ref=e786]:
+                      - link "Home" [ref=e787] [cursor=pointer]:
+                        - /url: /
+                        - generic [ref=e788]: Home
+                    - listitem [ref=e789]:
+                      - img [ref=e790]
+                    - listitem [ref=e792]:
+                      - link "Documents" [ref=e793] [cursor=pointer]:
+                        - /url: /documents
+                        - generic [ref=e794]: Documents
+                    - listitem [ref=e795]:
+                      - img [ref=e796]
+                    - listitem [ref=e798]:
+                      - generic [ref=e800]: Add Document
+              - generic [ref=e801]:
+                - heading "Slash + Home Icon" [level=4] [ref=e802]
+                - navigation "Breadcrumb" [ref=e804]:
+                  - list [ref=e805]:
+                    - listitem [ref=e806]:
+                      - link "Home" [ref=e807] [cursor=pointer]:
+                        - /url: /
+                        - img [ref=e808]
+                        - generic [ref=e811]: Home
+                    - listitem [ref=e812]:
+                      - generic [ref=e813]: /
+                    - listitem [ref=e814]:
+                      - link "Documents" [ref=e815] [cursor=pointer]:
+                        - /url: /documents
+                        - generic [ref=e816]: Documents
+                    - listitem [ref=e817]:
+                      - generic [ref=e818]: /
+                    - listitem [ref=e819]:
+                      - generic [ref=e821]: Add Document
+              - generic [ref=e822]:
+                - heading "Double Chevron + All Icons" [level=4] [ref=e823]
+                - navigation "Breadcrumb" [ref=e825]:
+                  - list [ref=e826]:
+                    - listitem [ref=e827]:
+                      - link "Home" [ref=e828] [cursor=pointer]:
+                        - /url: /
+                        - img [ref=e829]
+                        - generic [ref=e832]: Home
+                    - listitem [ref=e833]:
+                      - img [ref=e834]
+                    - listitem [ref=e837]:
+                      - link "Documents" [ref=e838] [cursor=pointer]:
+                        - /url: /documents
+                        - img [ref=e839]
+                        - generic [ref=e841]: Documents
+                    - listitem [ref=e842]:
+                      - img [ref=e843]
+                    - listitem [ref=e846]:
+                      - generic [ref=e847]:
+                        - img [ref=e848]
+                        - generic [ref=e851]: Add Document
+              - generic [ref=e852]:
+                - heading "Dot Separator" [level=4] [ref=e853]
+                - navigation "Breadcrumb" [ref=e855]:
+                  - list [ref=e856]:
+                    - listitem [ref=e857]:
+                      - link "Home" [ref=e858] [cursor=pointer]:
+                        - /url: /
+                        - generic [ref=e859]: Home
+                    - listitem [ref=e860]:
+                      - generic [ref=e861]: ·
+                    - listitem [ref=e862]:
+                      - link "Documents" [ref=e863] [cursor=pointer]:
+                        - /url: /documents
+                        - generic [ref=e864]: Documents
+                    - listitem [ref=e865]:
+                      - generic [ref=e866]: ·
+                    - listitem [ref=e867]:
+                      - generic [ref=e869]: Add Document
+              - generic [ref=e870]:
+                - heading "Pill Variant" [level=4] [ref=e871]
+                - navigation "Breadcrumb" [ref=e873]:
+                  - list [ref=e874]:
+                    - listitem [ref=e875]:
+                      - link "Home" [ref=e876] [cursor=pointer]:
+                        - /url: /
+                        - generic [ref=e877]: Home
+                    - listitem [ref=e878]:
+                      - img [ref=e879]
+                    - listitem [ref=e881]:
+                      - link "Documents" [ref=e882] [cursor=pointer]:
+                        - /url: /documents
+                        - generic [ref=e883]: Documents
+                    - listitem [ref=e884]:
+                      - img [ref=e885]
+                    - listitem [ref=e887]:
+                      - generic [ref=e889]: Add Document
+              - generic [ref=e890]:
+                - heading "Pill + Icon + Dropdown" [level=4] [ref=e891]
+                - navigation "Breadcrumb" [ref=e893]:
+                  - list [ref=e894]:
+                    - listitem [ref=e895]:
+                      - link "Home" [ref=e896] [cursor=pointer]:
+                        - /url: /
+                        - img [ref=e897]
+                        - generic [ref=e900]: Home
+                    - listitem [ref=e901]:
+                      - generic [ref=e902]: /
+                    - listitem [ref=e903]:
+                      - link "Documents" [ref=e904] [cursor=pointer]:
+                        - /url: /documents
+                        - generic [ref=e905]: Documents
+                    - listitem [ref=e906]:
+                      - generic [ref=e907]: /
+                    - listitem [ref=e908]:
+                      - generic [ref=e909]:
+                        - generic [ref=e910]: Add Document
+                        - img [ref=e911]
+              - generic [ref=e913]:
+                - heading "Collapsed Middle Items" [level=4] [ref=e914]
+                - navigation "Breadcrumb" [ref=e916]:
+                  - list [ref=e917]:
+                    - listitem [ref=e918]:
+                      - link "Home" [ref=e919] [cursor=pointer]:
+                        - /url: /
+                        - img [ref=e920]
+                        - generic [ref=e923]: Home
+                    - listitem [ref=e924]:
+                      - img [ref=e925]
+                    - listitem [ref=e928]:
+                      - link [ref=e929] [cursor=pointer]:
+                        - /url: /documents
+                        - img [ref=e930]
+                    - listitem [ref=e932]:
+                      - img [ref=e933]
+                    - listitem [ref=e936]:
+                      - generic [ref=e938]: Add Document
+              - generic [ref=e939]:
+                - heading "Contained" [level=4] [ref=e940]
+                - navigation "Breadcrumb" [ref=e942]:
+                  - list [ref=e943]:
+                    - listitem [ref=e944]:
+                      - link "Home" [ref=e945] [cursor=pointer]:
+                        - /url: /
+                        - img [ref=e946]
+                        - generic [ref=e949]: Home
+                    - listitem [ref=e950]:
+                      - img [ref=e951]
+                    - listitem [ref=e953]:
+                      - link "Documents" [ref=e954] [cursor=pointer]:
+                        - /url: /documents
+                        - generic [ref=e955]: Documents
+                    - listitem [ref=e956]:
+                      - img [ref=e957]
+                    - listitem [ref=e959]:
+                      - generic [ref=e961]: Add Document
+          - generic [ref=e962]:
+            - generic [ref=e963]:
+              - generic [ref=e964]: ds-tabs
+              - heading "Tabs" [level=3] [ref=e965]
+              - paragraph [ref=e966]: Atomic tabs configured via bg, color, shadow, icon, orientation, border, and label properties.
+            - generic [ref=e967]:
+              - generic [ref=e968]:
+                - heading "Segmented Pill (Sunken list, Surface tab, Foreground text)" [level=4] [ref=e969]
+                - generic [ref=e971]:
+                  - generic:
+                    - tablist [ref=e973]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e975] [cursor=pointer]:
+                          - img [ref=e977]
+                          - generic [ref=e979]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e981] [cursor=pointer]:
+                          - generic [ref=e982]:
+                            - generic: Favorites
+                          - img [ref=e984]
+                        - tab [ref=e987] [cursor=pointer]:
+                          - img [ref=e989]
+                        - tab "Settings" [ref=e994] [cursor=pointer]:
+                          - generic [ref=e995]:
+                            - generic: Settings
+                    - tabpanel [ref=e999]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1000]:
+                - heading "Segmented Top Icons" [level=4] [ref=e1001]
+                - generic [ref=e1003]:
+                  - generic:
+                    - tablist [ref=e1005]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1007] [cursor=pointer]:
+                          - img [ref=e1009]
+                          - generic [ref=e1011]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1013] [cursor=pointer]:
+                          - img [ref=e1015]
+                          - generic [ref=e1017]:
+                            - generic: Favorites
+                        - tab [ref=e1019] [cursor=pointer]:
+                          - img [ref=e1021]
+                        - tab "Settings" [ref=e1026] [cursor=pointer]:
+                          - generic [ref=e1027]:
+                            - generic: Settings
+                    - tabpanel [ref=e1031]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1032]:
+                - heading "Outlined Pill" [level=4] [ref=e1033]
+                - generic [ref=e1035]:
+                  - generic:
+                    - tablist [ref=e1037]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1039] [cursor=pointer]:
+                          - img [ref=e1041]
+                          - generic [ref=e1043]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1045] [cursor=pointer]:
+                          - generic [ref=e1046]:
+                            - generic: Favorites
+                          - img [ref=e1048]
+                        - tab [ref=e1051] [cursor=pointer]:
+                          - img [ref=e1053]
+                        - tab "Settings" [ref=e1058] [cursor=pointer]:
+                          - generic [ref=e1059]:
+                            - generic: Settings
+                    - tabpanel [ref=e1063]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1064]:
+                - heading "Folder Tabs" [level=4] [ref=e1065]
+                - generic [ref=e1067]:
+                  - generic:
+                    - tablist [ref=e1069]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1071] [cursor=pointer]:
+                          - img [ref=e1073]
+                          - generic [ref=e1075]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1077] [cursor=pointer]:
+                          - generic [ref=e1078]:
+                            - generic: Favorites
+                          - img [ref=e1080]
+                        - tab [ref=e1083] [cursor=pointer]:
+                          - img [ref=e1085]
+                        - tab "Settings" [ref=e1090] [cursor=pointer]:
+                          - generic [ref=e1091]:
+                            - generic: Settings
+                    - tabpanel [ref=e1095]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1096]:
+                - heading "Vertical Pill" [level=4] [ref=e1097]
+                - generic [ref=e1099]:
+                  - generic:
+                    - tablist [ref=e1101]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1103] [cursor=pointer]:
+                          - img [ref=e1105]
+                          - generic [ref=e1107]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1109] [cursor=pointer]:
+                          - generic [ref=e1110]:
+                            - generic: Favorites
+                          - img [ref=e1112]
+                        - tab [ref=e1115] [cursor=pointer]:
+                          - img [ref=e1117]
+                        - tab "Settings" [ref=e1122] [cursor=pointer]:
+                          - generic [ref=e1123]:
+                            - generic: Settings
+                    - tabpanel [ref=e1127]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1128]:
+                - heading "Segmented-like (BG + Shadow)" [level=4] [ref=e1129]
+                - generic [ref=e1131]:
+                  - generic:
+                    - tablist [ref=e1133]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1135] [cursor=pointer]:
+                          - img [ref=e1137]
+                          - generic [ref=e1139]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1141] [cursor=pointer]:
+                          - generic [ref=e1142]:
+                            - generic: Favorites
+                          - img [ref=e1144]
+                        - tab [ref=e1147] [cursor=pointer]:
+                          - img [ref=e1149]
+                        - tab "Settings" [ref=e1154] [cursor=pointer]:
+                          - generic [ref=e1155]:
+                            - generic: Settings
+                    - tabpanel [ref=e1159]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1160]:
+                - heading "Underlined (Animated Line Indicator)" [level=4] [ref=e1161]
+                - generic [ref=e1163]:
+                  - generic:
+                    - tablist [ref=e1165]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1167] [cursor=pointer]:
+                          - img [ref=e1169]
+                          - generic [ref=e1171]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1173] [cursor=pointer]:
+                          - generic [ref=e1174]:
+                            - generic: Favorites
+                          - img [ref=e1176]
+                        - tab [ref=e1179] [cursor=pointer]:
+                          - img [ref=e1181]
+                        - tab "Settings" [ref=e1186] [cursor=pointer]:
+                          - generic [ref=e1187]:
+                            - generic: Settings
+                    - tabpanel [ref=e1191]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1192]:
+                - heading "Vertical Line Indicator" [level=4] [ref=e1193]
+                - generic [ref=e1195]:
+                  - generic:
+                    - tablist [ref=e1197]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1199] [cursor=pointer]:
+                          - img [ref=e1201]
+                          - generic [ref=e1203]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1205] [cursor=pointer]:
+                          - generic [ref=e1206]:
+                            - generic: Favorites
+                          - img [ref=e1208]
+                        - tab [ref=e1211] [cursor=pointer]:
+                          - img [ref=e1213]
+                        - tab "Settings" [ref=e1218] [cursor=pointer]:
+                          - generic [ref=e1219]:
+                            - generic: Settings
+                    - tabpanel [ref=e1223]:
+                      - generic: "Panel 1: Icon at start."
+              - generic [ref=e1224]:
+                - heading "Solid Vertical" [level=4] [ref=e1225]
+                - generic [ref=e1227]:
+                  - generic:
+                    - tablist [ref=e1229]:
+                      - generic:
+                        - tab "Explore" [selected] [ref=e1231] [cursor=pointer]:
+                          - img [ref=e1233]
+                          - generic [ref=e1235]:
+                            - generic: Explore
+                        - tab "Favorites" [ref=e1237] [cursor=pointer]:
+                          - generic [ref=e1238]:
+                            - generic: Favorites
+                          - img [ref=e1240]
+                        - tab [ref=e1243] [cursor=pointer]:
+                          - img [ref=e1245]
+                        - tab "Settings" [ref=e1250] [cursor=pointer]:
+                          - generic [ref=e1251]:
+                            - generic: Settings
+                    - tabpanel [ref=e1255]:
+                      - generic: "Panel 1: Icon at start."
+          - generic [ref=e1256]:
+            - generic [ref=e1257]:
+              - generic [ref=e1258]: ds-dialog
+              - heading "Dialog" [level=3] [ref=e1259]
+              - paragraph [ref=e1260]: Modal surface for confirmations, focused tasks, and blocking decisions.
+            - generic [ref=e1261]:
+              - generic [ref=e1262]:
+                - button "Open dialog" [ref=e1264] [cursor=pointer]:
+                  - generic: Open dialog
+                - button "Large dialog" [ref=e1266] [cursor=pointer]:
+                  - generic: Large dialog
+              - table "Dialog attributes" [ref=e1267]:
+                - caption [ref=e1268]: Dialog attributes
+                - rowgroup [ref=e1269]:
+                  - row "open boolean" [ref=e1270]:
+                    - rowheader "open" [ref=e1271]:
+                      - code [ref=e1272]: open
+                    - cell "boolean" [ref=e1273]
+                  - row "size sm, md, lg, fullscreen" [ref=e1274]:
+                    - rowheader "size" [ref=e1275]:
+                      - code [ref=e1276]: size
+                    - cell "sm, md, lg, fullscreen" [ref=e1277]:
+                      - code [ref=e1278]: sm
+                      - text: ","
+                      - code [ref=e1279]: md
+                      - text: ","
+                      - code [ref=e1280]: lg
+                      - text: ","
+                      - code [ref=e1281]: fullscreen
+                  - row "label accessible title text" [ref=e1282]:
+                    - rowheader "label" [ref=e1283]:
+                      - code [ref=e1284]: label
+                    - cell "accessible title text" [ref=e1285]
+                  - row "persistent disables Escape and backdrop close" [ref=e1286]:
+                    - rowheader "persistent" [ref=e1287]:
+                      - code [ref=e1288]: persistent
+                    - cell "disables Escape and backdrop close" [ref=e1289]
+              - code [ref=e1291]: <ds-dialog label="Confirm action" size="md"> Dialog content <ds-button slot="footer">Confirm</ds-button> </ds-dialog>
+          - generic [ref=e1292]:
+            - generic [ref=e1293]:
+              - generic [ref=e1294]: ds-drawer
+              - heading "Drawer" [level=3] [ref=e1295]
+              - paragraph [ref=e1296]: Edge-attached overlay for filters, navigation, and contextual panels.
+            - generic [ref=e1297]:
+              - generic [ref=e1298]:
+                - button "Open drawer" [ref=e1300] [cursor=pointer]:
+                  - generic: Open drawer
+                - button "Bottom drawer" [ref=e1302] [cursor=pointer]:
+                  - generic: Bottom drawer
+              - table "Drawer attributes" [ref=e1303]:
+                - caption [ref=e1304]: Drawer attributes
+                - rowgroup [ref=e1305]:
+                  - row "open boolean" [ref=e1306]:
+                    - rowheader "open" [ref=e1307]:
+                      - code [ref=e1308]: open
+                    - cell "boolean" [ref=e1309]
+                  - row "placement left, right, top, bottom" [ref=e1310]:
+                    - rowheader "placement" [ref=e1311]:
+                      - code [ref=e1312]: placement
+                    - cell "left, right, top, bottom" [ref=e1313]:
+                      - code [ref=e1314]: left
+                      - text: ","
+                      - code [ref=e1315]: right
+                      - text: ","
+                      - code [ref=e1316]: top
+                      - text: ","
+                      - code [ref=e1317]: bottom
+                  - row "size sm, md, lg" [ref=e1318]:
+                    - rowheader "size" [ref=e1319]:
+                      - code [ref=e1320]: size
+                    - cell "sm, md, lg" [ref=e1321]:
+                      - code [ref=e1322]: sm
+                      - text: ","
+                      - code [ref=e1323]: md
+                      - text: ","
+                      - code [ref=e1324]: lg
+                  - row "persistent disables Escape and backdrop close" [ref=e1325]:
+                    - rowheader "persistent" [ref=e1326]:
+                      - code [ref=e1327]: persistent
+                    - cell "disables Escape and backdrop close" [ref=e1328]
+              - code [ref=e1330]: <ds-drawer label="Filters" placement="right" size="md"> Filter controls </ds-drawer>
+          - generic [ref=e1331]:
+            - generic [ref=e1332]:
+              - generic [ref=e1333]: ds-menu
+              - heading "Menu" [level=3] [ref=e1334]
+              - paragraph [ref=e1335]:
+                - text: Anchor-positioned floating panel. Wraps
+                - code [ref=e1336]: ds-menu-item
+                - text: ","
+                - code [ref=e1337]: ds-menu-separator
+                - text: ", and"
+                - code [ref=e1338]: ds-menu-header
+                - text: .
+            - generic [ref=e1339]:
+              - generic [ref=e1340]:
+                - button "User Profile" [ref=e1343] [cursor=pointer]:
+                  - generic: User Profile
+                - button "Actions ▾" [ref=e1346] [cursor=pointer]:
+                  - generic: Actions ▾
+              - table "Menu attributes" [ref=e1347]:
+                - caption [ref=e1348]: Menu attributes
+                - rowgroup [ref=e1349]:
+                  - row "anchor CSS selector for trigger element" [ref=e1350]:
+                    - rowheader "anchor" [ref=e1351]:
+                      - code [ref=e1352]: anchor
+                    - cell "CSS selector for trigger element" [ref=e1353]
+                  - row "placement bottom-start, bottom-end, top-start, top-end" [ref=e1354]:
+                    - rowheader "placement" [ref=e1355]:
+                      - code [ref=e1356]: placement
+                    - cell "bottom-start, bottom-end, top-start, top-end" [ref=e1357]:
+                      - code [ref=e1358]: bottom-start
+                      - text: ","
+                      - code [ref=e1359]: bottom-end
+                      - text: ","
+                      - code [ref=e1360]: top-start
+                      - text: ","
+                      - code [ref=e1361]: top-end
+                  - row "size sm, md, lg" [ref=e1362]:
+                    - rowheader "size" [ref=e1363]:
+                      - code [ref=e1364]: size
+                    - cell "sm, md, lg" [ref=e1365]:
+                      - code [ref=e1366]: sm
+                      - text: ","
+                      - code [ref=e1367]: md
+                      - text: ","
+                      - code [ref=e1368]: lg
+                  - row "open boolean — show/hide" [ref=e1369]:
+                    - rowheader "open" [ref=e1370]:
+                      - code [ref=e1371]: open
+                    - cell "boolean — show/hide" [ref=e1372]
+              - code [ref=e1374]: <ds-button id="trigger">Profile</ds-button> <ds-menu anchor="#trigger" placement="bottom-start"> <ds-menu-header name="Phillip George" email="p@example.com" avatar="PG"></ds-menu-header> <ds-menu-separator></ds-menu-separator> <ds-menu-item label="Profile" icon="user"></ds-menu-item> <ds-menu-item label="Sign out" icon="link"></ds-menu-item> </ds-menu>
+        - region "07 Layouts" [ref=e1375]:
+          - generic [ref=e1376]:
+            - heading "07 Layouts" [level=2] [ref=e1377]
+            - paragraph [ref=e1378]: Layout specimens document responsive structure, spacing controls, and composition patterns without adding product data or page-level application behavior.
+          - generic [ref=e1379]:
+            - generic [ref=e1380]:
+              - generic [ref=e1381]: product-grid
+              - heading "Responsive product grid" [level=3] [ref=e1382]
+              - paragraph [ref=e1383]: Use this specimen to evaluate max width, outside margin, column count, and filter placement.
+            - generic [ref=e1384]:
+              - form "Product grid layout controls" [ref=e1385]:
+                - generic [ref=e1386]:
+                  - generic [ref=e1387]: Max width
+                  - combobox "Max width" [ref=e1388]:
+                    - option "960px"
+                    - option "1120px" [selected]
+                    - option "1280px"
+                    - option "100%"
+                - generic [ref=e1389]:
+                  - generic [ref=e1390]: Margin
+                  - combobox "Margin" [ref=e1391]:
+                    - option "0px"
+                    - option "16px"
+                    - option "24px" [selected]
+                    - option "32px"
+                - generic [ref=e1392]:
+                  - generic [ref=e1393]: Max columns
+                  - combobox "Max columns" [ref=e1394]:
+                    - option "2"
+                    - option "3"
+                    - option "4" [selected]
+                    - option "5"
+                    - option "6"
+                    - option "7"
+                    - option "8"
+                - generic [ref=e1395]:
+                  - generic [ref=e1396]: Filter position
+                  - combobox "Filter position" [ref=e1397]:
+                    - option "Side" [selected]
+                    - option "Top"
+                    - option "Curtain"
+                - generic [ref=e1398]:
+                  - checkbox "Show filters" [checked] [ref=e1399]
+                  - generic [ref=e1400]: Show filters
+              - generic [ref=e1402]:
+                - complementary "Filter block" [ref=e1403]:
+                  - generic [ref=e1405]: Filters
+                - generic "Product placeholder grid" [ref=e1413]:
+                  - article [ref=e1414]
+                  - article [ref=e1419]
+                  - article [ref=e1424]
+                  - article [ref=e1429]
+                  - article [ref=e1434]
+                  - article [ref=e1439]
+                  - article [ref=e1444]
+                  - article [ref=e1449]
+              - code [ref=e1455]: "<div class=\"product-grid\" style=\"--max-width: 1120px; --margin: 24px; --columns: 4;\" data-filter-position=\"side\" data-filters-enabled=\"true\"> <aside>Filter block</aside> <div>Responsive product cards</div> </div>"
+        - region "08 Usage" [ref=e1456]:
+          - generic [ref=e1457]:
+            - heading "08 Usage" [level=2] [ref=e1458]
+            - paragraph [ref=e1459]: The demo uses native ES modules and a Sass-only build step. There is no JavaScript bundler requirement for this MVP.
+          - generic [ref=e1460]:
+            - article [ref=e1461]:
+              - generic [ref=e1462]: Page setup
+              - code [ref=e1464]: <link rel="stylesheet" href="/dist/tokens.css"> <script type="module" src="/components/index.js"></script>
+            - article [ref=e1465]:
+              - generic [ref=e1466]: Build commands
+              - code [ref=e1468]: npm.cmd install npm.cmd run build npm.cmd run demo
+          - generic [ref=e1469]:
+            - heading "Theme control" [level=3] [ref=e1470]
+            - paragraph [ref=e1471]:
+              - text: Dark mode is a semantic-token override on
+              - code [ref=e1472]: html[data-theme="dark"]
+              - text: . Component styles keep referencing the same Tier 2 tokens.
+      - contentinfo [ref=e1473]:
+        - link "Back to top" [ref=e1474] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e1475]: DS
+          - generic [ref=e1476]: Commerce Design System
+        - generic [ref=e1477]:
+          - link "Back to foundations" [ref=e1478] [cursor=pointer]:
+            - /url: "#foundations"
+          - link "Components" [ref=e1479] [cursor=pointer]:
+            - /url: "#components"
+          - link "Layouts" [ref=e1480] [cursor=pointer]:
+            - /url: "#layouts"
+          - link "Usage" [ref=e1481] [cursor=pointer]:
+            - /url: "#usage"
+        - paragraph [ref=e1482]: Built as a reusable token and Web Component boilerplate.

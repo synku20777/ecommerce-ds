@@ -1,17 +1,21 @@
 {
-  "name": "ecommerce-ds",
-  "version": "0.1.0",
-  "private": true,
-  "description": "E-commerce design system boilerplate — 3-tier token architecture with Web Components",
-  "scripts": {
-    "build:tokens": "sass tokens/tokens.scss dist/tokens.css --style=expanded --no-source-map",
-    "build:components": "sass components/ds-badge/ds-badge.scss:dist/ds-badge.css components/ds-button/ds-button.scss:dist/ds-button.css components/ds-input/ds-input.scss:dist/ds-input.css components/ds-toggle/ds-toggle.scss:dist/ds-toggle.css components/ds-surface/ds-surface.scss:dist/ds-surface.css components/ds-breadcrumb/ds-breadcrumb.scss:dist/ds-breadcrumb.css components/ds-tabs/ds-tabs.scss:dist/ds-tabs.css components/ds-dialog/ds-dialog.scss:dist/ds-dialog.css components/ds-drawer/ds-drawer.scss:dist/ds-drawer.css components/ds-menu-item/ds-menu-item.scss:dist/ds-menu-item.css components/ds-menu/ds-menu.scss:dist/ds-menu.css components/ds-menu-separator/ds-menu-separator.scss:dist/ds-menu-separator.css components/ds-menu-header/ds-menu-header.scss:dist/ds-menu-header.css components/ds-accordion/ds-accordion.scss:dist/ds-accordion.css components/ds-table/ds-table.scss:dist/ds-table.css --style=expanded --no-source-map --load-path=tokens --load-path=base",
-    "build": "npm run build:tokens && npm run build:components",
-    "watch": "sass --watch tokens/tokens.scss:dist/tokens.css components/ds-badge/ds-badge.scss:dist/ds-badge.css components/ds-button/ds-button.scss:dist/ds-button.css components/ds-input/ds-input.scss:dist/ds-input.css components/ds-toggle/ds-toggle.scss:dist/ds-toggle.css components/ds-surface/ds-surface.scss:dist/ds-surface.css components/ds-breadcrumb/ds-breadcrumb.scss:dist/ds-breadcrumb.css components/ds-tabs/ds-tabs.scss:dist/ds-tabs.css components/ds-dialog/ds-dialog.scss:dist/ds-dialog.css components/ds-drawer/ds-drawer.scss:dist/ds-drawer.css components/ds-menu-item/ds-menu-item.scss:dist/ds-menu-item.css components/ds-menu/ds-menu.scss:dist/ds-menu.css components/ds-menu-separator/ds-menu-separator.scss:dist/ds-menu-separator.css components/ds-menu-header/ds-menu-header.scss:dist/ds-menu-header.css components/ds-accordion/ds-accordion.scss:dist/ds-accordion.css components/ds-table/ds-table.scss:dist/ds-table.css --style=expanded --no-source-map --load-path=tokens --load-path=base",
-    "demo": "npx serve ."
+  "name": "astro-react-ds",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "devDependencies": {
-    "sass": "^1.83.0",
-    "serve": "^14.2.0"
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5.0.3",
+    "astro": "^6.1.8",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "sass": "^1.99.0"
   }
 }

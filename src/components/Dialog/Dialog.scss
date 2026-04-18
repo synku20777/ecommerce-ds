@@ -1,0 +1,113 @@
+.ds-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ds-overlay-z-index);
+  display: grid;
+  place-items: center;
+  padding: var(--space-lg);
+  color: var(--ds-dialog-text);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--ds-overlay-transition), visibility var(--ds-overlay-transition);
+}
+
+.ds-dialog--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ds-dialog__backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--ds-overlay-backdrop-bg);
+}
+
+.ds-dialog__panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--ds-dialog-gap);
+  width: min(100%, var(--ds-dialog-width-md));
+  max-height: min(42rem, calc(100vh - var(--space-2xl)));
+  overflow: auto;
+  padding: var(--ds-dialog-padding);
+  border: 1px solid var(--ds-dialog-border);
+  border-radius: var(--ds-dialog-radius);
+  background: var(--ds-dialog-bg);
+  box-shadow: var(--ds-dialog-shadow);
+  outline: none;
+}
+
+.ds-dialog__panel--sm {
+  width: min(100%, var(--ds-dialog-width-sm));
+}
+
+.ds-dialog__panel--lg {
+  width: min(100%, var(--ds-dialog-width-lg));
+}
+
+.ds-dialog__panel--fullscreen {
+  width: min(100%, calc(100vw - var(--space-2xl)));
+  min-height: calc(100vh - var(--space-2xl));
+}
+
+.ds-dialog__panel:focus-visible {
+  box-shadow: var(--ds-dialog-shadow), var(--focus-ring);
+}
+
+.ds-dialog__header,
+.ds-dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.ds-dialog__title {
+  margin: 0;
+  font-size: var(--type-heading-s);
+  line-height: var(--type-leading-tight);
+}
+
+.ds-dialog__body {
+  color: var(--color-text-secondary);
+}
+
+.ds-dialog__footer:empty {
+  display: none;
+}
+
+.ds-dialog__close {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--ds-overlay-transition), border-color var(--ds-overlay-transition);
+}
+
+.ds-dialog__close:hover,
+.ds-dialog__close:focus-visible {
+  border-color: var(--color-border-focus);
+  background: var(--color-bg-sunken);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .ds-dialog {
+    padding: var(--space-md);
+  }
+
+  .ds-dialog__panel {
+    max-height: calc(100vh - var(--space-lg));
+  }
+}

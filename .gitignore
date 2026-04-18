@@ -1,25 +1,24 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
 node_modules/
 
-# Local environment and editor noise
-.env
-.env.*
-.vscode/
-.idea/
-
-# Logs
-*.log
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.server-smoke.*
+pnpm-debug.log*
 
-# Local browser smoke-test artifacts
-.playwright-cli/
 
-# Accidental Sass output outside the canonical dist/ target
-tokens/*.css
-tokens/*.css.map
+# environment variables
+.env
+.env.production
 
-# OS files
+# macOS-specific files
 .DS_Store
-Thumbs.db
+
+# jetbrains setting folder
+.idea/

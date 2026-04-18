@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Button from '@components/Button/Button';
+import Badge from '@components/Badge/Badge';
+import Surface from '@components/Surface/Surface';
+import Input from '@components/Input/Input';
+import Toggle, { ToggleExample } from '@components/Toggle/Toggle';
+import Tabs, { TabsExample } from '@components/Tabs/Tabs';
+import Accordion, { AccordionExample } from '@components/Accordion/Accordion';
+import { DialogExample } from '@components/Dialog/Dialog';
+import { DrawerExample } from '@components/Drawer/Drawer';
+import Menu, { MenuExample } from '@components/Menu/Menu';
+import Table, { TableExample, type TableColumn } from '@components/Table/Table';
+
+type ProductRow = {
+  id: string;
+  sku: string;
+  name: string;
+  status: string;
+  price: string;
+};
+
+const products: ProductRow[] = [
+  { id: 'p1', sku: 'SKU-1001', name: 'Noise-Canceling Headphones', status: 'In Stock', price: '$199.00' },
+  { id: 'p2', sku: 'SKU-1002', name: 'Mechanical Keyboard', status: 'Backorder', price: '$129.00' },
+  { id: 'p3', sku: 'SKU-1003', name: '4K Webcam', status: 'In Stock', price: '$89.00' },
+];
+
+const productColumns: TableColumn<ProductRow>[] = [
+  { key: 'sku', header: 'SKU', accessor: 'sku' },
+  { key: 'name', header: 'Product', accessor: 'name' },
+  { key: 'status', header: 'Status', accessor: 'status' },
+  { key: 'price', header: 'Price', accessor: 'price', align: 'right' },
+];
+---
+
+<Layout title="Commerce DS | Astro + React">
+  <main class="docs-shell">
+    <header class="docs-hero">
+      <div>
+        <p class="docs-eyebrow">React + TypeScript Migration</p>
+        <h1>E-Commerce Design System</h1>
+        <p>
+          Living documentation for the migrated component library, rendered by Astro and hydrated only where
+          interaction requires it.
+        </p>
+      </div>
+      <button type="button" class="theme-toggle" data-theme-toggle>Switch to Dark</button>
+    </header>
+
+    <nav class="docs-nav" aria-label="Section navigation">
+      <a href="#primitives">Primitives</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#navigation">Navigation</a>
+      <a href="#overlays">Overlays</a>
+      <a href="#data">Data Display</a>
+    </nav>
+
+    <section id="primitives" class="docs-section">
+      <h2>Primitives</h2>
+
+      <article class="docs-card">
+        <h3>Buttons</h3>
+        <div class="docs-row">
+          <Button>Default</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="ghost">Ghost</Button>
+        </div>
+      </article>
+
+      <article class="docs-card">
+        <h3>Badges</h3>
+        <div class="docs-row">
+          <Badge>Default</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="outline">Outline</Badge>
+          <Badge variant="text-dot">Shipping</Badge>
+        </div>
+      </article>
+
+      <article class="docs-card">
+        <h3>Surface</h3>
+        <div class="docs-grid-2">
+          <Surface variant="card" className="sample-surface">
+            <h4>Card Surface</h4>
+            <p>Token-driven surface with semantic foreground/background mapping.</p>
+          </Surface>
+          <Surface variant="chip" removable>
+            Express Delivery
+          </Surface>
+        </div>
+      </article>
+    </section>
+
+    <section id="inputs" class="docs-section">
+      <h2>Inputs</h2>
+
+      <article class="docs-card">
+        <h3>Form Controls</h3>
+        <div class="docs-grid-2">
+          <Input label="Email" type="email" placeholder="team@commerce.dev" helper="Used for order alerts" />
+          <Input label="Category" type="select" defaultValue="electronics">
+            <option value="electronics">Electronics</option>
+            <option value="home">Home</option>
+            <option value="accessories">Accessories</option>
+          </Input>
+        </div>
+      </article>
+
+      <article class="docs-card">
+        <h3>Toggle</h3>
+        <ToggleExample client:load />
+      </article>
+    </section>
+
+    <section id="navigation" class="docs-section">
+      <h2>Navigation</h2>
+
+      <article class="docs-card">
+        <h3>Tabs (Compound API)</h3>
+        <TabsExample client:load />
+      </article>
+
+      <article class="docs-card">
+        <h3>Accordion (Compound API)</h3>
+        <AccordionExample client:load />
+      </article>
+
+      <article class="docs-card">
+        <h3>Breadcrumb (Static HTML)</h3>
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Catalog</a></li>
+            <li aria-current="page">Headphones</li>
+          </ol>
+        </nav>
+      </article>
+    </section>
+
+    <section id="overlays" class="docs-section">
+      <h2>Overlays</h2>
+
+      <article class="docs-card">
+        <h3>Dialog</h3>
+        <DialogExample client:idle />
+      </article>
+
+      <article class="docs-card">
+        <h3>Drawer</h3>
+        <DrawerExample client:idle />
+      </article>
+
+      <article class="docs-card">
+        <h3>Menu (Compound API)</h3>
+        <MenuExample client:idle />
+      </article>
+    </section>
+
+    <section id="data" class="docs-section">
+      <h2>Data Display</h2>
+
+      <article class="docs-card">
+        <h3>Table (Data API)</h3>
+        <Table columns={productColumns} data={products} rowKey="id" striped hover bordered ariaLabel="Product inventory table" />
+      </article>
+
+      <article class="docs-card">
+        <h3>Table (Declarative Compound API)</h3>
+        <TableExample />
+      </article>
+    </section>
+  </main>
+
+  <style is:global>
+    .docs-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-xl);
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+    }
+
+    .docs-hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-bg-accent) 16%, transparent), var(--color-bg-page));
+    }
+
+    .docs-eyebrow {
+      margin: 0 0 var(--space-xs);
+      color: var(--color-text-accent);
+      font-size: var(--type-label-s);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-family-mono);
+    }
+
+    .docs-hero h1,
+    .docs-hero p,
+    .docs-section h2,
+    .docs-card h3,
+    .sample-surface h4,
+    .sample-surface p {
+      margin: 0;
+    }
+
+    .theme-toggle,
+    .docs-menu-trigger {
+      min-height: 2.5rem;
+      padding: 0 var(--space-md);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-md);
+      background: var(--color-bg-surface);
+      color: var(--color-text-primary);
+      cursor: pointer;
+    }
+
+    .docs-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .docs-nav a {
+      text-decoration: none;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-full);
+      background: var(--color-bg-surface);
+    }
+
+    .docs-section {
+      display: grid;
+      gap: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .docs-card {
+      display: grid;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-surface);
+    }
+
+    .docs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .docs-stack {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .docs-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+      align-items: start;
+    }
+
+    .sample-surface {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .breadcrumb {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: var(--space-xs);
+      align-items: center;
+      color: var(--color-text-secondary);
+    }
+
+    .breadcrumb li + li::before {
+      content: '/';
+      margin-right: var(--space-xs);
+      color: var(--color-text-tertiary);
+    }
+
+    @media (max-width: 900px) {
+      .docs-shell {
+        padding: var(--space-md);
+      }
+
+      .docs-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Layout>

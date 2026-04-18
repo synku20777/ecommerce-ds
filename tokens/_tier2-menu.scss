@@ -3,7 +3,10 @@
 // Covers ds-menu panel, ds-menu-separator, ds-menu-header
 // ═══════════════════════════════════════════════════════════
 
-:root {
+.ds-menu,
+.ds-menu-item,
+.ds-menu-header,
+.ds-menu-separator {
   // Panel
   --ds-menu-bg: var(--color-bg-surface);
   --ds-menu-border: var(--color-border-subtle);

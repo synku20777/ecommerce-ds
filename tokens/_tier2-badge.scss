@@ -1,7 +1,7 @@
 // Tier 2 - Badge Component Tokens
 // Scoped to ds-badge. References Tier 1 semantic tokens.
 
-:root {
+.ds-badge {
   // Variant colors
   --ds-badge-default-bg:             var(--color-bg-accent);
   --ds-badge-default-text:           var(--color-text-on-accent);

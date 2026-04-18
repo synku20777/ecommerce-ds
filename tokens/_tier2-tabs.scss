@@ -3,7 +3,7 @@
 // Scoped to ds-tabs. References Tier 1 semantic tokens.
 // ═══════════════════════════════════════════════════════════
 
-:root {
+.ds-tabs {
   --ds-tabs-transition:           var(--transition-fast);
   --ds-tabs-focus-ring:           var(--focus-ring);
   
