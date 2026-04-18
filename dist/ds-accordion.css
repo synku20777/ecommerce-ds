@@ -54,9 +54,11 @@
   transition: background-color var(--ds-accordion-transition), color var(--ds-accordion-transition);
   outline: none;
 }
+.ds-accordion__trigger:hover:not(:disabled) {
+  color: var(--color-text-accent);
+}
 .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 .ds-accordion__trigger:focus-visible {
   box-shadow: var(--focus-ring);
@@ -144,10 +146,10 @@
 }
 .ds-accordion--default .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 .ds-accordion--default .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .ds-accordion--bordered {
@@ -157,10 +159,10 @@
 }
 .ds-accordion--bordered .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 .ds-accordion--bordered .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .ds-accordion--separated {
@@ -169,6 +171,7 @@
 
 .ds-accordion--ghost .ds-accordion__trigger:hover:not(:disabled) {
   background: var(--color-bg-sunken);
+  color: var(--color-text-accent);
 }
 
 :host(.ds-accordion--bordered-host),
@@ -431,11 +434,11 @@
 
 :host([data-variant=default]) .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 
 :host([data-variant=default]) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 :host([data-variant=bordered]) .ds-accordion__item {
@@ -448,11 +451,11 @@
 
 :host([data-variant=bordered]) .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 
 :host([data-variant=bordered]) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 :host([data-variant=separated]) .ds-accordion__item {
@@ -464,11 +467,11 @@
 
 :host([data-variant=separated]) .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 
 :host([data-variant=separated]) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 :host([data-variant=separated]) .ds-accordion__trigger {
@@ -487,6 +490,7 @@
 
 :host([data-variant=filled]) .ds-accordion__trigger:hover:not(:disabled) {
   background: var(--color-bg-sunken);
+  color: var(--color-text-accent);
 }
 
 :host([data-variant=filled]) .ds-accordion__content {
@@ -581,6 +585,7 @@
 
 :host([data-variant=ghost]) .ds-accordion__trigger:hover:not(:disabled) {
   background: var(--color-bg-sunken);
+  color: var(--color-text-accent);
 }
 
 :host([data-variant=avatar]) .ds-accordion__avatar-slot {

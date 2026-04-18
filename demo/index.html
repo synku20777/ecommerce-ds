@@ -76,6 +76,7 @@
             <ds-tab value="ds-drawer" data-abbr="Dr">Drawer</ds-tab>
             <ds-tab value="ds-menu" data-abbr="Mn">Menu</ds-tab>
             <ds-tab value="ds-accordion" data-abbr="Ac">Accordion</ds-tab>
+            <ds-tab value="ds-table" data-abbr="Tb">Table</ds-tab>
 
             <span class="nav-group-label">Layouts</span>
             <ds-tab value="product-grid" data-abbr="Pg">Product Grid</ds-tab>
@@ -1503,6 +1504,296 @@
   &lt;ds-menu-item label="Profile" icon="user"&gt;&lt;/ds-menu-item&gt;
   &lt;ds-menu-item label="Sign out" icon="link"&gt;&lt;/ds-menu-item&gt;
 &lt;/ds-menu&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="component-block table-doc" id="ds-table">
+            <div class="component-block__copy">
+              <span class="specimen__label">ds-table</span>
+              <h3>Table</h3>
+              <p>Compound, semantic table rendering from light-DOM holder elements with striped, hover, bordered, compact, and selected-row support.</p>
+            </div>
+            <div class="component-block__demo component-block__demo--stack table-doc__demo">
+              <div class="table-doc__group">
+                <span class="specimen__label">Default Table</span>
+                <p>Clean baseline table with muted header labels and horizontal row separators.</p>
+                <ds-table>
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head>Invoice</ds-table-head>
+                      <ds-table-head>Status</ds-table-head>
+                      <ds-table-head>Method</ds-table-head>
+                      <ds-table-head align="right">Amount</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row>
+                      <ds-table-cell>INV001</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell>
+                      <ds-table-cell>Credit Card</ds-table-cell>
+                      <ds-table-cell align="right">$250.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>INV002</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell>
+                      <ds-table-cell>PayPal</ds-table-cell>
+                      <ds-table-cell align="right">$150.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>INV003</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="outline">Draft</ds-badge></ds-table-cell>
+                      <ds-table-cell>Bank Transfer</ds-table-cell>
+                      <ds-table-cell align="right">$350.00</ds-table-cell>
+                    </ds-table-row>
+                  </ds-table-row-group>
+                </ds-table>
+              </div>
+
+              <div class="table-doc__group">
+                <span class="specimen__label">Compact + Striped</span>
+                <p>Smaller density and zebra striping for dense records and wide tables.</p>
+                <ds-table striped size="compact">
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head>Invoice</ds-table-head>
+                      <ds-table-head>Status</ds-table-head>
+                      <ds-table-head>Method</ds-table-head>
+                      <ds-table-head align="right">Amount</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row>
+                      <ds-table-cell>INV004</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell>
+                      <ds-table-cell>Card</ds-table-cell>
+                      <ds-table-cell align="right">$499.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>INV005</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="destructive">Overdue</ds-badge></ds-table-cell>
+                      <ds-table-cell>Wire</ds-table-cell>
+                      <ds-table-cell align="right">$210.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>INV006</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell>
+                      <ds-table-cell>PayPal</ds-table-cell>
+                      <ds-table-cell align="right">$109.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>INV007</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell>
+                      <ds-table-cell>Card</ds-table-cell>
+                      <ds-table-cell align="right">$89.00</ds-table-cell>
+                    </ds-table-row>
+                  </ds-table-row-group>
+                </ds-table>
+              </div>
+
+              <div class="table-doc__group">
+                <span class="specimen__label">Bordered + Hover + Selected</span>
+                <p>Adds an outer frame, vertical dividers, row hover treatment, and persistent selected-row state.</p>
+                <ds-table bordered hover>
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head>Invoice</ds-table-head>
+                      <ds-table-head>Status</ds-table-head>
+                      <ds-table-head>Method</ds-table-head>
+                      <ds-table-head align="right">Amount</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row selected>
+                      <ds-table-cell>INV008</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell>
+                      <ds-table-cell>Credit Card</ds-table-cell>
+                      <ds-table-cell align="right">$700.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>INV009</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell>
+                      <ds-table-cell>Cash</ds-table-cell>
+                      <ds-table-cell align="right">$320.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row selected>
+                      <ds-table-cell>INV010</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="destructive">Issue</ds-badge></ds-table-cell>
+                      <ds-table-cell>Wire</ds-table-cell>
+                      <ds-table-cell align="right">$940.00</ds-table-cell>
+                    </ds-table-row>
+                  </ds-table-row-group>
+                </ds-table>
+              </div>
+
+              <div class="table-doc__group">
+                <span class="specimen__label">Sticky Header</span>
+                <p>Uses <code>sticky-header</code> with <code>max-height="400px"</code> to pin headers while the body scrolls vertically inside the container.</p>
+                <ds-table sticky-header max-height="400px" hover>
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head>Order</ds-table-head>
+                      <ds-table-head>Customer</ds-table-head>
+                      <ds-table-head>Status</ds-table-head>
+                      <ds-table-head>Placed</ds-table-head>
+                      <ds-table-head align="right">Total</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row><ds-table-cell>#ORD-1001</ds-table-cell><ds-table-cell>Amelia Turner</ds-table-cell><ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell><ds-table-cell>May 02</ds-table-cell><ds-table-cell align="right">$420.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1002</ds-table-cell><ds-table-cell>Noah Bennett</ds-table-cell><ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell><ds-table-cell>May 02</ds-table-cell><ds-table-cell align="right">$84.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1003</ds-table-cell><ds-table-cell>Olivia James</ds-table-cell><ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell><ds-table-cell>May 01</ds-table-cell><ds-table-cell align="right">$149.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1004</ds-table-cell><ds-table-cell>Ethan Brooks</ds-table-cell><ds-table-cell><ds-badge variant="outline">Draft</ds-badge></ds-table-cell><ds-table-cell>May 01</ds-table-cell><ds-table-cell align="right">$212.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1005</ds-table-cell><ds-table-cell>Harper Diaz</ds-table-cell><ds-table-cell><ds-badge variant="destructive">Issue</ds-badge></ds-table-cell><ds-table-cell>Apr 30</ds-table-cell><ds-table-cell align="right">$640.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1006</ds-table-cell><ds-table-cell>Lucas Wang</ds-table-cell><ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell><ds-table-cell>Apr 30</ds-table-cell><ds-table-cell align="right">$95.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1007</ds-table-cell><ds-table-cell>Isabella Price</ds-table-cell><ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell><ds-table-cell>Apr 29</ds-table-cell><ds-table-cell align="right">$311.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1008</ds-table-cell><ds-table-cell>Benjamin Cole</ds-table-cell><ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell><ds-table-cell>Apr 29</ds-table-cell><ds-table-cell align="right">$73.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1009</ds-table-cell><ds-table-cell>Mia Sanders</ds-table-cell><ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell><ds-table-cell>Apr 28</ds-table-cell><ds-table-cell align="right">$206.00</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>#ORD-1010</ds-table-cell><ds-table-cell>Elijah Gray</ds-table-cell><ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell><ds-table-cell>Apr 28</ds-table-cell><ds-table-cell align="right">$128.00</ds-table-cell></ds-table-row>
+                  </ds-table-row-group>
+                </ds-table>
+              </div>
+
+              <div class="table-doc__group">
+                <span class="specimen__label">Sticky First Column</span>
+                <p>Uses <code>sticky-column</code> to pin the first column while horizontally scrolling large datasets.</p>
+                <ds-table sticky-column bordered striped>
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head>Product</ds-table-head>
+                      <ds-table-head>SKU</ds-table-head>
+                      <ds-table-head>Category</ds-table-head>
+                      <ds-table-head>Stock</ds-table-head>
+                      <ds-table-head>Warehouse</ds-table-head>
+                      <ds-table-head>Region</ds-table-head>
+                      <ds-table-head align="right">Unit Price</ds-table-head>
+                      <ds-table-head align="right">Revenue</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row><ds-table-cell>Trail Backpack 25L</ds-table-cell><ds-table-cell>TBP-25-001</ds-table-cell><ds-table-cell>Accessories</ds-table-cell><ds-table-cell>144</ds-table-cell><ds-table-cell>Lyon A</ds-table-cell><ds-table-cell>EU-West</ds-table-cell><ds-table-cell align="right">$89.00</ds-table-cell><ds-table-cell align="right">$12,816</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>Insulated Bottle 750ml</ds-table-cell><ds-table-cell>BOT-750-322</ds-table-cell><ds-table-cell>Hydration</ds-table-cell><ds-table-cell>520</ds-table-cell><ds-table-cell>Paris C</ds-table-cell><ds-table-cell>EU-Central</ds-table-cell><ds-table-cell align="right">$29.00</ds-table-cell><ds-table-cell align="right">$15,080</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>Performance Hoodie</ds-table-cell><ds-table-cell>APP-HDY-118</ds-table-cell><ds-table-cell>Apparel</ds-table-cell><ds-table-cell>89</ds-table-cell><ds-table-cell>Berlin B</ds-table-cell><ds-table-cell>EU-North</ds-table-cell><ds-table-cell align="right">$74.00</ds-table-cell><ds-table-cell align="right">$6,586</ds-table-cell></ds-table-row>
+                    <ds-table-row><ds-table-cell>Summit Runner Shoes</ds-table-cell><ds-table-cell>SHO-RUN-047</ds-table-cell><ds-table-cell>Footwear</ds-table-cell><ds-table-cell>61</ds-table-cell><ds-table-cell>Madrid A</ds-table-cell><ds-table-cell>EU-South</ds-table-cell><ds-table-cell align="right">$119.00</ds-table-cell><ds-table-cell align="right">$7,259</ds-table-cell></ds-table-row>
+                  </ds-table-row-group>
+                </ds-table>
+              </div>
+
+              <div class="table-doc__group">
+                <span class="specimen__label">Row Selection + Footer Totals</span>
+                <p>Combines row-level <code>selected</code> state with a totals <code>&lt;ds-table-footer&gt;</code>; demo checkboxes toggle selection live.</p>
+                <ds-table id="ds-table-selection-demo" bordered hover>
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head style="width: 48px;">Sel</ds-table-head>
+                      <ds-table-head>Invoice</ds-table-head>
+                      <ds-table-head>Client</ds-table-head>
+                      <ds-table-head>Status</ds-table-head>
+                      <ds-table-head align="right">Amount</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row id="table-row-inv011" selected>
+                      <ds-table-cell><input type="checkbox" data-table-select-row="table-row-inv011" checked></ds-table-cell>
+                      <ds-table-cell>INV011</ds-table-cell>
+                      <ds-table-cell>Northwind Studio</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell>
+                      <ds-table-cell align="right">$410.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row id="table-row-inv012">
+                      <ds-table-cell><input type="checkbox" data-table-select-row="table-row-inv012"></ds-table-cell>
+                      <ds-table-cell>INV012</ds-table-cell>
+                      <ds-table-cell>Astoria Labs</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="secondary">Pending</ds-badge></ds-table-cell>
+                      <ds-table-cell align="right">$230.00</ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row id="table-row-inv013" selected>
+                      <ds-table-cell><input type="checkbox" data-table-select-row="table-row-inv013" checked></ds-table-cell>
+                      <ds-table-cell>INV013</ds-table-cell>
+                      <ds-table-cell>Brightline Co.</ds-table-cell>
+                      <ds-table-cell><ds-badge variant="default">Paid</ds-badge></ds-table-cell>
+                      <ds-table-cell align="right">$510.00</ds-table-cell>
+                    </ds-table-row>
+                  </ds-table-row-group>
+                  <ds-table-footer>
+                    <ds-table-row>
+                      <ds-table-cell colspan="4"><strong>Total Selected</strong></ds-table-cell>
+                      <ds-table-cell align="right"><strong>$920.00</strong></ds-table-cell>
+                    </ds-table-row>
+                  </ds-table-footer>
+                </ds-table>
+              </div>
+
+              <div class="table-doc__group">
+                <span class="specimen__label">Product Table (Rich Content)</span>
+                <p>Shows media-rich product cells and a right-aligned action rail using icon-size buttons in the Actions column.</p>
+                <ds-table bordered hover>
+                  <ds-table-header-group>
+                    <ds-table-row>
+                      <ds-table-head>Product</ds-table-head>
+                      <ds-table-head>SKU</ds-table-head>
+                      <ds-table-head>Stock</ds-table-head>
+                      <ds-table-head align="right">Price</ds-table-head>
+                      <ds-table-head align="right">Actions</ds-table-head>
+                    </ds-table-row>
+                  </ds-table-header-group>
+                  <ds-table-row-group>
+                    <ds-table-row>
+                      <ds-table-cell>
+                        <div class="ds-table__product">
+                          <img class="ds-table__product-thumb" src="https://picsum.photos/seed/tent-01/64/64" alt="Trail tent thumbnail">
+                          <div class="ds-table__product-meta">
+                            <span class="ds-table__product-title">Alpine Trail Tent 2P</span>
+                            <span class="ds-table__product-subtitle">Weatherproof ripstop shell</span>
+                          </div>
+                        </div>
+                      </ds-table-cell>
+                      <ds-table-cell>TNT-2P-908</ds-table-cell>
+                      <ds-table-cell>38</ds-table-cell>
+                      <ds-table-cell align="right">$249.00</ds-table-cell>
+                      <ds-table-cell align="right">
+                        <div class="ds-table__actions">
+                          <ds-button variant="ghost" size="icon-sm" aria-label="Edit product">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                          </ds-button>
+                          <ds-button variant="ghost" size="icon-sm" aria-label="Archive product">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+                          </ds-button>
+                          <ds-button variant="ghost" size="icon-sm" aria-label="Delete product">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+                          </ds-button>
+                        </div>
+                      </ds-table-cell>
+                    </ds-table-row>
+                    <ds-table-row>
+                      <ds-table-cell>
+                        <div class="ds-table__product">
+                          <img class="ds-table__product-thumb" src="https://picsum.photos/seed/jacket-02/64/64" alt="Jacket thumbnail">
+                          <div class="ds-table__product-meta">
+                            <span class="ds-table__product-title">Stormshell Insulated Jacket</span>
+                            <span class="ds-table__product-subtitle">Lightweight, thermal lining</span>
+                          </div>
+                        </div>
+                      </ds-table-cell>
+                      <ds-table-cell>JKT-STM-442</ds-table-cell>
+                      <ds-table-cell>72</ds-table-cell>
+                      <ds-table-cell align="right">$179.00</ds-table-cell>
+                      <ds-table-cell align="right">
+                        <div class="ds-table__actions">
+                          <ds-button variant="ghost" size="icon-sm" aria-label="Edit product">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                          </ds-button>
+                          <ds-button variant="ghost" size="icon-sm" aria-label="Archive product">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+                          </ds-button>
+                          <ds-button variant="ghost" size="icon-sm" aria-label="Delete product">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+                          </ds-button>
+                        </div>
+                      </ds-table-cell>
+                    </ds-table-row>
+                  </ds-table-row-group>
+                </ds-table>
+              </div>
             </div>
           </div>
         </section>

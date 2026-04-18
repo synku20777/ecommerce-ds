@@ -63,9 +63,10 @@
   outline: none;
 
   &:hover:not(:disabled) {
+    color: var(--color-text-accent);
+
     .ds-accordion__title {
-      text-decoration: underline;
-      text-underline-offset: 2px;
+      text-decoration: none;
     }
   }
 
@@ -177,10 +178,10 @@
   // Hover: no bg change — underline the title text instead
   .ds-accordion__trigger:hover:not(:disabled) {
     background: transparent;
+    color: var(--color-text-accent);
 
     .ds-accordion__title {
-      text-decoration: underline;
-      text-underline-offset: 2px;
+      text-decoration: none;
     }
   }
 }
@@ -204,10 +205,10 @@
   // Hover: no bg change — underline the title text instead
   .ds-accordion__trigger:hover:not(:disabled) {
     background: transparent;
+    color: var(--color-text-accent);
 
     .ds-accordion__title {
-      text-decoration: underline;
-      text-underline-offset: 2px;
+      text-decoration: none;
     }
   }
 }
@@ -223,6 +224,7 @@
 .ds-accordion--ghost {
   .ds-accordion__trigger:hover:not(:disabled) {
     background: var(--color-bg-sunken);
+    color: var(--color-text-accent);
   }
 }
 
@@ -613,11 +615,11 @@
 
 :host([data-variant='default']) .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 
 :host([data-variant='default']) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 // Bordered: items show internal bottom divider only
@@ -631,11 +633,11 @@
 
 :host([data-variant='bordered']) .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 
 :host([data-variant='bordered']) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 // Separated: each item is a full card with border + radius
@@ -648,11 +650,11 @@
 
 :host([data-variant='separated']) .ds-accordion__trigger:hover:not(:disabled) {
   background: transparent;
+  color: var(--color-text-accent);
 }
 
 :host([data-variant='separated']) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 :host([data-variant='separated']) .ds-accordion__trigger {
@@ -672,6 +674,7 @@
 
 :host([data-variant='filled']) .ds-accordion__trigger:hover:not(:disabled) {
   background: var(--color-bg-sunken);
+  color: var(--color-text-accent);
 }
 
 :host([data-variant='filled']) .ds-accordion__content {
@@ -771,6 +774,7 @@
 
 :host([data-variant='ghost']) .ds-accordion__trigger:hover:not(:disabled) {
   background: var(--color-bg-sunken);
+  color: var(--color-text-accent);
 }
 
 // Avatar

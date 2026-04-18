@@ -461,3 +461,20 @@
   --ds-accordion-accent-color: var(--color-border-accent);
   --ds-accordion-transition: var(--transition-fast);
 }
+
+:root {
+  --ds-table-bg: transparent;
+  --ds-table-border: var(--color-border-subtle);
+  --ds-table-header-bg: var(--color-bg-surface);
+  --ds-table-header-text: var(--color-text-secondary);
+  --ds-table-row-hover-bg: var(--color-bg-sunken);
+  --ds-table-row-striped-bg: var(--color-bg-surface);
+  --ds-table-row-selected-bg: var(--color-bg-accent-subtle);
+  --ds-table-row-bg-default: var(--color-bg-page);
+  --ds-table-cell-padding-y-default: var(--space-md);
+  --ds-table-cell-padding-x-default: var(--space-md);
+  --ds-table-cell-padding-y-compact: var(--space-sm);
+  --ds-table-footer-border: var(--color-border-strong);
+  --ds-table-sticky-column-separator: var(--color-border-subtle);
+  --ds-table-sticky-column-shadow: 2px 0 0 0 var(--color-border-subtle);
+}

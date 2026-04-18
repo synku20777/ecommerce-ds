@@ -262,4 +262,24 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('ds-input', () => {
     // Keep the live demo responsive without noisy input logging.
   });
+
+  document.addEventListener('click', (event) => {
+    const target = event.composedPath().find((node) =>
+      node instanceof HTMLInputElement && node.matches('input[type="checkbox"][data-table-select-row]')
+    );
+
+    if (!target) return;
+
+    const rowId = target.getAttribute('data-table-select-row');
+    if (!rowId) return;
+
+    const row = document.getElementById(rowId);
+    if (!row) return;
+
+    if (target.checked) {
+      row.setAttribute('selected', '');
+    } else {
+      row.removeAttribute('selected');
+    }
+  });
 });

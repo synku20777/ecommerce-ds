@@ -530,6 +530,21 @@ a {
   margin: 0;
 }
 
+.table-doc__demo {
+  gap: var(--space-xl);
+}
+
+.table-doc__group {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.table-doc__group > p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-s);
+}
+
 .product-grid-doc {
   grid-template-columns: 1fr;
   border: none;

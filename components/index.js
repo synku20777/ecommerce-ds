@@ -20,3 +20,12 @@ import './ds-menu/ds-menu.js';
 import './ds-menu-separator/ds-menu-separator.js';
 import './ds-menu-header/ds-menu-header.js';
 import './ds-accordion/ds-accordion.js';
+import './ds-table/ds-table.js';
+
+export { DSTable } from './ds-table/ds-table.js';
+export { DSTableRow } from './ds-table/ds-table-row.js';
+export { DSTableCell } from './ds-table/ds-table-cell.js';
+export { DSTableHead } from './ds-table/ds-table-head.js';
+export { DSTableHeaderGroup } from './ds-table/ds-table-header-group.js';
+export { DSTableRowGroup } from './ds-table/ds-table-row-group.js';
+export { DSTableFooter } from './ds-table/ds-table-footer.js';
