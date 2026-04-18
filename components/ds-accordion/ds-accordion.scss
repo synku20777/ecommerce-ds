@@ -1,0 +1,894 @@
+// ═══════════════════════════════════════════════════════════
+// ds-accordion — Shadow DOM component styles
+// 16 variants: default, bordered, separated, filled, shadow,
+//   left-icon, plus-minus, subtext, ghost, avatar,
+//   colored-indicator, minimal, rounded, arrow, outline, icon-right
+// ═══════════════════════════════════════════════════════════
+
+@use 'reset';
+
+// ─── Host ────────────────────────────────────────────────
+
+:host {
+  display: block;
+}
+
+// ═══════════════════════════════════════════════════════════
+// ds-accordion (parent wrapper — shadow DOM)
+// ═══════════════════════════════════════════════════════════
+
+.ds-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-accordion-item-gap);
+  background: var(--ds-accordion-bg);
+  width: 100%;
+}
+
+// ═══════════════════════════════════════════════════════════
+// ds-accordion-item (child — shadow DOM)
+// ═══════════════════════════════════════════════════════════
+
+.ds-accordion__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--ds-accordion-item-bg);
+  border-radius: var(--ds-accordion-item-radius);
+  box-shadow: var(--ds-accordion-item-shadow);
+  transition: box-shadow var(--ds-accordion-transition);
+  // border-left: var(--ds-accordion-accent-width) solid var(--ds-accordion-item-highlight);
+}
+
+// ─── Trigger ─────────────────────────────────────────────
+
+.ds-accordion__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--ds-accordion-trigger-padding);
+  background: var(--ds-accordion-trigger-bg);
+  border: none;
+  border-radius: var(--ds-accordion-trigger-radius);
+  color: var(--ds-accordion-trigger-color);
+  font-family: var(--font-family-sans);
+  font-size: var(--ds-accordion-trigger-font-size);
+  font-weight: var(--ds-accordion-trigger-font-weight);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--ds-accordion-transition),
+    color var(--ds-accordion-transition);
+  outline: none;
+
+  &:hover:not(:disabled) {
+    .ds-accordion__title {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}
+
+// ─── Trigger content (title + subtext) ────────────────────
+
+.ds-accordion__trigger-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+  min-width: 0;
+}
+
+.ds-accordion__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+// ─── Avatar / icon slots ──────────────────────────────────
+
+.ds-accordion__avatar-slot,
+.ds-accordion__icon-slot {
+  display: contents;
+}
+
+// ─── Chevron ──────────────────────────────────────────────
+
+.ds-accordion__chevron {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ds-accordion-icon-size);
+  height: var(--ds-accordion-icon-size);
+  color: var(--ds-accordion-icon-color);
+  transition: transform var(--ds-accordion-transition);
+  pointer-events: none;
+  margin-left: auto;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ds-accordion__item--open .ds-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+// ─── Body / content ───────────────────────────────────────
+
+.ds-accordion__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-normal);
+  overflow: hidden;
+}
+
+.ds-accordion__item--open .ds-accordion__body {
+  grid-template-rows: 1fr;
+}
+
+.ds-accordion__content {
+  overflow: hidden;
+  padding: 0 var(--space-md) 0;
+  color: var(--ds-accordion-content-color);
+  font-size: var(--ds-accordion-content-font-size);
+  background: var(--ds-accordion-content-bg);
+  transition: padding var(--transition-normal);
+}
+
+.ds-accordion__item--open .ds-accordion__content {
+  padding: var(--ds-accordion-content-padding);
+}
+
+// ─── Disabled item ────────────────────────────────────────
+
+.ds-accordion__item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+// ═══════════════════════════════════════════════════════════
+// 1. Default — bottom border on each item, chevron right
+// ═══════════════════════════════════════════════════════════
+
+.ds-accordion--default {
+  .ds-accordion__item {
+    border-bottom: var(--ds-accordion-item-border-width) solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  // Hover: no bg change — underline the title text instead
+  .ds-accordion__trigger:hover:not(:disabled) {
+    background: transparent;
+
+    .ds-accordion__title {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// 2. Bordered — group border + radius, items divided inside
+// ═══════════════════════════════════════════════════════════
+
+// NOTE: the parent ds-accordion wrapper is in PARENT shadow DOM,
+// but the items are in each ds-accordion-item's shadow DOM.
+// The variant class is placed on the parent's .ds-accordion div,
+// while the item internals are in item's shadow DOM.
+// CSS custom properties flow through shadow boundaries, so we
+// use inherited custom props to communicate variant context.
+
+.ds-accordion--bordered {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  // Hover: no bg change — underline the title text instead
+  .ds-accordion__trigger:hover:not(:disabled) {
+    background: transparent;
+
+    .ds-accordion__title {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// 3. Separated — each item is a standalone card
+// ═══════════════════════════════════════════════════════════
+
+.ds-accordion--separated {
+  gap: var(--space-sm);
+}
+
+.ds-accordion--ghost {
+  .ds-accordion__trigger:hover:not(:disabled) {
+    background: var(--color-bg-sunken);
+  }
+}
+
+// ─── Per-item variant theming via CSS custom properties ───
+// Because items are in separate shadow DOMs, we communicate
+// by overriding the item-scoped CSS custom properties on the
+// parent shadow root element — they inherit into all child
+// shadow roots because custom properties DO pierce shadow DOM.
+
+// ─── 2. Bordered: items inherit divider via token ─────────
+
+:host(.ds-accordion--bordered-host),
+.ds-accordion--bordered {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+}
+
+// ─── Item styles driven by parent variant ─────────────────
+
+// Because we cannot cross shadow DOM with regular selectors,
+// we use the :host pseudo-class on each ds-accordion-item to
+// introspect its own state (open/disabled), and we rely on
+// CSS custom property inheritance from the parent accordion.
+
+// ═══════════════════════════════════════════════════════════
+// HOST-LEVEL VARIANT THEMING (ds-accordion-item shadow root)
+// ═══════════════════════════════════════════════════════════
+
+// Each variant is communicated from parent → item via a
+// host-visible attribute [data-variant] that the parent sets,
+// OR by overriding CSS custom properties that flow through.
+//
+// The cleanest approach without JS attribute mirroring is to
+// set variant-specific token overrides on :root of the parent
+// and let them cascade through. We do BOTH below:
+//  a) parent .ds-accordion--* → override tokens on :host
+//  b) ds-accordion-item observes [data-variant] if needed
+
+// ─── Variant token overrides (parent shadow scope) ────────
+
+// ds-accordion parent shadow scopes only contain a slot + wrapper.
+// ds-accordion-item shadow scopes contain the visual chrome.
+// We use native CSS custom property inheritance to pass context.
+
+// ─── 3. Separated ─────────────────────────────────────────
+
+.ds-accordion--separated {
+  --ds-accordion-item-border-color: var(--color-border-default);
+  --ds-accordion-item-radius: var(--radius-lg);
+  --ds-accordion-item-bg: var(--color-bg-surface);
+  --ds-accordion-trigger-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  --ds-accordion-content-bg: var(--color-bg-surface);
+  --ds-accordion-item-shadow: none;
+}
+
+// Draw border around each item cell — achieved by wrapping it
+// via the parent's slot-containing div. Items themselves
+// already have border-radius and bg from token overrides.
+
+// ─── 4. Filled ────────────────────────────────────────────
+
+.ds-accordion--filled {
+  --ds-accordion-item-bg: var(--color-bg-surface);
+  --ds-accordion-item-border-color: transparent;
+  --ds-accordion-trigger-bg: var(--color-bg-surface);
+  --ds-accordion-trigger-bg-hover: var(--color-bg-sunken);
+  --ds-accordion-content-bg: var(--color-bg-surface);
+  --ds-accordion-item-radius: var(--radius-md);
+
+  gap: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+// ─── 5. Shadow ────────────────────────────────────────────
+
+.ds-accordion--shadow {
+  --ds-accordion-item-bg: var(--color-bg-surface);
+  --ds-accordion-item-border-color: transparent;
+  --ds-accordion-item-shadow: var(--shadow-card);
+  --ds-accordion-item-radius: var(--radius-lg);
+  --ds-accordion-trigger-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  --ds-accordion-content-bg: var(--color-bg-surface);
+
+  gap: var(--space-sm);
+}
+
+// ─── 6. Left-icon ─────────────────────────────────────────
+
+.ds-accordion--left-icon {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__trigger {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .ds-accordion__chevron {
+    margin-left: 0;
+    margin-right: var(--space-xs);
+    transform: rotate(-90deg);
+  }
+
+  .ds-accordion__item--open .ds-accordion__chevron {
+    transform: rotate(0deg);
+  }
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// ─── 7. Plus-minus ────────────────────────────────────────
+
+.ds-accordion--plus-minus {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .ds-accordion__chevron {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+
+    svg {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      background: currentColor;
+      border-radius: var(--radius-full);
+      transition: transform var(--ds-accordion-transition), opacity var(--ds-accordion-transition);
+    }
+
+    &::before {
+      width: 2px;
+      height: 100%;
+    }
+
+    &::after {
+      width: 100%;
+      height: 2px;
+    }
+  }
+
+  .ds-accordion__item--open .ds-accordion__chevron {
+    transform: none;
+
+    &::before {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+  }
+}
+
+// ─── 8. Subtext ───────────────────────────────────────────
+
+.ds-accordion--subtext {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .ds-accordion__subtext-slot {
+    display: block;
+    font-size: var(--type-body-s);
+    font-weight: var(--type-weight-regular);
+    color: var(--color-text-tertiary);
+    margin-top: var(--space-xxs);
+  }
+}
+
+// ─── 9. Ghost ─────────────────────────────────────────────
+
+.ds-accordion--ghost {
+  --ds-accordion-trigger-bg: transparent;
+  --ds-accordion-trigger-bg-hover: var(--color-bg-sunken);
+  --ds-accordion-item-border-color: transparent;
+  --ds-accordion-trigger-radius: var(--radius-md);
+}
+
+// ─── 10. Avatar ───────────────────────────────────────────
+
+.ds-accordion--avatar {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .ds-accordion__avatar-slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    background: var(--color-bg-accent-subtle);
+    color: var(--color-text-accent);
+    font-size: var(--type-label-s);
+    font-weight: var(--type-weight-semibold);
+  }
+}
+
+// ─── 11. Colored-indicator ────────────────────────────────
+
+.ds-accordion--colored-indicator {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+    border-left: 3px solid transparent;
+    transition:
+      border-left-color var(--ds-accordion-transition),
+      background-color var(--ds-accordion-transition);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--open {
+      border-left-color: var(--ds-accordion-accent-color);
+      background: var(--color-bg-accent-subtle);
+
+      .ds-accordion__trigger {
+        color: var(--color-text-accent);
+      }
+    }
+  }
+}
+
+// ─── 12. Minimal ──────────────────────────────────────────
+
+.ds-accordion--minimal {
+  --ds-accordion-trigger-padding: var(--space-xs) var(--space-sm);
+  --ds-accordion-content-padding: 0 var(--space-sm) var(--space-xs);
+  --ds-accordion-trigger-font-size: var(--type-body-s);
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+  --ds-accordion-icon-size: 0.875rem;
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// ─── 13. Rounded ──────────────────────────────────────────
+
+.ds-accordion--rounded {
+  --ds-accordion-item-radius: var(--radius-full);
+  --ds-accordion-item-bg: var(--color-bg-surface);
+  --ds-accordion-item-border-color: var(--color-border-default);
+  --ds-accordion-trigger-padding: var(--space-sm) var(--space-md);
+  --ds-accordion-trigger-radius: var(--radius-full);
+  --ds-accordion-content-bg: transparent;
+
+  gap: var(--space-xs);
+
+  .ds-accordion__item {
+    border: 1px solid var(--ds-accordion-item-border-color);
+    overflow: hidden;
+  }
+
+  .ds-accordion__item--open {
+    border-radius: var(--radius-lg);
+
+    .ds-accordion__trigger {
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+  }
+}
+
+// ─── 14. Arrow ────────────────────────────────────────────
+
+.ds-accordion--arrow {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .ds-accordion__chevron {
+    transform: rotate(-90deg);
+
+    // svg {
+    //   // rotate the path to point right → down
+    // }
+  }
+
+  .ds-accordion__item--open .ds-accordion__chevron {
+    transform: rotate(0deg);
+  }
+}
+
+// ─── 15. Outline ──────────────────────────────────────────
+
+.ds-accordion--outline {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+  --ds-accordion-item-bg: var(--color-bg-surface);
+  --ds-accordion-item-radius: var(--radius-md);
+
+  gap: var(--space-sm);
+
+  .ds-accordion__item {
+    border: 1px solid var(--ds-accordion-item-border-color);
+    transition:
+      box-shadow var(--ds-accordion-transition),
+      border-color var(--ds-accordion-transition);
+
+    &--open {
+      border-color: var(--color-border-focus);
+      box-shadow: var(--focus-ring);
+    }
+  }
+}
+
+// ─── 16. Icon-right ───────────────────────────────────────
+
+.ds-accordion--icon-right {
+  --ds-accordion-item-border-color: var(--color-border-subtle);
+
+  .ds-accordion__item {
+    border-bottom: 1px solid var(--ds-accordion-item-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .ds-accordion__icon-slot {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    color: var(--color-text-secondary);
+  }
+
+  // The chevron stays on the right as normal (default layout)
+}
+
+// ═══════════════════════════════════════════════════════════
+// Item-level variant-awareness via host observedAttribute
+// Parent sets data-variant on each ds-accordion-item element
+// so individual items can adapt via :host([data-variant="x"])
+// ═══════════════════════════════════════════════════════════
+
+// Default: underline on hover in place of bg change
+:host([data-variant='default']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+:host([data-variant='default']) .ds-accordion__item:last-of-type {
+  border-bottom: none;
+}
+
+:host([data-variant='default']) .ds-accordion__trigger:hover:not(:disabled) {
+  background: transparent;
+}
+
+:host([data-variant='default']) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+// Bordered: items show internal bottom divider only
+:host([data-variant='bordered']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+:host([data-variant='bordered']) .ds-accordion__item:last-of-type {
+  border-bottom: none;
+}
+
+:host([data-variant='bordered']) .ds-accordion__trigger:hover:not(:disabled) {
+  background: transparent;
+}
+
+:host([data-variant='bordered']) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+// Separated: each item is a full card with border + radius
+:host([data-variant='separated']) .ds-accordion__item {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  overflow: hidden;
+}
+
+:host([data-variant='separated']) .ds-accordion__trigger:hover:not(:disabled) {
+  background: transparent;
+}
+
+:host([data-variant='separated']) .ds-accordion__trigger:hover:not(:disabled) .ds-accordion__title {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+:host([data-variant='separated']) .ds-accordion__trigger {
+  border-radius: 0;
+}
+
+// Filled: muted bg, no border
+:host([data-variant='filled']) .ds-accordion__item {
+  background: var(--color-bg-surface);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+:host([data-variant='filled']) .ds-accordion__trigger {
+  background: var(--color-bg-surface);
+}
+
+:host([data-variant='filled']) .ds-accordion__trigger:hover:not(:disabled) {
+  background: var(--color-bg-sunken);
+}
+
+:host([data-variant='filled']) .ds-accordion__content {
+  background: var(--color-bg-surface);
+}
+
+// Shadow: elevated card
+:host([data-variant='shadow']) .ds-accordion__item {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+// Left-icon: chevron on the left
+:host([data-variant='left-icon']) .ds-accordion__trigger {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+:host([data-variant='left-icon']) .ds-accordion__chevron {
+  margin-left: 0;
+  margin-right: var(--space-xs);
+  transform: rotate(-90deg);
+}
+
+:host([data-variant='left-icon']) .ds-accordion__item--open .ds-accordion__chevron {
+  transform: rotate(0deg);
+}
+
+:host([data-variant='left-icon']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// Plus-minus
+:host([data-variant='plus-minus']) .ds-accordion__chevron {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__chevron svg {
+  display: none;
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__chevron::before,
+:host([data-variant='plus-minus']) .ds-accordion__chevron::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: currentColor;
+  border-radius: var(--radius-full);
+  transition: transform var(--ds-accordion-transition), opacity var(--ds-accordion-transition);
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__chevron::before {
+  width: 2px;
+  height: 100%;
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__chevron::after {
+  width: 100%;
+  height: 2px;
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__item--open .ds-accordion__chevron {
+  transform: none;
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__item--open .ds-accordion__chevron::before {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+:host([data-variant='plus-minus']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// Subtext: show the subtext slot
+:host([data-variant='subtext']) .ds-accordion__subtext-slot {
+  display: block;
+  font-size: var(--type-body-s);
+  font-weight: var(--type-weight-regular);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-xxs);
+}
+
+:host([data-variant='subtext']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// Ghost
+:host([data-variant='ghost']) .ds-accordion__trigger {
+  border-radius: var(--radius-md);
+}
+
+:host([data-variant='ghost']) .ds-accordion__trigger:hover:not(:disabled) {
+  background: var(--color-bg-sunken);
+}
+
+// Avatar
+:host([data-variant='avatar']) .ds-accordion__avatar-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--color-bg-accent-subtle);
+  color: var(--color-text-accent);
+  font-size: var(--type-label-s);
+  font-weight: var(--type-weight-semibold);
+}
+
+:host([data-variant='avatar']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// Colored-indicator
+:host([data-variant='colored-indicator']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+  border-left: 3px solid transparent;
+  transition:
+    border-left-color var(--ds-accordion-transition),
+    background-color var(--ds-accordion-transition);
+}
+
+:host([data-variant='colored-indicator']) .ds-accordion__item--open {
+  border-left-color: var(--ds-accordion-accent-color);
+  background: var(--color-bg-accent-subtle);
+}
+
+:host([data-variant='colored-indicator']) .ds-accordion__item--open .ds-accordion__trigger {
+  color: var(--color-text-accent);
+}
+
+// Minimal
+:host([data-variant='minimal']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+:host([data-variant='minimal']) .ds-accordion__trigger {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--type-body-s);
+}
+
+:host([data-variant='minimal']) .ds-accordion__chevron {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+:host([data-variant='minimal']) .ds-accordion__content {
+  padding: 0 var(--space-sm) var(--space-xs);
+}
+
+// Rounded
+:host([data-variant='rounded']) .ds-accordion__item {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface);
+  overflow: hidden;
+}
+
+:host([data-variant='rounded']) .ds-accordion__trigger {
+  border-radius: var(--radius-full);
+}
+
+:host([data-variant='rounded']) .ds-accordion__item--open {
+  border-radius: var(--radius-lg);
+}
+
+:host([data-variant='rounded']) .ds-accordion__item--open .ds-accordion__trigger {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+// Arrow
+:host([data-variant='arrow']) .ds-accordion__chevron {
+  transform: rotate(-90deg);
+}
+
+:host([data-variant='arrow']) .ds-accordion__item--open .ds-accordion__chevron {
+  transform: rotate(0deg);
+}
+
+:host([data-variant='arrow']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// Outline
+:host([data-variant='outline']) .ds-accordion__item {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  transition:
+    box-shadow var(--ds-accordion-transition),
+    border-color var(--ds-accordion-transition);
+  overflow: hidden;
+}
+
+:host([data-variant='outline']) .ds-accordion__item--open {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--focus-ring);
+}
+
+// Icon-right
+:host([data-variant='icon-right']) .ds-accordion__icon-slot {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--color-text-secondary);
+}
+
+:host([data-variant='icon-right']) .ds-accordion__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}

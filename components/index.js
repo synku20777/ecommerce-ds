@@ -19,3 +19,4 @@ import './ds-menu-item/ds-menu-item.js';
 import './ds-menu/ds-menu.js';
 import './ds-menu-separator/ds-menu-separator.js';
 import './ds-menu-header/ds-menu-header.js';
+import './ds-accordion/ds-accordion.js';

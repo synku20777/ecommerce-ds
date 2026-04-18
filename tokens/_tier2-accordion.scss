@@ -1,0 +1,48 @@
+// ═══════════════════════════════════════════════════════════
+// Tier 2 — ds-accordion component tokens
+// ═══════════════════════════════════════════════════════════
+
+:root {
+  // ─── Structural ────────────────────────────────────────
+  --ds-accordion-border-color:        var(--color-border-subtle);
+  --ds-accordion-border-radius:       var(--radius-lg);
+  --ds-accordion-bg:                  transparent;
+  --ds-accordion-item-gap:            0;
+
+  // ─── Trigger ───────────────────────────────────────────
+  --ds-accordion-trigger-padding:     var(--space-md) var(--space-md);
+  --ds-accordion-trigger-bg:          transparent;
+  --ds-accordion-trigger-bg-hover:    var(--color-bg-sunken);
+  --ds-accordion-trigger-color:       var(--color-text-primary);
+  --ds-accordion-trigger-font-size:   var(--type-body-m);
+  --ds-accordion-trigger-font-weight: var(--type-weight-semibold);
+  --ds-accordion-trigger-radius:      0;
+
+  // ─── Content ───────────────────────────────────────────
+  --ds-accordion-content-padding:     0 var(--space-md) var(--space-md);
+  --ds-accordion-content-color:       var(--color-text-secondary);
+  --ds-accordion-content-font-size:   var(--type-body-s);
+  --ds-accordion-content-bg:          transparent;
+
+  // ─── Icon / chevron ────────────────────────────────────
+  --ds-accordion-icon-size:           1rem;
+  --ds-accordion-icon-color:          var(--color-text-tertiary);
+
+  // ─── Item border ───────────────────────────────────────
+  --ds-accordion-item-border-color:   var(--color-border-subtle);
+  --ds-accordion-item-border-width:   1px;
+  --ds-accordion-item-radius:         0;
+  --ds-accordion-item-bg:             transparent;
+  --ds-accordion-item-shadow:         none;
+
+  // ─── Active / open state ───────────────────────────────
+  --ds-accordion-item-open-bg:        transparent;
+  --ds-accordion-item-highlight:      transparent;
+
+  // ─── Accent / indicator ────────────────────────────────
+  --ds-accordion-accent-width:        3px;
+  --ds-accordion-accent-color:        var(--color-border-accent);
+
+  // ─── Transitions ───────────────────────────────────────
+  --ds-accordion-transition:          var(--transition-fast);
+}

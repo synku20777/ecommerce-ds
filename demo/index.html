@@ -75,6 +75,7 @@
             <ds-tab value="ds-dialog" data-abbr="Di">Dialog</ds-tab>
             <ds-tab value="ds-drawer" data-abbr="Dr">Drawer</ds-tab>
             <ds-tab value="ds-menu" data-abbr="Mn">Menu</ds-tab>
+            <ds-tab value="ds-accordion" data-abbr="Ac">Accordion</ds-tab>
 
             <span class="nav-group-label">Layouts</span>
             <ds-tab value="product-grid" data-abbr="Pg">Product Grid</ds-tab>
@@ -1505,6 +1506,210 @@
             </div>
           </div>
         </section>
+
+        <!-- ds-accordion ─────────────────────────────────────── -->
+        <div class="component-block ds-accordion-doc" id="ds-accordion">
+          <div class="component-block__copy">
+            <span class="specimen__label">ds-accordion</span>
+            <h3>Accordion</h3>
+            <p>A compound accordion with 16 structural and visual variants. The <code>ds-accordion</code> parent controls the variant and optional single-open constraint; <code>ds-accordion-item</code> children manage their own open state and emit <code>ds-open-change</code>.</p>
+            <table class="accordion-doc__api">
+              <caption>Accordion attributes</caption>
+              <tbody>
+                <tr><th><code>variant</code></th><td>See 16 variants below</td></tr>
+                <tr><th><code>single-open</code></th><td>boolean — only one item open at a time</td></tr>
+              </tbody>
+            </table>
+            <table class="accordion-doc__api">
+              <caption>Item attributes</caption>
+              <tbody>
+                <tr><th><code>open</code></th><td>boolean — expanded state</td></tr>
+                <tr><th><code>disabled</code></th><td>boolean — prevents interaction</td></tr>
+              </tbody>
+            </table>
+            <pre class="accordion-doc__code"><code>&lt;ds-accordion variant="bordered" single-open&gt;
+  &lt;ds-accordion-item&gt;
+    &lt;span slot="trigger"&gt;Title&lt;/span&gt;
+    Body content here.
+  &lt;/ds-accordion-item&gt;
+&lt;/ds-accordion&gt;</code></pre>
+          </div>
+          <div class="component-block__demo component-block__demo--stack accordion-doc">
+
+            <!-- 1 default -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>default</span><p>Bottom border per item, chevron right indicator.</p></div>
+              <ds-accordion variant="default" single-open>
+                <ds-accordion-item open><span slot="trigger">What is a design token?</span>Design tokens are the visual design atoms of the system — named entities that store visual design attributes.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">How do tokens relate to components?</span>Components consume Tier 2 tokens, which alias Tier 1 semantic tokens, which reference Tier 0 raw primitives.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Can I override a token?</span>Yes — override any CSS custom property on the :root or a specific element scope.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 2 bordered -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>bordered</span><p>Group wrapped in a single border with radius.</p></div>
+              <ds-accordion variant="bordered" single-open>
+                <ds-accordion-item open><span slot="trigger">Shipping &amp; Delivery</span>Standard delivery takes 3–5 business days. Express options are available at checkout with same-day cutoffs.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Returns &amp; Refunds</span>Returns accepted within 30 days of purchase. Refunds are processed in 5–7 business days.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Payment Methods</span>We accept Visa, Mastercard, PayPal, and Apple Pay. All transactions are secured with TLS 1.3.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 3 separated -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>separated</span><p>Each item is an independent card.</p></div>
+              <ds-accordion variant="separated">
+                <ds-accordion-item open><span slot="trigger">Account security</span>Enable two-factor authentication from your security settings. We recommend using an authenticator app.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Connected apps</span>Manage third-party app permissions and revoke access from the integrations panel.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Login history</span>View the last 12 logins, including device type, location, and timestamp.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 4 filled -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>filled</span><p>Muted background fill, no borders.</p></div>
+              <ds-accordion variant="filled" single-open>
+                <ds-accordion-item open><span slot="trigger">Getting started</span>Import the barrel file and the compiled tokens stylesheet to register all components on the page.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Dark mode</span>Add <code>data-theme="dark"</code> to the <code>&lt;html&gt;</code> element. Tier 1 overrides handle the rest.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Custom radius</span>Override <code>--radius</code> once on <code>:root</code> to retheme all border radii simultaneously.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 5 shadow -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>shadow</span><p>Elevated shadow card per item.</p></div>
+              <ds-accordion variant="shadow">
+                <ds-accordion-item open><span slot="trigger">Performance budgets</span>Keep your JS bundle under 200 KB and your LCP under 2.5 s for a green Core Web Vitals score.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Image optimisation</span>Use WebP or AVIF, serve responsive images with srcset, and lazy-load below-the-fold assets.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Caching strategy</span>Immutable assets get a long max-age; HTML is served stale-while-revalidate for instant navigations.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 6 left-icon -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>left-icon</span><p>Chevron positioned on the far left.</p></div>
+              <ds-accordion variant="left-icon" single-open>
+                <ds-accordion-item open><span slot="trigger">Billing address</span>Your billing address must match the one registered with your card issuer to avoid declines.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Tax information</span>Applicable taxes are calculated at checkout based on your shipping destination.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Currency</span>Prices are displayed in USD. Conversion happens at checkout via the payment provider.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 7 plus-minus -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>plus-minus</span><p>+ icon animates to − when open.</p></div>
+              <ds-accordion variant="plus-minus" single-open>
+                <ds-accordion-item open><span slot="trigger">Is there a free trial?</span>Yes — all plans include a 14-day free trial. No credit card required to start.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Can I change plans?</span>Switch plans at any time. Upgrades take effect immediately; downgrades on the next billing date.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">What happens when I cancel?</span>Your data is retained for 90 days after cancellation, then permanently deleted.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 8 subtext -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>subtext</span><p>Optional description under the trigger title.</p></div>
+              <ds-accordion variant="subtext" single-open>
+                <ds-accordion-item open><span slot="trigger">Notifications</span><span slot="subtext">Email, push, and in-app preferences</span>Choose which events trigger an alert and how you'd like to receive them.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Privacy controls</span><span slot="subtext">Data sharing and visibility settings</span>Review what information is shared with our partners and limit data collection.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Accessibility</span><span slot="subtext">Motion, contrast, and font size</span>Reduce motion, increase contrast ratio, or bump the base font size for readability.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 9 ghost -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>ghost</span><p>Borderless with hover highlight on the trigger.</p></div>
+              <ds-accordion variant="ghost" single-open>
+                <ds-accordion-item open><span slot="trigger">What languages are supported?</span>The API is language-agnostic. SDKs exist for JavaScript, Python, Go, Ruby, and Java.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Rate limits</span>Free plans are limited to 100 requests/min. Paid plans start at 1 000 req/min.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Webhooks</span>Register a public HTTPS endpoint to receive real-time event payloads with HMAC signatures.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 10 avatar -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>avatar</span><p>Avatar slot on the left of each trigger.</p></div>
+              <ds-accordion variant="avatar" single-open>
+                <ds-accordion-item open><span slot="avatar">JD</span><span slot="trigger">Jordan Davis — Senior engineer</span>Joined in Q1 2022. Manages the platform infrastructure team and leads the migration to edge deployments.</ds-accordion-item>
+                <ds-accordion-item><span slot="avatar">MK</span><span slot="trigger">Morgan Kim — Product designer</span>Specialises in design systems and token architecture. Maintains the core Figma library.</ds-accordion-item>
+                <ds-accordion-item><span slot="avatar">SA</span><span slot="trigger">Sam Adeyemi — QA lead</span>Owns end-to-end test infrastructure and accessibility auditing on every release cycle.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 11 colored-indicator -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>colored-indicator</span><p>Open item gets a thick accent left border.</p></div>
+              <ds-accordion variant="colored-indicator" single-open>
+                <ds-accordion-item open><span slot="trigger">Step 1 — Design tokens</span>Define raw values, semantic aliases, and component-scoped properties in a clear 3-tier hierarchy.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Step 2 — Web Components</span>Encapsulate markup and styles inside Shadow DOM. Expose a minimal attribute API.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Step 3 — Documentation</span>Ship a living demo page showing every variant alongside attribute tables and code snippets.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 12 minimal -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>minimal</span><p>Extremely compact padding for dense UIs.</p></div>
+              <ds-accordion variant="minimal" single-open>
+                <ds-accordion-item open><span slot="trigger">Brand colours</span>Blue 500 (#3b82f6) is the primary accent. Neutral 900 and 50 anchor the dark/light page backgrounds.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Type scale</span>Inter at 14 px (body-m) is the baseline. Labels drop to 12 px; display headings scale up to 48 px.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Spacing steps</span>xxs 2 · xs 4 · sm 8 · md 16 · lg 24 · xl 32 (all in px), sticking to a 4-pt grid.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 13 rounded -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>rounded</span><p>Pill-shaped items with heavy border radius.</p></div>
+              <ds-accordion variant="rounded">
+                <ds-accordion-item open><span slot="trigger">Free shipping threshold</span>Orders over $75 qualify for free standard shipping within the continental US.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Gift wrapping</span>Add gift wrapping at checkout for $4.99. Includes a personalised message card.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Bulk pricing</span>Order 10+ units of any SKU for automatic 15 % volume discount applied at cart.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 14 arrow -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>arrow</span><p>Arrow rotates −90° closed, 0° open.</p></div>
+              <ds-accordion variant="arrow" single-open>
+                <ds-accordion-item open><span slot="trigger">Component lifecycle</span>Web Components fire <code>connectedCallback</code> when attached, <code>disconnectedCallback</code> when removed.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Shadow DOM isolation</span>Shadow DOM scopes CSS and prevents external styles from leaking in, except custom properties.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Custom events</span>Use <code>composed: true</code> and <code>bubbles: true</code> so events cross shadow boundaries.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 15 outline -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>outline</span><p>Open item gets a focus-style ring border.</p></div>
+              <ds-accordion variant="outline">
+                <ds-accordion-item open><span slot="trigger">WCAG compliance</span>All interactive controls meet WCAG 2.1 AA contrast ratio requirements of 4.5 : 1.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Keyboard navigation</span>Tab to focus a trigger; Space or Enter to toggle; Escape to close if supported by context.</ds-accordion-item>
+                <ds-accordion-item><span slot="trigger">Screen reader labels</span>Triggers have <code>aria-expanded</code>; body panels use <code>role="region"</code> with <code>aria-hidden</code>.</ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+            <!-- 16 icon-right -->
+            <div class="accordion-doc__group">
+              <div class="accordion-doc__heading"><span>icon-right</span><p>Static descriptive icon left, rotating chevron right.</p></div>
+              <ds-accordion variant="icon-right" single-open>
+                <ds-accordion-item open>
+                  <span slot="trigger">Analytics overview</span>
+                  <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                  Page views, unique sessions, and conversion rate are updated every 24 hours.
+                </ds-accordion-item>
+                <ds-accordion-item>
+                  <span slot="trigger">User segments</span>
+                  <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+                  Segment users by referral source, device type, purchase history, and engagement tier.
+                </ds-accordion-item>
+                <ds-accordion-item>
+                  <span slot="trigger">Export data</span>
+                  <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                  Download a full CSV or JSON export covering the last 90 days of activity.
+                </ds-accordion-item>
+              </ds-accordion>
+            </div>
+
+          </div>
+        </div>
 
         <ds-dialog id="dialog-demo" label="Confirm action" size="md">
           <p>This modal uses shared overlay tokens, focuses itself when opened, and closes on Escape or backdrop click.</p>
